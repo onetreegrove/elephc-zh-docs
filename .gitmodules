@@ -1,0 +1,3 @@
+[submodule "elephc-src"]
+	path = elephc-src
+	url = https://github.com/illegalstudio/elephc.git
