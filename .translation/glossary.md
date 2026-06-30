@@ -1,6 +1,6 @@
 # elephc 中文文档术语表
 
-| English | 中文建议 | Notes |
+| from | to | note |
 | --- | --- | --- |
 | native binary | 原生二进制文件 | 首次出现可写作“原生二进制文件（native binary）” |
 | compiler | 编译器 |  |
