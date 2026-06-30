@@ -12,8 +12,13 @@ import {
 const showcasesDir = path.join(UPSTREAM_DIR, "showcases");
 const entries = [];
 
-function paragraphText(value) {
-  const text = String(value).replace(/\s+/g, " ").trim();
+function upstreamPlainText(value) {
+  const text = String(value)
+    .replace(/\s+/g, " ")
+    .trim()
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
   return text.replace(/^([#>*+\-|])/u, "\\$1").replace(/^(\d+)\./u, "$1\\.");
 }
 
@@ -41,11 +46,16 @@ for (const dirent of await fs.readdir(showcasesDir, { withFileTypes: true })) {
     title = extractTitle(markdown, title);
     const paragraph = firstParagraph(markdown);
     if (paragraph) {
-      summary = paragraphText(paragraph);
+      summary = paragraph;
     }
   }
 
-  entries.push({ slug, title, summary: paragraphText(summary), hasReadme });
+  entries.push({
+    slug,
+    title: upstreamPlainText(title),
+    summary: upstreamPlainText(summary),
+    hasReadme
+  });
 }
 
 entries.sort((a, b) => a.slug.localeCompare(b.slug));
