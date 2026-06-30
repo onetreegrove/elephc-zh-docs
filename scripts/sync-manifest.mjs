@@ -62,6 +62,15 @@ function workDirFor(sourcePath) {
   return `.translation/work/${sourcePath.replace(/\.md$/, "")}`;
 }
 
+function semanticManifest(manifest) {
+  const { generatedAt, ...semantic } = manifest;
+  return semantic;
+}
+
+function sameSemanticManifest(left, right) {
+  return JSON.stringify(semanticManifest(left)) === JSON.stringify(right);
+}
+
 const existing = await readJson(MANIFEST_PATH, {
   schemaVersion: 1,
   upstream: {
@@ -103,7 +112,7 @@ for (const root of SOURCE_ROOTS) {
   }
 }
 
-const next = {
+const nextSemantic = {
   schemaVersion: 1,
   upstream: {
     repo: "https://github.com/illegalstudio/elephc",
@@ -111,8 +120,16 @@ const next = {
     commit,
     submodulePath: "elephc-src"
   },
-  generatedAt: new Date().toISOString(),
   files
+};
+const generatedAt = sameSemanticManifest(existing, nextSemantic)
+  ? existing.generatedAt || ""
+  : new Date().toISOString();
+const next = {
+  schemaVersion: nextSemantic.schemaVersion,
+  upstream: nextSemantic.upstream,
+  generatedAt,
+  files: nextSemantic.files
 };
 
 await writeJson(MANIFEST_PATH, next);
