@@ -1,3 +1,5 @@
+import { sidebar } from "./sidebar.generated.mjs";
+
 export default {
   title: "elephc 中文文档",
   description: "elephc PHP-to-native 编译器中文文档",
@@ -14,26 +16,7 @@ export default {
       { text: "授权", link: "/legal" },
       { text: "上游", link: "https://github.com/illegalstudio/elephc" }
     ],
-    sidebar: {
-      "/docs/": [
-        {
-          text: "文档",
-          items: [{ text: "总览", link: "/docs/" }]
-        }
-      ],
-      "/showcases/": [
-        {
-          text: "案例展示",
-          items: [{ text: "总览", link: "/showcases/" }]
-        }
-      ],
-      "/examples/": [
-        {
-          text: "示例索引",
-          items: [{ text: "总览", link: "/examples/" }]
-        }
-      ]
-    },
+    sidebar,
     search: {
       provider: "local"
     },
