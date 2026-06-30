@@ -12,6 +12,10 @@ import {
 const examplesDir = path.join(UPSTREAM_DIR, "examples");
 const entries = [];
 
+function markdownTableCell(value) {
+  return String(value).replace(/\s+/g, " ").replace(/\|/g, "\\|").trim();
+}
+
 for (const dirent of await fs.readdir(examplesDir, { withFileTypes: true })) {
   if (!dirent.isDirectory()) {
     continue;
@@ -46,10 +50,10 @@ for (const dirent of await fs.readdir(examplesDir, { withFileTypes: true })) {
 entries.sort((a, b) => a.slug.localeCompare(b.slug));
 
 const rows = entries
-  .map(
-    (entry) =>
-      `| \`${entry.slug}\` | ${entry.title} | ${entry.summary} | ${entry.hasReadme ? "README" : ""}${entry.hasReadme && entry.hasMain ? " + " : ""}${entry.hasMain ? "main.php" : ""} |`
-  )
+  .map((entry) => {
+    const content = `${entry.hasReadme ? "README" : ""}${entry.hasReadme && entry.hasMain ? " + " : ""}${entry.hasMain ? "main.php" : ""}`;
+    return `| \`${markdownTableCell(entry.slug)}\` | ${markdownTableCell(entry.title)} | ${markdownTableCell(entry.summary)} | ${markdownTableCell(content)} |`;
+  })
   .join("\n");
 
 const markdown = `# 示例索引
