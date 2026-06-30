@@ -4,7 +4,7 @@
 
 ## 优先内容
 
-- [文档概览](/docs/)
+- [文档概览](/docs/overview)
 - [案例展示](/showcases/)
 - [示例索引](/examples/)
 - [授权与版权](/legal)

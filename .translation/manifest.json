@@ -8472,10 +8472,10 @@
       "sourcePath": "docs/README.md",
       "targetPath": "content/docs/README.md",
       "sourceHash": "sha256:c7062e3bd2a34d63ab851bfcf2cc532f23f90e462a95472bcd188116b83dff50",
-      "translatedAt": "",
+      "translatedAt": "2026-06-30T13:51:54.391Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/README",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "showcases/doom/README.md",
