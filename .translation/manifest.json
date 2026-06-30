@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "upstream": {
+    "repo": "https://github.com/illegalstudio/elephc",
+    "branch": "main",
+    "commit": "",
+    "submodulePath": "elephc-src"
+  },
+  "generatedAt": "",
+  "files": []
+}
