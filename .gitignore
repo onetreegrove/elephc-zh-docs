@@ -99,6 +99,11 @@ dist
 
 # vuepress build output
 .vuepress/dist
+site/.vitepress/cache/
+site/.vitepress/dist/
+
+# macOS
+.DS_Store
 
 # Serverless directories
 .serverless/

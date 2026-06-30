@@ -1,0 +1,20 @@
+{
+  "name": "elephc-zh-docs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev site",
+    "build": "vitepress build site",
+    "preview": "vitepress preview site",
+    "sync": "node scripts/sync-manifest.mjs",
+    "build:examples": "node scripts/build-example-index.mjs",
+    "build:showcases": "node scripts/build-showcase-index.mjs",
+    "build:sidebar": "node scripts/build-sidebar.mjs",
+    "validate": "node scripts/validate-site.mjs",
+    "prepare:content": "npm run sync && npm run build:examples && npm run build:showcases && npm run build:sidebar"
+  },
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}
