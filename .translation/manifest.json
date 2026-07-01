@@ -84,19 +84,19 @@
       "sourcePath": "docs/compiling/compilation-pipeline.md",
       "targetPath": "content/docs/compiling/compilation-pipeline.md",
       "sourceHash": "sha256:4f2c904b09da445f6762a73a30dcac2c61248a7275ff404749e60ed58f756756",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T09:23:41.571Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/compiling/compilation-pipeline",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/compiling/linking-and-conditional-compilation.md",
       "targetPath": "content/docs/compiling/linking-and-conditional-compilation.md",
       "sourceHash": "sha256:68d66635a43d54c4a545966f7f25c3eb5389c91d78d88c0498d43c6825decf30",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T09:22:01.847Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/compiling/linking-and-conditional-compilation",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/compiling/optimization.md",
@@ -111,28 +111,28 @@
       "sourcePath": "docs/compiling/output-and-diagnostics.md",
       "targetPath": "content/docs/compiling/output-and-diagnostics.md",
       "sourceHash": "sha256:431282926de00529ab8e346248117d0bd90986bc877b399abe9efebfc6a24415",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T09:22:47.486Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/compiling/output-and-diagnostics",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/compiling/overview.md",
       "targetPath": "content/docs/compiling/overview.md",
       "sourceHash": "sha256:4f17e9702c32c6995c22fbd6657f48267f32633936204367a9d5a397b6155d70",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T09:20:31.227Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/compiling/overview",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/compiling/targets.md",
       "targetPath": "content/docs/compiling/targets.md",
       "sourceHash": "sha256:af6823e25cb25ceccbf411910a75c75d43d45e4593bdf6bbcf6c834497417db1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T09:21:08.348Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/compiling/targets",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/getting-started/installation.md",
