@@ -43,4 +43,4 @@ npm run build
 
 elephc 项目名称、源码、原始英文文档、图片和示例代码的版权归上游作者或对应贡献者所有。上游许可证请以 [`illegalstudio/elephc` 仓库中的 LICENSE](https://github.com/illegalstudio/elephc/blob/main/LICENSE) 为准。
 
-中文翻译和整理内容的具体许可证待确认。在确认前，再分发时应保留上游来源、许可证链接和本声明。
+中文翻译和整理内容参考上游项目许可证授权。再分发时应保留上游来源、许可证链接和本声明。

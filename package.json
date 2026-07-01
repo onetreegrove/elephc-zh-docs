@@ -8,10 +8,12 @@
     "build": "vitepress build site",
     "preview": "vitepress preview site",
     "sync": "node scripts/sync-manifest.mjs",
+    "translate:agy": "node scripts/translate-with-agy.mjs",
     "build:examples": "node scripts/build-example-index.mjs",
     "build:showcases": "node scripts/build-showcase-index.mjs",
     "build:sidebar": "node scripts/build-sidebar.mjs",
     "validate": "node scripts/validate-site.mjs",
+    "test": "node --test scripts/*.test.mjs scripts/**/*.test.mjs",
     "prepare:content": "npm run sync && npm run build:examples && npm run build:showcases && npm run build:sidebar"
   },
   "devDependencies": {
