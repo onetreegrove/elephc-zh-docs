@@ -1,0 +1,105 @@
+---
+title: "Linking, heap, and conditional compilation"
+description: "Linking native libraries and frameworks for FFI, sizing the runtime heap, and defining compile-time symbols for ifdef branches."
+sidebar:
+  order: 7
+---
+
+These flags control how the binary is linked, how much heap the program gets, and
+which compile-time branches are taken.
+
+## Linking native libraries
+
+When a program calls into C libraries through [extern/FFI](../beyond-php/extern.md),
+those libraries must be linked into the binary.
+
+### `--link` / `-l`
+
+Links an extra native library. Accepts the spaced form, the short flag, and the
+attached form; repeat it for multiple libraries.
+
+```bash
+elephc app.php --link sqlite3
+elephc app.php -l sqlite3
+elephc app.php -lsqlite3
+```
+
+### `--link-path` / `-L`
+
+Adds a directory to the library search path. Repeatable.
+
+```bash
+elephc app.php -l sqlite3 -L /opt/homebrew/lib
+elephc app.php --link-path /usr/local/lib
+```
+
+### `--framework`
+
+Links a macOS framework. Repeatable.
+
+```bash
+elephc app.php --framework Cocoa --framework Metal
+```
+
+`extern "libname" { ... }` blocks in source add their own `-l` flags
+automatically; the flags above are for libraries not already named in the source.
+See [FFI & Extern](../beyond-php/extern.md).
+
+## Heap size
+
+The compiled program uses a fixed-size runtime heap, **8 MB** by default. Programs
+that allocate a lot of arrays, strings, or objects may need more.
+
+### `--heap-size`
+
+Sets the heap size in bytes. The minimum is `65536` (64 KB).
+
+```bash
+elephc --heap-size=16777216 heavy.php   # 16 MB
+```
+
+If a program exhausts its heap it aborts with a fatal "heap memory exhausted"
+error; raising `--heap-size` is the fix. See [Memory Model](../internals/memory-model.md).
+
+## Runtime dead stripping
+
+The compiler ships a single runtime with helpers for every supported builtin, but
+a given program only uses a few of them. When linking an **executable**, the
+linker keeps only the runtime helpers reachable from the program and drops the
+rest, so a small program does not carry the whole runtime. This is automatic —
+there is no flag — and never changes behavior, only binary size.
+
+It works the same on every supported target, using each platform's native
+mechanism:
+
+- **Linux** emits each runtime helper into its own section and links with
+  `--gc-sections`.
+- **macOS** emits the runtime object with `.subsections_via_symbols` so each
+  helper is a separately collectable atom, and links with `-dead_strip`.
+
+Shared libraries (`--emit cdylib`) keep the full runtime, since any exported
+symbol may be reached by a host the linker cannot see.
+
+## Conditional compilation
+
+elephc supports compile-time feature branches with `ifdef`. Symbols are defined
+on the command line and the branches are resolved before optimization and code
+generation, so unused branches are never compiled.
+
+### `--define` / `--define=`
+
+Defines a compile-time symbol. Repeatable.
+
+```bash
+elephc --define DEBUG app.php
+elephc --define=DEBUG --define=METAL app.php
+```
+
+```php
+ifdef (DEBUG) {
+    echo "debug build\n";
+}
+```
+
+See [Conditional Compilation](../beyond-php/ifdef.md) for the full `ifdef` syntax
+and semantics.
