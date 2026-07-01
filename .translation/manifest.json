@@ -138,10 +138,10 @@
       "sourcePath": "docs/getting-started/installation.md",
       "targetPath": "content/docs/getting-started/installation.md",
       "sourceHash": "sha256:a1980760ddf5d2dddc192cf5279eac34de4cdd52d276e0e03bb612e5537dcf91",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T03:54:05.421Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/getting-started/installation",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/getting-started/your-first-program.md",
@@ -8481,10 +8481,10 @@
       "sourcePath": "showcases/doom/README.md",
       "targetPath": "content/showcases/doom/README.md",
       "sourceHash": "sha256:0ff632fd066327a6b5e64bcbebbd666529d552facdc54773298aea78b863be6a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T03:55:02.517Z",
       "translationMode": "refined",
       "workDir": ".translation/work/showcases/doom/README",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "showcases/http-server/README.md",
