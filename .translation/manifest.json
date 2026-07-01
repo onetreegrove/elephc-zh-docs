@@ -147,10 +147,10 @@
       "sourcePath": "docs/getting-started/your-first-program.md",
       "targetPath": "content/docs/getting-started/your-first-program.md",
       "sourceHash": "sha256:10a40d9c3b1b2e2dc0f82dcb2ee6980472bdde95408a1fcd2ada02457a18ca25",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T09:13:35.791Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/getting-started/your-first-program",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/how-to/fiber-web-server.md",
