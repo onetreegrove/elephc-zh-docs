@@ -12,6 +12,7 @@
     "build:showcases": "node scripts/build-showcase-index.mjs",
     "build:sidebar": "node scripts/build-sidebar.mjs",
     "validate": "node scripts/validate-site.mjs",
+    "test": "node --test scripts/**/*.test.mjs",
     "prepare:content": "npm run sync && npm run build:examples && npm run build:showcases && npm run build:sidebar"
   },
   "devDependencies": {
