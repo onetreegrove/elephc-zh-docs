@@ -5,6 +5,7 @@ import {
   assertAllowedOutputPath,
   countCodeFences,
   markManifestEntryTranslated,
+  restoreCodeFences,
   targetPathForSource,
   workDirForSource
 } from "./translation.mjs";
@@ -23,6 +24,43 @@ test("countCodeFences counts Markdown fence openings", () => {
   ].join("\n");
 
   assert.equal(countCodeFences(markdown), 4);
+});
+
+test("restoreCodeFences replaces translated fenced blocks with source fenced blocks", () => {
+  const source = [
+    "# Example",
+    "",
+    "```bash",
+    "# compile",
+    "cargo run -- main.php",
+    "```",
+    "",
+    "Done."
+  ].join("\n");
+  const translated = [
+    "# 示例",
+    "",
+    "```bash",
+    "# 编译",
+    "cargo run -- main.php",
+    "```",
+    "",
+    "完成。"
+  ].join("\n");
+
+  assert.equal(
+    restoreCodeFences(source, translated),
+    [
+      "# 示例",
+      "",
+      "```bash",
+      "# compile",
+      "cargo run -- main.php",
+      "```",
+      "",
+      "完成。"
+    ].join("\n")
+  );
 });
 
 test("targetPathForSource maps supported upstream paths into content", () => {
@@ -83,4 +121,3 @@ test("markManifestEntryTranslated updates the matching entry", () => {
   assert.equal(manifest.files[0].status, "translated");
   assert.equal(manifest.files[0].translatedAt, "2026-07-01T00:00:00.000Z");
 });
-

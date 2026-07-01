@@ -16,11 +16,13 @@ import {
   assertAllowedOutputPath,
   countCodeFences,
   markManifestEntryTranslated,
+  restoreCodeFences,
   targetPathForSource,
   workDirForSource
 } from "./lib/translation.mjs";
 
 const DEFAULT_TIMEOUT = "10m";
+const DEFAULT_MODEL = "Claude Sonnet 4.6 (Thinking)";
 const PREFERENCES_PATH = path.join(ROOT, ".baoyu-skills", "baoyu-translate", "EXTEND.md");
 const GLOSSARY_PATH = path.join(ROOT, ".translation", "glossary.md");
 
@@ -29,6 +31,7 @@ export function parseArgs(argv) {
     sources: [],
     limit: 1,
     timeout: DEFAULT_TIMEOUT,
+    model: DEFAULT_MODEL,
     dryRun: false
   };
 
@@ -55,6 +58,13 @@ export function parseArgs(argv) {
       }
       options.timeout = value;
       index += 1;
+    } else if (arg === "--model") {
+      const value = argv[index + 1];
+      if (!value) {
+        throw new Error("--model requires a model label");
+      }
+      options.model = value;
+      index += 1;
     } else if (arg === "--dry-run") {
       options.dryRun = true;
     } else {
@@ -76,8 +86,10 @@ export function selectSources(manifest, explicitSources, limit) {
     .map((file) => file.sourcePath);
 }
 
-export function buildAgyArgs(repoRoot, prompt, timeout) {
+export function buildAgyArgs(repoRoot, prompt, timeout, model) {
   return [
+    "--model",
+    model,
     "--add-dir",
     repoRoot,
     "--print",
@@ -146,14 +158,14 @@ async function main() {
   }
 
   for (const sourcePath of sources) {
-    await translateOne({ manifest, sourcePath, timeout: options.timeout });
+    await translateOne({ manifest, sourcePath, timeout: options.timeout, model: options.model });
   }
 
   await writeJson(MANIFEST_PATH, manifest);
   console.log(`Updated manifest: ${path.relative(ROOT, MANIFEST_PATH)}`);
 }
 
-async function translateOne({ manifest, sourcePath, timeout }) {
+async function translateOne({ manifest, sourcePath, timeout, model }) {
   const sourceFile = path.join(UPSTREAM_DIR, sourcePath);
   const source = await readText(sourceFile);
   const workDir = path.join(ROOT, workDirForSource(sourcePath));
@@ -184,7 +196,7 @@ async function translateOne({ manifest, sourcePath, timeout }) {
   await writeText(promptArtifact, prompt);
 
   console.log(`Translating ${sourcePath} with agy...`);
-  await runAgy(prompt, timeout);
+  await runAgy(prompt, timeout, model);
 
   if (!(await pathExists(translationArtifact))) {
     throw new Error(`agy did not create expected translation file: ${translationArtifact}`);
@@ -199,7 +211,9 @@ async function translateOne({ manifest, sourcePath, timeout }) {
     );
   }
 
-  await writeText(targetFile, translation);
+  const finalTranslation = restoreCodeFences(source, translation);
+  await writeText(translationArtifact, finalTranslation);
+  await writeText(targetFile, finalTranslation);
   markManifestEntryTranslated(manifest, sourcePath, new Date().toISOString());
   console.log(`Wrote ${path.relative(ROOT, targetFile)}`);
 }
@@ -211,9 +225,9 @@ async function readOptionalText(filePath) {
   return readText(filePath);
 }
 
-function runAgy(prompt, timeout) {
+function runAgy(prompt, timeout, model) {
   return new Promise((resolve, reject) => {
-    const child = spawn("agy", buildAgyArgs(ROOT, prompt, timeout), {
+    const child = spawn("agy", buildAgyArgs(ROOT, prompt, timeout, model), {
       cwd: ROOT,
       stdio: "inherit"
     });

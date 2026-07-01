@@ -8,9 +8,24 @@ export function countCodeFences(markdown) {
     .filter((line) => line.trimStart().startsWith("```")).length;
 }
 
+export function restoreCodeFences(sourceMarkdown, translatedMarkdown) {
+  const sourceBlocks = extractFencedBlocks(sourceMarkdown);
+  let blockIndex = 0;
+
+  return translatedMarkdown.replace(/```[\s\S]*?```/g, (translatedBlock) => {
+    const sourceBlock = sourceBlocks[blockIndex];
+    blockIndex += 1;
+    return sourceBlock ?? translatedBlock;
+  });
+}
+
 export function targetPathForSource(sourcePath) {
   assertSupportedSourcePath(sourcePath);
   return path.posix.join("content", sourcePath);
+}
+
+function extractFencedBlocks(markdown) {
+  return markdown.match(/```[\s\S]*?```/g) ?? [];
 }
 
 export function workDirForSource(sourcePath) {
