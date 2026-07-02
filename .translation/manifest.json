@@ -4863,181 +4863,181 @@
       "sourcePath": "docs/php/builtins/array/usort.md",
       "targetPath": "content/docs/php/builtins/array/usort.md",
       "sourceHash": "sha256:c198eb4c85174db0f5d309cc5e66c8585d776e767b1f7cf201a0d509d0f7ce92",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:05:32.886Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/usort",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/buffer.md",
       "targetPath": "content/docs/php/builtins/buffer.md",
       "sourceHash": "sha256:f1e9fe0aceb59e956388dfe93d918580a5f98b2eb3a67787ab033b88f0bf39bc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:07:20.280Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/buffer",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/buffer/buffer_free.md",
       "targetPath": "content/docs/php/builtins/buffer/buffer_free.md",
       "sourceHash": "sha256:183de8911a230288a9634b478d658b54547a626176cf9ac8ed2c2004b47f011a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:08:21.188Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/buffer/buffer_free",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/buffer/buffer_len.md",
       "targetPath": "content/docs/php/builtins/buffer/buffer_len.md",
       "sourceHash": "sha256:bb9d77d078683c3493b6a08283e53e19473f9043098201961be98d62e4affb12",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:09:08.081Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/buffer/buffer_len",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class.md",
       "targetPath": "content/docs/php/builtins/class.md",
       "sourceHash": "sha256:aef488ebcdd2d1c5a0da45c43d8da0f6aa65ca8dc311fb0919ee8dc2e218b08f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:09:53.285Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/class_alias.md",
       "targetPath": "content/docs/php/builtins/class/class_alias.md",
       "sourceHash": "sha256:85a3841384d2d5ee6b38b8abca3b3f0ead51eaa9e4c3acabed8a23d26571bb6c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:10:17.290Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/class_alias",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/class_attribute_args.md",
       "targetPath": "content/docs/php/builtins/class/class_attribute_args.md",
       "sourceHash": "sha256:a0e3f930cac2ee9c8da7ed0b7a0edae227daed267e6da1529b0ff587435b4591",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:11:04.071Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/class_attribute_args",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/class_attribute_names.md",
       "targetPath": "content/docs/php/builtins/class/class_attribute_names.md",
       "sourceHash": "sha256:45c53252df82f32caf9519608e19f188e28f7c640e02df7533ece728b0643a13",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:11:28.557Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/class_attribute_names",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/class_exists.md",
       "targetPath": "content/docs/php/builtins/class/class_exists.md",
       "sourceHash": "sha256:269e8da14cfc1d218e0a922a1c1c2539f50bf19f41b2dce4986a01db968d3489",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:11:58.105Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/class_exists",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/class_get_attributes.md",
       "targetPath": "content/docs/php/builtins/class/class_get_attributes.md",
       "sourceHash": "sha256:60af79365a7de6591a40af1a8508612653795db60f5a9ba0780b72f179ade99c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:12:40.707Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/class_get_attributes",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/class_implements.md",
       "targetPath": "content/docs/php/builtins/class/class_implements.md",
       "sourceHash": "sha256:a67d1a3e74c7a60ac2e6ba62b3baf56827a796e6a47168f21a150de6434ba719",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:13:44.466Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/class_implements",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/class_parents.md",
       "targetPath": "content/docs/php/builtins/class/class_parents.md",
       "sourceHash": "sha256:d2be3dfff1de23043e8b7a5a09ddc930b1fb1798ad2e3fe45759d7e49c616df5",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:14:42.683Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/class_parents",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/class_uses.md",
       "targetPath": "content/docs/php/builtins/class/class_uses.md",
       "sourceHash": "sha256:1713944aa9c55c62282d7fcaeb4a44fae626abc3ac4c7eb3266df63c387cfdaa",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:16:10.231Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/class_uses",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/enum_exists.md",
       "targetPath": "content/docs/php/builtins/class/enum_exists.md",
       "sourceHash": "sha256:8b90b43a5dfee41c46b53a19d9f5cf35aad4e857342669f8dddc56bb5ebe5a4c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:16:47.557Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/enum_exists",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/function_exists.md",
       "targetPath": "content/docs/php/builtins/class/function_exists.md",
       "sourceHash": "sha256:619f429f8c84a6491adc4f4e4a30222f516e0b29a8e6a36fee3a584e35348763",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:17:24.476Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/function_exists",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/get_class.md",
       "targetPath": "content/docs/php/builtins/class/get_class.md",
       "sourceHash": "sha256:8ae63111177771f7275a88e243da160f0ece9f4f7aca5b51d987d852944aec77",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:19:18.236Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/get_class",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/get_declared_classes.md",
       "targetPath": "content/docs/php/builtins/class/get_declared_classes.md",
       "sourceHash": "sha256:7f6e9a032f6eef20f02dfa0b23d13108433c30ec952d51bdbc8c195e99a51b53",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:22:15.298Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/get_declared_classes",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/get_declared_interfaces.md",
       "targetPath": "content/docs/php/builtins/class/get_declared_interfaces.md",
       "sourceHash": "sha256:83f48741b836f2eedb168af8e712cfc5cdf483c4f586e016a1dfc471eb0b0f14",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:23:17.304Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/get_declared_interfaces",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/get_declared_traits.md",
       "targetPath": "content/docs/php/builtins/class/get_declared_traits.md",
       "sourceHash": "sha256:3403eea67cc24c95cd5e82243e363467f37435c73990dcc75d35cc7f93f19e17",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:23:39.403Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/get_declared_traits",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/get_parent_class.md",
       "targetPath": "content/docs/php/builtins/class/get_parent_class.md",
       "sourceHash": "sha256:97ab58885b5c12952f987146c78d678dac5faea70822b82a1381598acbe91317",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:24:04.979Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/get_parent_class",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/interface_exists.md",
