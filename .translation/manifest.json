@@ -975,181 +975,181 @@
       "sourcePath": "docs/internals/builtins/class/class_implements.md",
       "targetPath": "content/docs/internals/builtins/class/class_implements.md",
       "sourceHash": "sha256:eb42b821456f52bee002e5c4fa619c94d59836d47b05076347ee8be23c0528ed",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:01:39.428Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/class_implements",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/class_parents.md",
       "targetPath": "content/docs/internals/builtins/class/class_parents.md",
       "sourceHash": "sha256:2c0cc22649aa348892e0a85f9432c6b10c0e6633467ecda03361887e38383dac",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:06:51.158Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/class_parents",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/class_uses.md",
       "targetPath": "content/docs/internals/builtins/class/class_uses.md",
       "sourceHash": "sha256:55089886dc6a61b8915eb77968ae1c83d9f918cd46bc83040bd654e5944c9f74",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:07:41.008Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/class_uses",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/enum_exists.md",
       "targetPath": "content/docs/internals/builtins/class/enum_exists.md",
       "sourceHash": "sha256:078bdea159861f719f051de561857befbc278aead5a02e3cb0e4d0b0562de7b3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:08:12.015Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/enum_exists",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/function_exists.md",
       "targetPath": "content/docs/internals/builtins/class/function_exists.md",
       "sourceHash": "sha256:bb6b1b3268be7b554e776a6e5c98f5b791a7f74dd7c428cdd6febb44dc15b454",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:09:38.923Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/function_exists",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/get_class.md",
       "targetPath": "content/docs/internals/builtins/class/get_class.md",
       "sourceHash": "sha256:79b0c3138b30ddad4982f0f415edc0788fba9be4dad5a8d22ab23cd1e8d048be",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:10:30.568Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/get_class",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/get_declared_classes.md",
       "targetPath": "content/docs/internals/builtins/class/get_declared_classes.md",
       "sourceHash": "sha256:694cf01acebb7d934efdcafc3675f889bb852f26bae474dfa543e118ea03cbd0",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:13:09.698Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/get_declared_classes",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/get_declared_interfaces.md",
       "targetPath": "content/docs/internals/builtins/class/get_declared_interfaces.md",
       "sourceHash": "sha256:2672965e4b18b15995a2de325f5f5436e8558887d8b925e88b10315bde28d6ea",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:14:14.152Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/get_declared_interfaces",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/get_declared_traits.md",
       "targetPath": "content/docs/internals/builtins/class/get_declared_traits.md",
       "sourceHash": "sha256:a3da18811829cd80f094b6e8a5687fbc1c39eeb290eb3bcae35f7480a8f64b4d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:16:03.186Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/get_declared_traits",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/get_parent_class.md",
       "targetPath": "content/docs/internals/builtins/class/get_parent_class.md",
       "sourceHash": "sha256:47eb082b9326cfaae8785e62824b535c7cbed0009ae127689b309fd1b04db586",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:19:00.262Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/get_parent_class",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/interface_exists.md",
       "targetPath": "content/docs/internals/builtins/class/interface_exists.md",
       "sourceHash": "sha256:15c745f0c2cef92209047dc1597aa11e296b67acde0faafab6bdcd5659881e7a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:19:40.641Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/interface_exists",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/is_a.md",
       "targetPath": "content/docs/internals/builtins/class/is_a.md",
       "sourceHash": "sha256:1ad1bc0c2edde46ad919cc666532ad26f30e81a505d62148acb1729a62290601",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:20:14.152Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/is_a",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/is_subclass_of.md",
       "targetPath": "content/docs/internals/builtins/class/is_subclass_of.md",
       "sourceHash": "sha256:92c246a75b65b9193203c3ae9226ba44979f45c1a4b9b390e99df204dd98a257",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:22:09.019Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/is_subclass_of",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/class/trait_exists.md",
       "targetPath": "content/docs/internals/builtins/class/trait_exists.md",
       "sourceHash": "sha256:0b7b2f11090a2001d84ab45dd1216168558388769fccf28472ff87c4d9bfad49",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:23:41.185Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/class/trait_exists",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/date/checkdate.md",
       "targetPath": "content/docs/internals/builtins/date/checkdate.md",
       "sourceHash": "sha256:a39f6407987d75698fa79b16795ad3f10a321f2f77323c43acaec6af6903ac5c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:24:17.173Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/date/checkdate",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/date/date_default_timezone_get.md",
       "targetPath": "content/docs/internals/builtins/date/date_default_timezone_get.md",
       "sourceHash": "sha256:9d48b51e72a00e21769a3e8104bd3ad5a962f68191db3c08b06799d21d1940d8",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:25:08.137Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/date/date_default_timezone_get",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/date/date_default_timezone_set.md",
       "targetPath": "content/docs/internals/builtins/date/date_default_timezone_set.md",
       "sourceHash": "sha256:d492f6f6dc4eb630d19d9aca224496935473600568ddb09e52f201458a43200c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:26:42.578Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/date/date_default_timezone_set",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/date/date.md",
       "targetPath": "content/docs/internals/builtins/date/date.md",
       "sourceHash": "sha256:5fb785115fb82098c3c16a49a543f8612c0e02a0844414e6c49c920bb7f8e61d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:27:43.109Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/date/date",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/date/getdate.md",
       "targetPath": "content/docs/internals/builtins/date/getdate.md",
       "sourceHash": "sha256:d74039374060288e6ba0bb10f7b69705a7b55b555978b9ed80d29d4723111e97",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:28:46.606Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/date/getdate",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/date/gmdate.md",
       "targetPath": "content/docs/internals/builtins/date/gmdate.md",
       "sourceHash": "sha256:228fbcadb9221bbf77b153295a15ff93dfd88ddd2595b63d625b59f783b929ad",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T10:29:52.988Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/date/gmdate",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/date/gmmktime.md",
