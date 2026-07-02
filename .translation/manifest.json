@@ -435,181 +435,181 @@
       "sourcePath": "docs/internals/builtins/array/array_fill_keys.md",
       "targetPath": "content/docs/internals/builtins/array/array_fill_keys.md",
       "sourceHash": "sha256:a720616a85b196578ee3f0c33b4a6f88e4dcc403e46a7e28ae3b0dc98285dab8",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:09:21.453Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_fill_keys",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_fill.md",
       "targetPath": "content/docs/internals/builtins/array/array_fill.md",
       "sourceHash": "sha256:9ddf158946dd297d5a5eca415b7a6c49830eca906ff9a4825826bb9ce73ba48f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:10:16.718Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_fill",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_filter.md",
       "targetPath": "content/docs/internals/builtins/array/array_filter.md",
       "sourceHash": "sha256:80c1a210799f4dbd953b62edd1e873ed013fc6db5430a96f1aea80be9280cfed",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:10:41.830Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_filter",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_find.md",
       "targetPath": "content/docs/internals/builtins/array/array_find.md",
       "sourceHash": "sha256:a5473c6d2bb4d9522f7c5f74c94790a73f5d6a54dfdb28c9a4cd9960882290ea",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:11:03.967Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_find",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_flip.md",
       "targetPath": "content/docs/internals/builtins/array/array_flip.md",
       "sourceHash": "sha256:cff2d8ce56d7ef89cd167ee0660300d75b96676f9ed1220abc5dbf07958b9ce6",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:11:34.576Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_flip",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_intersect_assoc.md",
       "targetPath": "content/docs/internals/builtins/array/array_intersect_assoc.md",
       "sourceHash": "sha256:bf23a6d0ae318fce78d16da06dda57479c3496b514c2f79a3b1a266cd8cefec3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:12:48.203Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_intersect_assoc",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_intersect_key.md",
       "targetPath": "content/docs/internals/builtins/array/array_intersect_key.md",
       "sourceHash": "sha256:1bc0a4ebcdca4dab1a1b666369c4bdaa6e80e11edff85fc32621dc0aa257ae90",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:13:39.387Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_intersect_key",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_intersect.md",
       "targetPath": "content/docs/internals/builtins/array/array_intersect.md",
       "sourceHash": "sha256:ae0bb42a04f89f42f511fbde1dc0eff32e2c735ffe2d63a9d5e4295fc5bdd2e1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:14:14.327Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_intersect",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_is_list.md",
       "targetPath": "content/docs/internals/builtins/array/array_is_list.md",
       "sourceHash": "sha256:cd3ea7b112f4c8cc2eda92cb2cad8e8d383f127669a14c2c22afe59b3be8b433",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:14:54.573Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_is_list",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_key_exists.md",
       "targetPath": "content/docs/internals/builtins/array/array_key_exists.md",
       "sourceHash": "sha256:c58bf90b76c43517fb6dc0f78cb213d57c6a073541a05b79098feb4b2913a004",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:15:23.316Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_key_exists",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_key_first.md",
       "targetPath": "content/docs/internals/builtins/array/array_key_first.md",
       "sourceHash": "sha256:68712776ebabf7a00ada62ddd80e910fb5ca922e7451ec71b018b4008edf1a5b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:15:59.532Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_key_first",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_key_last.md",
       "targetPath": "content/docs/internals/builtins/array/array_key_last.md",
       "sourceHash": "sha256:55a2f0c16740c459f9e2a6ae762e4d78088a8464c40069221f92130e0596042f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:16:34.454Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_key_last",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_keys.md",
       "targetPath": "content/docs/internals/builtins/array/array_keys.md",
       "sourceHash": "sha256:1dc22bf73d707be2c98d1abd60b0da7ebd56675e98ae771f7b7fdc72412ddf1c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:17:11.100Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_keys",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_map.md",
       "targetPath": "content/docs/internals/builtins/array/array_map.md",
       "sourceHash": "sha256:1464a0d9c2e06ac363179e747f565f422ad0fc4e6f90c68f245a7f2c8d09d33f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:18:00.740Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_map",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_merge_recursive.md",
       "targetPath": "content/docs/internals/builtins/array/array_merge_recursive.md",
       "sourceHash": "sha256:8a28e69ccff5ef47a9356a87afbb2b87717faa24deb7dc389dabdd96870ece1b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:19:29.769Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_merge_recursive",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_merge.md",
       "targetPath": "content/docs/internals/builtins/array/array_merge.md",
       "sourceHash": "sha256:c9cc69c5a80fc5b195e8eed6a7ded63fc3861a2d1d8158178491eb13a471f38d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:19:57.385Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_merge",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_multisort.md",
       "targetPath": "content/docs/internals/builtins/array/array_multisort.md",
       "sourceHash": "sha256:fa788d9d26b7ad5bcd224aa9e96c61adfa3b3edc8012cf3ad5ca8a669da19c3a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:20:24.151Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_multisort",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_pad.md",
       "targetPath": "content/docs/internals/builtins/array/array_pad.md",
       "sourceHash": "sha256:1448f7a648ee7e1e8a4ffafbc1be080130c6ead505062024c72f999d3d38dd37",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:20:55.495Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_pad",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_pop.md",
       "targetPath": "content/docs/internals/builtins/array/array_pop.md",
       "sourceHash": "sha256:6e5adc4f38effaa8602efeb70fe3bebbeed436798338f4497a48706f706da88a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:21:24.643Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_pop",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_product.md",
       "targetPath": "content/docs/internals/builtins/array/array_product.md",
       "sourceHash": "sha256:882f7fe559448b7f4ee7fbbcaa65868992d9fb288aca89253a58816ea0443ea3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T07:21:52.471Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_product",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_push.md",
