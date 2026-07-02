@@ -4503,181 +4503,181 @@
       "sourcePath": "docs/php/builtins/array/array_keys.md",
       "targetPath": "content/docs/php/builtins/array/array_keys.md",
       "sourceHash": "sha256:adf2c78936ccbfa5661df0c013bdfc7e44f25b724d7d3134ec980524cc338ac1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:27:13.147Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_keys",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_map.md",
       "targetPath": "content/docs/php/builtins/array/array_map.md",
       "sourceHash": "sha256:504621a141208fe869200ec6020534ef09981d422ee95d92f9d0744615bc34e1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:28:06.868Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_map",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_merge_recursive.md",
       "targetPath": "content/docs/php/builtins/array/array_merge_recursive.md",
       "sourceHash": "sha256:61afd56997c46239d14045cfe6170aabb924b213d444348389ca1598b07fc356",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:28:43.935Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_merge_recursive",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_merge.md",
       "targetPath": "content/docs/php/builtins/array/array_merge.md",
       "sourceHash": "sha256:440385b6c5c45d534a97b93857c33d36dcdb5bb5471ca15c1dd018f3495b4bd9",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:14:30.851Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_merge",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_multisort.md",
       "targetPath": "content/docs/php/builtins/array/array_multisort.md",
       "sourceHash": "sha256:a8f9f15e073df0699f469b93fe57eeedd947b1f4941218eadeb036a7133259d2",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:15:20.415Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_multisort",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_pad.md",
       "targetPath": "content/docs/php/builtins/array/array_pad.md",
       "sourceHash": "sha256:9162823a1788a440abb23c9855c3a52cb3538ec08e02dd351c5783b1c20d226d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:15:57.493Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_pad",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_pop.md",
       "targetPath": "content/docs/php/builtins/array/array_pop.md",
       "sourceHash": "sha256:7f6c99ddfc7974c18b335689f04cf0398fd4c31d06b79b658e611a826aa5c065",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:16:26.099Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_pop",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_product.md",
       "targetPath": "content/docs/php/builtins/array/array_product.md",
       "sourceHash": "sha256:28d4dc0b97154134c4bf27ee61cbd3737f6f9e673c6b62bf0039c626cb754200",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:17:32.679Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_product",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_push.md",
       "targetPath": "content/docs/php/builtins/array/array_push.md",
       "sourceHash": "sha256:180bebd00085f72d30461023effeb899f9773acb3f2b70e1addfa082ecc3d9fc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:18:04.851Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_push",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_rand.md",
       "targetPath": "content/docs/php/builtins/array/array_rand.md",
       "sourceHash": "sha256:4ec1a18889043964817aa9416d66f508eb2171f1367f343c8d3ceab1e7c918f9",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:18:38.251Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_rand",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_reduce.md",
       "targetPath": "content/docs/php/builtins/array/array_reduce.md",
       "sourceHash": "sha256:2b6dc465d3f5ebb4d2447101b69a2540f70483f694ed4ac6aef6555e711969fe",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:19:43.309Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_reduce",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_replace_recursive.md",
       "targetPath": "content/docs/php/builtins/array/array_replace_recursive.md",
       "sourceHash": "sha256:bb3e1673c45f4937e473c1f90ce7985bdd58a8fa6f72037c1c5f049d133350a2",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:20:07.117Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_replace_recursive",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_replace.md",
       "targetPath": "content/docs/php/builtins/array/array_replace.md",
       "sourceHash": "sha256:b15b820b688a48b3b7393d615597f26a30413c8581ae3d490c35bcdfe186dd72",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:20:51.593Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_replace",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_reverse.md",
       "targetPath": "content/docs/php/builtins/array/array_reverse.md",
       "sourceHash": "sha256:2a50901e2ef5984ff4ee0cd8d87a9812893d939783fdc6ce84b72e7a50f5f816",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:21:25.036Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_reverse",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_search.md",
       "targetPath": "content/docs/php/builtins/array/array_search.md",
       "sourceHash": "sha256:68e9806ceb5259ebba9628bbf54de8178067bce307f36272694c60e224d6f24d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:22:36.974Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_search",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_shift.md",
       "targetPath": "content/docs/php/builtins/array/array_shift.md",
       "sourceHash": "sha256:9a0b819875727ef92f368d337ce99a7f7d12806e999436dbcac1a12a14056440",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:23:03.816Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_shift",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_slice.md",
       "targetPath": "content/docs/php/builtins/array/array_slice.md",
       "sourceHash": "sha256:e9c2b7b1d188769bc16f18b045aa033a99b5a4442861dcb29b013cff9a51f2f1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:23:27.222Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_slice",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_splice.md",
       "targetPath": "content/docs/php/builtins/array/array_splice.md",
       "sourceHash": "sha256:eaedd7d4bfebe49fa0b54203f833dc3eb9ad9debf2b7c1cf52d11305ed31e545",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:24:22.825Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_splice",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_sum.md",
       "targetPath": "content/docs/php/builtins/array/array_sum.md",
       "sourceHash": "sha256:24a6851591ec56bbcc1f205b303948c2fbe7750499e567be5f83e6434b0bac0a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:25:18.063Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_sum",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_udiff.md",
       "targetPath": "content/docs/php/builtins/array/array_udiff.md",
       "sourceHash": "sha256:4a9d3d7d34299583b7338cb0d46f3abfcb6f326536bc1787f6273043efe91e52",
-      "translatedAt": "",
+      "translatedAt": "2026-07-01T10:25:52.696Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array/array_udiff",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_uintersect.md",
