@@ -12,73 +12,73 @@
       "sourcePath": "docs/beyond-php/buffers.md",
       "targetPath": "content/docs/beyond-php/buffers.md",
       "sourceHash": "sha256:f468731152252e67c93031fcbfb33abbb58785cf686cd1bcb9bc4daa21ac464f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:34:12.445Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/beyond-php/buffers",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/beyond-php/cdylib.md",
       "targetPath": "content/docs/beyond-php/cdylib.md",
       "sourceHash": "sha256:c1689cf1f8425227e73d283e29fa253929ff243837de645a44f9da4beefc9716",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:34:52.500Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/beyond-php/cdylib",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/beyond-php/extern.md",
       "targetPath": "content/docs/beyond-php/extern.md",
       "sourceHash": "sha256:a273142ee6aef06eedd8b6958cbe0a1ff8de2ef53817f6643fcebaae10cd193d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:37:03.034Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/beyond-php/extern",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/beyond-php/ifdef.md",
       "targetPath": "content/docs/beyond-php/ifdef.md",
       "sourceHash": "sha256:303f4fb116b678297cee4186254945f9c1460ec413e91a4acfef083215db9116",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:37:29.651Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/beyond-php/ifdef",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/beyond-php/packed-classes.md",
       "targetPath": "content/docs/beyond-php/packed-classes.md",
       "sourceHash": "sha256:1dae9940b6d401150789bb7f548fde7b701ce8ad8da3c6b0f75cf358a7209a75",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:37:56.489Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/beyond-php/packed-classes",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/beyond-php/pointers.md",
       "targetPath": "content/docs/beyond-php/pointers.md",
       "sourceHash": "sha256:0d8a885dcc9d37c4cc626e6dc6b61ee2f696f96953e2c97affa0f1eeec945f45",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:40:14.922Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/beyond-php/pointers",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/beyond-php/web.md",
       "targetPath": "content/docs/beyond-php/web.md",
       "sourceHash": "sha256:1b407aa942b5db00c85e398249bf94735a3139e3f09d9f9aa9c816eb958da45e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:41:13.209Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/beyond-php/web",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/compiling/cli-reference.md",
       "targetPath": "content/docs/compiling/cli-reference.md",
       "sourceHash": "sha256:27d1326b506873d347d95b46a64fdeca9f9c24861f7cc3a1bb70043bdf5cc75c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:42:06.665Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/compiling/cli-reference",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/compiling/compilation-pipeline.md",
@@ -102,10 +102,10 @@
       "sourcePath": "docs/compiling/optimization.md",
       "targetPath": "content/docs/compiling/optimization.md",
       "sourceHash": "sha256:0f8a614dbd18c10124d531845ef2e4ff2166a5d582f72219dab98099bb3bd54b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:43:13.716Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/compiling/optimization",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/compiling/output-and-diagnostics.md",
@@ -156,100 +156,100 @@
       "sourcePath": "docs/how-to/fiber-web-server.md",
       "targetPath": "content/docs/how-to/fiber-web-server.md",
       "sourceHash": "sha256:d16313d323062673eaf38af23a923308e4b9f8663235cdcaf907a8a074326058",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:44:02.012Z",
       "translationMode": "refined",
       "workDir": ".translation/work/docs/how-to/fiber-web-server",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/architecture.md",
       "targetPath": "content/docs/internals/architecture.md",
       "sourceHash": "sha256:3eb0c9bbba0502a0fd9b43f3cdc4a5afbd0b8d5c1e822e174662901981cf5243",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:48:47.330Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/architecture",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/arm64-assembly.md",
       "targetPath": "content/docs/internals/arm64-assembly.md",
       "sourceHash": "sha256:e6c8019c07efd44d5c2080294ab1aa058ab3de557d8ea175e590e88af1008ebc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:50:35.796Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/arm64-assembly",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/arm64-instructions.md",
       "targetPath": "content/docs/internals/arm64-instructions.md",
       "sourceHash": "sha256:10fbd50167cda8e92122866360489eb963f42de8b40cc7cbfc22baedcad78f1f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:51:18.542Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/arm64-instructions",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/_internal/__elephc_gmmktime_raw.md",
       "targetPath": "content/docs/internals/builtins/_internal/__elephc_gmmktime_raw.md",
       "sourceHash": "sha256:33b21f9a3c9a2fd49e59a84ff9730c039ce8cc542e0ec7c3198cf898866934ee",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:51:46.904Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/_internal/__elephc_gmmktime_raw",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/_internal/__elephc_mktime_raw.md",
       "targetPath": "content/docs/internals/builtins/_internal/__elephc_mktime_raw.md",
       "sourceHash": "sha256:782445cf5b35f3be0f9c7eca8e4747fa72cfac820faf728004ca387a555f2f48",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:52:27.778Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/_internal/__elephc_mktime_raw",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/_internal/__elephc_phar_bzip2_archive.md",
       "targetPath": "content/docs/internals/builtins/_internal/__elephc_phar_bzip2_archive.md",
       "sourceHash": "sha256:173ca77fafb5cc8e95637e20b31274328e69bea79bcd33dade77436b925913fe",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:53:08.402Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/_internal/__elephc_phar_bzip2_archive",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/_internal/__elephc_phar_decompress_archive.md",
       "targetPath": "content/docs/internals/builtins/_internal/__elephc_phar_decompress_archive.md",
       "sourceHash": "sha256:64d53498d95691771924ac058dbb2f21b8c8b052daac80dfde6fd540bdafdc60",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:53:36.384Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/_internal/__elephc_phar_decompress_archive",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/_internal/__elephc_phar_get_file_metadata.md",
       "targetPath": "content/docs/internals/builtins/_internal/__elephc_phar_get_file_metadata.md",
       "sourceHash": "sha256:f65bc63fb1e1d955468b4e91059da58e764beb56a7c50890208abdd19600a99f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:54:08.547Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/_internal/__elephc_phar_get_file_metadata",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/_internal/__elephc_phar_get_metadata.md",
       "targetPath": "content/docs/internals/builtins/_internal/__elephc_phar_get_metadata.md",
       "sourceHash": "sha256:8f4de670d3871f654057a58c951b033d63baa4778224ced2d1a10b6fcb81b2e3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:55:10.859Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/_internal/__elephc_phar_get_metadata",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/_internal/__elephc_phar_get_signature_hash.md",
       "targetPath": "content/docs/internals/builtins/_internal/__elephc_phar_get_signature_hash.md",
       "sourceHash": "sha256:0839380a54034c33a020a366ec82b11fe77ea1adfce87720e195d9762d3f3e4e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T02:55:52.493Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/_internal/__elephc_phar_get_signature_hash",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/_internal/__elephc_phar_get_signature_type.md",
