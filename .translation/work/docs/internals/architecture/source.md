@@ -1,0 +1,544 @@
+---
+title: "Architecture"
+description: "Module map, calling conventions, and pipeline diagram."
+sidebar:
+  order: 10
+---
+
+## Compilation pipeline
+
+```
+PHP source (.php)
+    │
+    ▼
+┌─────────┐
+│  Lexer   │  src/lexer/
+│          │  scan.rs, literals.rs, cursor.rs, token.rs
+│          │  Source text → Vec<(Token, Span)>
+└────┬─────┘
+     │
+     ▼
+┌─────────┐
+│  Parser  │  src/parser/
+│          │  expr/, stmt/, control.rs, ast/
+│          │  Tokens → Program (Vec<Stmt>)
+└────┬─────┘
+     │
+     ▼
+┌────────────────┐
+│ MagicConstants │  src/magic_constants.rs
+│                │  Lowers PHP magic constants per source file before
+│                │  include inlining and semantic passes.
+└────┬───────────┘
+     │
+     ▼
+┌─────────────┐
+│ Conditional │  src/conditional/
+│             │  Applies CLI `--define` symbols to `ifdef` branches.
+│             │  Removes inactive AST branches before include resolution.
+└────┬────────┘
+     │
+     ▼
+┌──────────┐
+│ Autoload │  src/autoload/
+│ (build)  │  Reads Composer autoload metadata and extracts supported
+│          │  top-level `spl_autoload_register()` rules.
+└────┬─────┘
+     │
+     ▼
+┌─────────┐
+│ Resolver │  src/resolver/
+│          │  Pre-scans statically resolvable include declarations,
+│          │  inlines executable include bodies, and lowers *_once guards.
+└────┬─────┘
+     │
+     ▼
+┌──────────────┐
+│ NameResolver │  src/name_resolver/
+│              │  Flattens namespace/use scopes and rewrites names to
+│              │  canonical fully-qualified names before semantic passes.
+└─────┬────────┘
+      │
+      ▼
+┌──────────┐
+│ Autoload │  src/autoload/
+│  (run)   │  Inserts Composer/SPL-resolved class files before the first
+│          │  reference that needs each class-like symbol.
+└────┬─────┘
+     │
+     ▼
+┌──────────────┐
+│  Optimizer   │  src/optimize/
+│   (fold)     │  Folds scalar constants and simplifies pure expressions
+│              │  before type checking.
+└─────┬────────┘
+      │
+      ▼
+┌─────────┐
+│  Type    │  src/types/
+│  Checker │  traits.rs, checker/mod.rs, checker/builtins/, checker/functions/, warnings/
+│          │  Validates types, computes packed layouts, collects warnings, returns CheckResult
+└────┬─────┘
+     │
+     ▼
+┌──────────────┐
+│   Exports    │  src/exports.rs
+│    Scan      │  Collects #[Export]-marked functions and validates their
+│              │  C-ABI signatures for --emit cdylib (warns and ignores
+│              │  them in executable mode).
+└─────┬────────┘
+      │
+      ▼
+┌──────────────┐
+│  Optimizer   │  src/optimize/
+│ (propagate)  │  Propagates scalar locals conservatively after
+│              │  successful checking.
+└─────┬────────┘
+      │
+      ▼
+┌──────────────┐
+│  Optimizer   │  src/optimize/
+│  (prune)     │  Removes constant-dead control flow after successful
+│              │  checking.
+└─────┬────────┘
+      │
+      ▼
+┌──────────────┐
+│  Optimizer   │  src/optimize/
+│ (normalize)  │  Canonicalizes equivalent control-flow shells into
+│              │  simpler AST shapes.
+└─────┬────────┘
+      │
+      ▼
+┌──────────────┐
+│  Optimizer   │  src/optimize/
+│   (DCE)      │  Drops leftover unreachable or non-observable
+│              │  statements from the normalized AST.
+└─────┬────────┘
+      │
+      ▼
+┌─────────────┐
+│ EIR Lowerer │  src/ir_lower/ + src/ir/
+│             │  Lowers the checked optimized AST into validated EIR.
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ EIR passes  │  src/ir_passes/
+│             │  Module-level fixed-point pipeline: a cross-function
+│             │  small-function inliner interleaved with the per-function
+│             │  pass driver (identity folding, peephole rewrites, constant
+│             │  folding, common-subexpression elimination, loop-invariant
+│             │  code motion, dead-instruction elimination, dead-store
+│             │  elimination, branch simplification) plus dominance and loop
+│             │  analysis and linear-scan register allocation (liveness,
+│             │  intervals, pools) before codegen.
+└──────┬──────┘
+       │
+       ▼
+┌─────────────┐
+│ EIR Codegen │  src/codegen_ir/ + shared src/codegen/abi/
+│             │  Emits target assembly text from EIR. The legacy AST backend
+│             │  remains in src/codegen/ behind --ast-backend.
+└──────┬──────┘
+     │
+     ▼
+┌───────────────┐
+│ Tooling glue  │  src/runtime_cache.rs, src/source_map.rs
+│               │  Reuses cached runtime objects, optionally emits
+│               │  sidecar source maps, and feeds timing output in CLI mode.
+└─────┬─────────┘
+      │
+      ▼
+┌─────────┐
+│ as + ld  │  System assembler and linker
+│          │  .s → .o → target-native binary
+└─────────┘
+```
+
+## Target Model
+
+The compiler now distinguishes the operating-system side of a target from the instruction set:
+
+- `Platform` describes OS / binary format / libc concerns such as macOS vs Linux.
+- `Arch` describes the instruction set and calling convention such as `AArch64` vs `X86_64`.
+- `Target` combines both and is threaded from the CLI into codegen and the test harness.
+
+AArch64 remains the most established and best-documented backend (macOS and Linux), and the explicit `Target` model now also covers Linux `x86_64` with its own ABI/runtime slices. The `Target` split lets each ISA live alongside the others without reintroducing the old assumption that `Linux` automatically means ARM64.
+
+## Module map
+
+```
+src/
+├── lib.rs                     Public module exports
+├── main.rs                    CLI binary entry point
+├── cli.rs                     Command-line option parsing
+├── pipeline.rs                Frontend/backend compilation pipeline
+├── exports.rs                 #[Export] collection and C-ABI signature validation for --emit cdylib
+├── linker.rs                  Assembler and linker invocation
+├── timings.rs                 Phase timing collection/reporting
+├── span.rs                    Source position (line, col)
+├── intrinsics.rs              Compiler-recognized intrinsic method calls for runtime-managed core objects
+├── string_bytes.rs            Parser string-literal payload → PHP runtime bytes conversion
+├── magic_constants.rs         Per-file lowering for PHP magic constants
+├── magic_constants/           File/scope/trait magic-constant walkers
+├── conditional/               Build-time `ifdef` pass
+├── autoload/                  Composer/SPL AOT autoload indexing, rule interpretation, and file insertion
+├── resolver/                  Include/require resolution, declaration discovery, once guards
+├── optimize.rs                Public optimizer entry points and effect context
+├── optimize/                  Constant folding, constant propagation, control-flow pruning, normalization, dead-code elimination
+├── ir/                        EIR types, builder, validator, printer, effects, and tests
+├── ir_lower/                  Active checked-AST to EIR lowering
+├── ir_passes/                 EIR optimization pass driver, identity folding, peephole patterns, constant folding, common-subexpression elimination, loop-invariant code motion, dead-instruction elimination, dead-store elimination, branch simplification, the cross-function small-function inliner (run to a module-level fixed point), dominance analysis, loop analysis, and linear-scan register allocation
+├── codegen_ir/                Active EIR to target assembly backend
+├── runtime_cache.rs           Cached shared runtime object preparation
+├── source_map.rs              Assembly comment markers → JSON sidecar map
+├── termination.rs             Structured terminal-effect analysis shared by checker and optimizer
+├── names.rs                   Qualified/FQN name model + assembly symbol mangling
+├── name_resolver/             Namespace/use resolution to canonical names
+├── pdo_prelude.rs             PDO standard-library prelude injection entry point
+├── pdo_prelude/               PDO driver detection from the DSN prefix
+├── tz_prelude.rs              Timezone-introspection prelude injection entry point
+├── tz_prelude/                Timezone-introspection prelude usage detection
+├── list_id_prelude.rs         DateTimeZone identifier-list prelude injection entry point
+├── list_id_prelude/           Identifier-list prelude detection and baked table data
+├── var_export_prelude.rs      var_export prelude injection entry point
+├── var_export_prelude/        var_export prelude usage detection
+│
+├── lexer/
+│   ├── mod.rs                 tokenize() → Vec<(Token, Span)>
+│   ├── token.rs               Token enum
+│   ├── cursor.rs              Byte-level source reader
+│   ├── scan.rs                Main scanning loop, operators
+│   ├── literals.rs            String, number, variable, keyword scanning entry point
+│   └── literals/              Identifier, number, and string literal scanners
+│
+├── parser/
+│   ├── mod.rs                 parse() → Program
+│   ├── ast/                   ExprKind, StmtKind, BinOp, CastType
+│   ├── expr/                  Pratt parser passes and expression helpers
+│   ├── stmt/                  Statement parsing, assignment, functions, OOP, namespaces, FFI
+│   └── control.rs             if, while, for, do-while, foreach, try/catch/finally
+│
+├── types/
+│   ├── mod.rs                 Public checker entry point and type exports
+│   ├── model.rs               PhpType enum and TypeEnv
+│   ├── result.rs              CheckResult and semantic metadata returned by the checker
+│   ├── schema.rs              Class/interface/enum/trait metadata models
+│   ├── signatures.rs          Built-in call signatures and first-class callable wrappers
+│   ├── call_args/             Shared named/spread call-argument planner
+│   ├── array_keys.rs          PHP array-key normalization helpers
+│   ├── ffi.rs                 C-facing extern type models
+│   ├── fibers.rs              Fiber callback validation helpers
+│   ├── traits.rs              Trait flattening and conflict-resolution helpers
+│   ├── traits/                Trait expansion, merge, and validation helpers
+│   ├── warnings/              Non-fatal diagnostics (unused vars, unreachable code)
+│   └── checker/
+│       ├── mod.rs             Type-checker orchestration boundary
+│       ├── driver/            Main checker driver and program passes
+│       ├── builtin_interfaces.rs Built-in SPL/core interface injection
+│       ├── builtin_iterators.rs Built-in Iterator / IteratorAggregate metadata
+│       ├── builtin_json.rs    JsonException / JsonSerializable metadata
+│       ├── builtin_spl_classes.rs SPL class metadata orchestration
+│       ├── builtin_spl_classes/ Focused SPL container and iterator metadata builders
+│       ├── builtin_spl_exceptions.rs SPL exception hierarchy metadata
+│       ├── builtin_stdclass.rs stdClass dynamic-property metadata
+│       ├── builtin_types/     Shared builtin class/type helper predicates
+│       ├── builtins/          Built-in function type signatures
+│       ├── callables/         Closure, extern-callable, and first-class callable signature resolution
+│       ├── extern_decl.rs     Extern declaration validation
+│       ├── functions.rs       Function-checking module root / orchestration
+│       ├── functions/         Call validation, signature resolution, return collection
+│       ├── inference/         Focused expression and object inference helpers
+│       ├── method_pass.rs     Method pre-declaration and override checking
+│       ├── schema/            Class, interface, enum, and declaration validation
+│       ├── stmt_check.rs      Statement-checking module root
+│       ├── stmt_check/        Assignment and control-flow statement checks
+│       ├── type_compat.rs     Type-compatibility module root
+│       ├── type_compat/       Declaration, object, pointer, and union compatibility helpers
+│       ├── yield_validation/  Generator return coercion and yield-scope validation
+│       └── ...
+│
+├── codegen/
+│   ├── mod.rs                 Frozen legacy AST-backend orchestration plus shared runtime feature scans
+│   ├── driver_support.rs      Pipeline glue and orchestration helpers
+│   ├── main_emission.rs       Top-level program, globals, and deferred-body emission
+│   ├── class_methods.rs       Instance/static method emission orchestration
+│   ├── function_variants.rs   Include-loaded function variant dispatchers
+│   ├── interface_wrappers.rs  Interface dispatch return-shape adapters
+│   ├── callables.rs           Top-level callable metadata and indirect-call helpers
+│   ├── reflection.rs          Shared ReflectionAttribute materialization helpers
+│   ├── prescan.rs             Pre-pass that collects program-wide codegen metadata
+│   ├── program_usage.rs       Program-usage analysis feeding metadata emission
+│   ├── program_usage/         Required-class and variable usage scanners
+│   ├── functions/generator/   Generator wrapper and resume state-machine lowering
+│   ├── expr.rs                Expression codegen dispatcher
+│   ├── expr/                  Expression submodules
+│   │   ├── arrays.rs          Array-expression dispatch
+│   │   ├── arrays/            `access.rs`, `indexed.rs`, `assoc.rs`
+│   │   ├── assignment.rs      Assignment expression lowering
+│   │   ├── binops/            `arithmetic.rs`, `array_union.rs`, `comparison.rs`, `target.rs`, `mod.rs`
+│   │   ├── calls.rs           Call-expression dispatch
+│   │   ├── calls/             `function.rs`, `closure.rs`, `first_class.rs`, `indirect.rs`, `args/`
+│   │   ├── chains.rs          Mixed nullsafe/member postfix-chain lowering
+│   │   ├── coerce.rs          Truthiness / string / null coercions
+│   │   ├── compare/           Comparison and widening helpers
+│   │   ├── diagnostics.rs     Error-control / runtime-diagnostic expression helpers
+│   │   ├── helpers.rs         Shared expression-codegen utilities
+│   │   ├── objects.rs         Object-expression dispatch
+│   │   ├── objects/           `allocation.rs`, `access.rs`, `instanceof.rs`, `nullsafe.rs`, `static_properties.rs`, `dispatch/`
+│   │   ├── ownership.rs       Result ownership classification
+│   │   ├── scalars.rs         Literal / negate / bit-not / logical-not lowering
+│   │   ├── ternary.rs         Full and short ternary lowering
+│   │   └── variables.rs       Variable load / increment / decrement helpers
+│   ├── stmt.rs                Statement codegen dispatcher
+│   ├── stmt/                  Statement submodules
+│   │   ├── arrays.rs          Array statement dispatch
+│   │   ├── arrays/            `assign/`, `push.rs`, `unpack.rs`
+│   │   ├── assignments.rs     Variable / property assignment dispatch
+│   │   ├── assignments/       `locals.rs`, `properties.rs`, `properties/`, `static_properties.rs`, `static_properties/`
+│   │   ├── control_flow.rs    Control-flow dispatch
+│   │   ├── control_flow/      `branching/`, `foreach/`, `loops/`, `exceptions/`
+│   │   ├── helpers.rs         Shared statement-codegen helpers
+│   │   ├── includes.rs        Runtime guard flags for *_once and include-loaded function variants
+│   │   ├── io.rs              Echo / print helpers
+│   │   ├── null_coalesce_assign.rs `??=` read-modify-write helpers for non-local targets
+│   │   ├── storage.rs         Global / static / extern-global dispatch
+│   │   └── storage/           `locals.rs`, `extern_globals.rs`
+│   ├── functions/             User function emission
+│   │   ├── mod.rs             Function lowering entry point
+│   │   ├── callback_wrapper.rs Captured callback environment wrappers
+│   │   ├── cleanup.rs         Epilogue / ownership cleanup helpers
+│   │   ├── control_flow.rs    Return / early-exit lowering
+│   │   ├── fiber_wrapper.rs   Fiber callback entry wrappers
+│   │   ├── locals.rs          Local slot layout
+│   │   └── types/             Function-local type inference helpers
+│   ├── abi/                   Target-aware calling convention helpers
+│   │   ├── mod.rs             Public ABI helpers
+│   │   ├── bootstrap.rs       Program entry / bootstrap helpers
+│   │   ├── calls/             Call-site argument / result wiring
+│   │   ├── frame.rs           Stack frame prologue / epilogue
+│   │   ├── registers.rs       Register names per architecture
+│   │   ├── symbols.rs         Symbol / literal address loading
+│   │   ├── tests.rs           ABI unit-test module root
+│   │   ├── tests/             ABI unit tests (`basics.rs`, `arguments.rs`, `symbols.rs`, `linux_x86_64.rs`)
+│   │   └── values.rs          Push/pop/load/store by PhpType
+│   ├── platform/              Target selection and Linux transforms
+│   │   ├── mod.rs             Platform module root, re-exports Platform / Arch / Target
+│   │   ├── target.rs          Platform / Arch / Target definitions and derived codegen properties
+│   │   ├── linux_transform.rs Linux post-emit transforms, syscall mapping, C-symbol remapping
+│   │   └── toolchain.rs       Assembler / linker invocation
+│   ├── ffi.rs                 Extern function/global/class codegen
+│   ├── cdylib.rs              C-ABI export trampolines + lifecycle symbols for --emit cdylib
+│   ├── visibility.rs          ELF .hidden directives for internal globals in cdylib emission
+│   ├── sentinels.rs           Null representation selection (sentinel vs tagged) and constants
+│   ├── context.rs             Variables, labels, loop/finally stacks, ownership lattice
+│   ├── data_section.rs        String/float literal .data section
+│   ├── emit.rs                Assembly text buffer
+│   │
+│   ├── builtins/              Built-in function codegen (one file per language function)
+│   │   ├── mod.rs             Dispatcher — chains to category modules
+│   │   ├── strings/           strlen, substr, strpos, explode, sprintf, md5, ... (75 files)
+│   │   ├── arrays/            count, array_push, buffer_len/free, sort, array_map, usort, ... (64 files)
+│   │   ├── math/              abs, floor, pow, rand, fmod, fdiv, round, min, max, sin, cos, ... (33 files)
+│   │   ├── types/             is_*, gettype, empty, unset, settype, class introspection, ... (27 files)
+│   │   ├── io/                fopen, fwrite, file_get_contents, streams, sockets, scandir, ... (142 files)
+│   │   ├── pointers/          ptr, ptr_get, ptr_set, ptr_read8, ptr_write8, ptr_offset, ... (16 files)
+│   │   ├── spl/               iterator_to_array, iterator_count, iterator_apply, iterator_common (5 files)
+│   │   └── system/            exit, define, time, date, mktime, json_encode, preg_match, attribute reflection, ... (38 files)
+│   │
+│   └── runtime/               Runtime routines and target-specific emission helpers
+│       ├── mod.rs             Runtime module boundary; re-exports the emission entry points
+│       ├── data/              Fixed, user-program, and instanceof runtime data tables (4 files)
+│       ├── diagnostics.rs     Suppressible runtime-warning channel used by `@`
+│       ├── emitters.rs        `emit_runtime()` orchestration — emits every runtime category in a fixed order
+│       ├── strings/           itoa, concat, resource display, ftoa, sprintf, md5, sha1, str_persist, ... (71 files)
+│       ├── arrays/            heap_alloc, heap_free, array_free_deep, array_grow, hash_grow, hash_*, mixed boxing/freeing, mixed instanceof, sort, usort, refcount, gc/decref dispatch, ... (132 files)
+│       ├── callables/         Runtime `is_callable()` fallback for dynamic strings/arrays/hashes/objects/Mixed plus callable descriptor release (3 files)
+│       ├── io/                fopen, fgets, fread, stat, streams, sockets, filters, scandir, ... (113 files)
+│       ├── buffers/           buffer_new, buffer_len, bounds_fail, use_after_free helpers (5 files incl. mod.rs)
+│       ├── exceptions.rs      Exception runtime module root / re-exports
+│       ├── exceptions/        cleanup_frames, dynamic_instanceof, matches, throw_current, rethrow_current, class_implements helpers (6 files)
+│       ├── system/            build_argv, time, getenv, shell_exec, php_uname, date, gmdate, mktime, strtotime, getdate, localtime, checkdate, microtime, hrtime, date_default_timezone, match_unhandled, json_encode_*, json_decode, preg_*, ... (40 files)
+│       ├── pointers/          ptoa, ptr_check_nonnull, str_to_cstr, cstr_to_str, ptr_read_string, ptr_write_string, ... (7 files)
+│       ├── fibers/            stack allocation/free, context switch, entry trampoline (4 files) + `api/` (target-aware public API helpers)
+│       ├── objects/           stdClass, Mixed property/index access, JSON stdClass encoding, destructor dispatch, new-by-name helpers (6 files)
+│       ├── spl/               SplDoublyLinkedList and SplFixedArray runtime container helpers (3 files)
+│       └── generators/        Generator frame layout and __rt_gen_* helpers (2 files)
+│
+│
+└── errors/
+    ├── mod.rs                 CompileError, error trait
+    └── report.rs              Error formatting
+```
+
+## ARM64 calling conventions
+
+| What | Register | Notes |
+|---|---|---|
+| Integer result | `x0` | After emit_expr for Int/Bool/Void/Resource |
+| Float result | `d0` | After emit_expr for Float |
+| String result | `x1` (ptr), `x2` (len) | After emit_expr for Str |
+| Array result | `x0` (heap ptr) | After emit_expr for Array/AssocArray/Iterable |
+| Mixed result | `x0` (heap ptr) | Pointer to boxed mixed cell |
+| Object result | `x0` (heap ptr) | After emit_expr for Object |
+| Pointer / Buffer / Packed / Callable result | `x0` | Raw address, contiguous buffer pointer, packed-record pointer, or callable descriptor pointer |
+| Function args (int) | `x0`-`x7` | Int/Bool/Resource/Array/AssocArray/Iterable/Mixed/Object/Pointer/Buffer/Packed/Callable/Union = 1 reg, Str = 2 regs |
+| Function args (float) | `d0`-`d7` | Separate index from int regs |
+| Frame pointer | `x29` | Saved in prologue |
+| Link register | `x30` | Saved in prologue |
+| Stack locals | `[x29, #-offset]` | Negative offsets from frame pointer |
+| Null sentinel | `0x7FFFFFFFFFFFFFFE` | Distinguished from real integers |
+
+## FFI pipeline
+
+FFI declarations are parsed into dedicated AST nodes:
+
+- `StmtKind::ExternFunctionDecl`
+- `StmtKind::ExternClassDecl`
+- `StmtKind::ExternGlobalDecl`
+
+During type checking, extern declarations are registered in dedicated maps that are carried into codegen:
+
+- `extern_functions`: extern signatures exposed through the C ABI
+- `extern_classes`: flat C struct layout metadata
+- `extern_globals`: native global symbols loaded through the linker
+
+Extern calls differ from ordinary elephc function calls in four important ways:
+
+1. Codegen dispatches extern functions before built-ins, so an `extern function strlen(...)` declaration really calls C `strlen`, not the elephc builtin.
+2. `string` arguments are converted with `__rt_str_to_cstr`, which allocates a null-terminated C buffer that is valid for the duration of the native call and is released immediately after the call returns.
+3. `string` return values are converted with `__rt_cstr_to_str`, which treats the returned `char *` as borrowed and copies bytes back into an owned elephc string.
+4. `extern class` layouts are available to pointer-oriented codegen too, so `ptr_sizeof("StructName")` and `ptr_cast<StructName>($p)->field` use the same checked layout metadata recorded by the type checker.
+
+`callable` FFI parameters pass a user-defined elephc function by address. The function name is provided as a string literal at the call site, and codegen loads the address of the compiled mangled function symbol before branching into C. Namespaced functions therefore still map to unique assembly labels after canonicalization.
+
+## Namespace resolution and symbol mangling
+
+Namespace syntax is preserved through parsing and include resolution, then normalized by `src/name_resolver/` before type checking or codegen sees the program. That pass:
+
+- tracks the current `namespace` scope
+- applies `use`, `use function`, and `use const` aliases, including group-use forms
+- resolves class/interface/trait/function/constant references to canonical fully-qualified names
+- rewrites supported string-literal callbacks such as `call_user_func("name", ...)` to the resolved target name; `function_exists("name")` keeps PHP's literal-name introspection semantics instead
+- flattens namespace-only AST statements so downstream passes operate on a simpler canonical AST
+
+`src/names.rs` is the shared utility layer for this work. It defines the internal `Name` representation plus common helpers for:
+
+- canonical declaration names
+- namespace qualification rules
+- assembly symbol mangling for functions, methods, and static storage
+
+Because codegen receives canonical names, namespaces do not require special cases in most later passes: mangled labels are derived centrally from the final fully-qualified name.
+
+First-class callable syntax rides on the same canonical naming pipeline. The parser emits a dedicated callable-target node, the checker validates the target statically, and codegen lowers it to a synthesized wrapper function plus a static callable descriptor. Instance-method targets and `static::` targets use the same hidden-capture channel as closures to forward the receiver or called-class context into that wrapper; indirect call sites load the descriptor's entry slot before invoking the wrapper.
+
+## Runtime memory layout
+
+### Array header (heap-allocated)
+
+```
+Offset  Size  Field
+  0      8    length    (current number of elements)
+  8      8    capacity  (allocated slots)
+ 16      8    elem_size (8 for Int, 16 for Str)
+ 24      ...  elements  (contiguous)
+```
+
+### Buffer header (heap-allocated, for `buffer<T>`)
+
+```
+Offset  Size  Field
+  0      8    length    (logical number of elements)
+  8      8    stride    (bytes per element)
+ 16      ...  elements  (contiguous POD payload)
+```
+
+`buffer<T>` is deliberately separate from the PHP array/hash runtime path. Codegen uses the checked static element type plus the stored stride to emit direct address arithmetic and direct scalar loads/stores, or typed packed-field access for `buffer<PackedType>`.
+
+`match` expressions stay in the normal expression pipeline. When the source omits `default`, codegen now emits a branch to a dedicated runtime fatal helper (`__rt_match_unhandled`) instead of falling through to an undefined result.
+
+### Runtime BSS and data symbols
+
+The runtime data emission in `src/codegen/runtime/data/` is split into `emit_runtime_data_fixed()` for shared heap buffers, diagnostics, and lookup tables, plus `emit_runtime_data_user()` for globals, statics, enum-case storage, metadata derived from the user's program, and dynamic `instanceof` lookup names:
+
+| Symbol group | Symbols | Purpose |
+|---|---|---|
+| String scratch | `_concat_buf`, `_concat_off` | Temporary string results for expression evaluation |
+| CLI globals | `_global_argc`, `_global_argv` | Saved OS argument state used to build `$argv` |
+| Heap allocator | `_heap_buf`, `_heap_off`, `_heap_free_list`, `_heap_small_bins`, `_heap_debug_enabled`, `_heap_max` | Heap storage plus general/small-bin allocator metadata and heap-debug toggle |
+| Runtime diagnostics | `_rt_diag_suppression`, `_diag_*`, `_heap_err_msg`, `_arr_cap_err_msg`, `_ptr_null_err_msg`, `_buffer_bounds_msg`, `_buffer_uaf_msg`, `_match_unhandled_msg`, `_uncaught_exc_msg`, `_instanceof_target_type_msg`, `_heap_dbg_*` | Suppressible warning state/text plus fatal error messages and heap-debug summary/failure strings |
+| GC statistics and cycle state | `_gc_allocs`, `_gc_frees`, `_gc_live`, `_gc_peak`, `_gc_collecting`, `_gc_release_suppressed` | Allocation/free/live-byte counters plus targeted-cycle-collector coordination flags |
+| Exception state | `_exc_handler_top`, `_exc_call_frame_top`, `_exc_value`, `_class_parent_ids` | Active handler stack, activation cleanup stack, current exception object, and parent links used for catch matching |
+| Include-once guards | `_include_once_<hash>` | Per-resolved-file loaded flags used by `include_once` / `require_once` runtime guards |
+| Include-loaded function variants | `_fn_variant_active_<function>` | Active hidden implementation pointer for a function loaded through an include point |
+| I/O scratch | `_cstr_buf`, `_cstr_buf2`, `_eof_flags`, `_principal_lookup_buf`, `_etc_passwd_path`, `_etc_group_path`, `_principal_lookup_read_mode` | Syscall-oriented C-string scratch buffers, EOF bookkeeping, and passwd/group lookup state for `chown()` / `chgrp()` name resolution |
+| String/runtime tables | `_fmt_g`, `_b64_encode_tbl`, `_b64_decode_tbl` | Formatting and lookup tables for runtime helpers |
+| JSON/date state and tables | `_json_last_error`, `_json_active_flags`, `_json_active_depth`, `_json_indent_depth`, `_json_depth_limit`, `_json_validate_*`, `_json_decode_assoc`, `_json_error_*`, `_json_true`, `_json_false`, `_json_null`, `_json_err_msg_*`, `_json_err_msg_table`, `_json_err_loc_*`, `_json_int_max_str`, `_json_int_min_str`, `_day_names`, `_month_names`, `_strtotime_*` | Runtime JSON state, JSON literal/error lookup data, decode error-location fragments, bigint thresholds, date lookup tables, and `strtotime()` keyword/unit tables |
+| User-dependent storage | `_gvar_<name>`, `_static_<func>_<name>`, `_static_<func>_<name>_init`, `_static_prop_<class>_<prop>`, enum-case `.comm` symbols via `enum_case_symbol(...)` | Global/static local storage, class static-property storage, plus singleton backing slots for enum cases |
+| Class/interface metadata tables | `_instanceof_target_count`, `_instanceof_target_entries`, `_instanceof_name_*`, `_interface_count`, `_interface_method_ptrs`, `_interface_methods_<id>`, `_class_interface_ptrs`, `_class_interfaces_<id>`, `_class_interface_impl_<class>_<iface>`, `_classes_by_name`, `_classes_by_name_count`, `_generator_class_id`, `_fiber_class_id`, `_fiber_error_class_id`, `_class_gc_desc_count`, `_class_gc_desc_ptrs`, `_class_gc_desc_<id>`, `_class_destruct_ptrs`, `_class_vtable_ptrs`, `_class_vtable_<id>`, `_class_static_vtable_ptrs`, `_class_static_vtable_<id>` | Dynamic `instanceof` lookup names, case-insensitive `new $name()` class lookup table, built-in runtime-managed class ids, per-interface method-order metadata, per-class property traversal metadata, per-class `__destruct` pointers, and instance/static dispatch tables |
+
+### Heap allocator
+
+8MB free-list + bump hybrid allocator in BSS (`_heap_buf`). Each allocation has a uniform 16-byte header: `[size:4][refcount:4][kind:8]` — a 32-bit block size, a 32-bit reference count, and an 8-byte heap-kind tag shared by arrays, hashes, objects, boxed mixed cells, persisted strings, and raw helper buffers. The allocator now keeps four segregated small-block bins (`<=8`, `<=16`, `<=32`, `<=64` bytes) in `_heap_small_bins` ahead of the general address-ordered free list, so tiny short-lived blocks can often be reused without walking the full first-fit chain. When memory is freed (via `__rt_heap_free`), tail blocks still fold directly back into `_heap_off`, small non-tail blocks are cached in their size class, and larger blocks remain in the ordered free list where adjacent neighbors are coalesced and any free chain that reaches the current bump tail is trimmed back into the bump pointer. New allocations consult the matching small-bin class first, then the general free list (splitting oversized free blocks when needed), and only bump allocate when neither path can satisfy the request. Reference counting (`__rt_incref`, `__rt_decref_array`, `__rt_decref_hash`, `__rt_decref_mixed`, `__rt_decref_object`) still handles the common acyclic case, while arrays and hashes now add copy-on-write splitting through `__rt_array_ensure_unique` / `__rt_hash_ensure_unique` plus shallow clone helpers before mutating shared containers. The low 16 bits of the kind word are now persistent container metadata: low byte = heap kind, bits 8-14 = indexed-array `value_type`, bit 15 = copy-on-write container flag, and higher bits remain reserved for transient cycle-collector state. Heap kind tags now use `0=raw/untyped`, `1=string`, `2=indexed array`, `3=assoc/hash`, `4=object`, `5=boxed mixed`, giving the runtime a uniform discriminator regardless of payload layout. With `--heap-debug`, the runtime validates both the ordered free list and the segregated small-bin chains on allocator/free mutations, traps on double free or zero-refcount `incref`/`decref` paths, poisons freed payload bytes, and prints an end-of-process summary with alloc/free counts, live blocks, live bytes, and the peak live-byte watermark. With `--gc-stats`, generated programs also print allocation/free counters to stderr at exit without enabling the heavier heap-debug checks. Fiber execution state uses dedicated BSS slots (`_fiber_current`, `_fiber_main_saved_sp`, `_fiber_main_saved_exc`, `_fiber_main_saved_call_frame`) plus guarded per-fiber stacks allocated with `mmap`; Fiber objects release those stacks through `__rt_fiber_free_stack` during object deep-free. Codegen now records a local ownership lattice (`Owned`, `Borrowed`, `MaybeOwned`, `NonHeap`) plus an `epilogue_cleanup_safe` bit in `Context::variables` so it can distinguish between stack slots that truly own a heap value and slots that merely alias global/static/container-backed storage. Ownership transfer points currently include ordinary reassignments, by-value call arguments, borrowed heap returns, indexed array writes, associative-array/hash writes, object property writes, `static` slot writes, `global` loads, `foreach` targets, and `list(...)` targets, while container-copy builtins now dispatch to dedicated `_refcounted` runtime helpers for nested array/hash/object/string payloads (`array` literals with spreads, `array_merge`, `array_chunk`, `array_slice`, `array_reverse`, `array_pad`, `array_unique`, `array_splice`, `array_diff`, `array_intersect`, `array_filter`, `array_fill`, `array_combine`, `array_fill_keys`). Mixed heap releases now funnel through `__rt_decref_any`, and object/container deep-free paths use richer runtime metadata plus per-class GC descriptor tables to discover nested heap-backed children. Function epilogues now clean up only locals that are both `Owned` and still marked safe; borrowed aliases such as `$this`, ref params, globals, and statics are explicitly excluded, and exhaustive `if` / `elseif` / `else` branches can now restore epilogue cleanup when every fallthrough branch directly stores the same heap-backed type into the same local. Loop-driven, switch-driven, and more dynamic alias-heavy joins remain conservative until more control-flow cases are proven. Configurable via `--heap-size=BYTES` (minimum 64KB), `--gc-stats`, and `--heap-debug` for runtime verification. Bounds-checked with fatal error on overflow.
+
+### Hash table header (heap-allocated, for associative arrays)
+
+```
+Offset  Size  Field
+  0      8    count       (number of occupied entries)
+  8      8    capacity    (number of slots)
+ 16      8    value_type  (coarse summary: 0=int, 1=str, 2=float, 3=bool, 4=array, 5=assoc, 6=object, 7=mixed)
+ 24      8    head        (slot index of first inserted entry, or -1)
+ 32      8    tail        (slot index of last inserted entry, or -1)
+ 40      ...  entries     (each entry is 64 bytes)
+```
+
+Each hash table entry:
+
+```
+Offset  Size  Field
+  0      8    occupied   (0=empty, 1=occupied, 2=tombstone)
+  8      8    key_ptr    (pointer to key string)
+ 16      8    key_len    (key string length)
+ 24      8    value_lo   (value or pointer)
+ 32      8    value_hi   (string length, or unused for single-word payloads)
+ 40      8    value_tag  (authoritative per-entry runtime tag)
+ 48      8    prev       (previous inserted slot, or -1)
+ 56      8    next       (next inserted slot, or -1)
+```
+
+Lookups still use FNV-1a hashing with linear probing for collision resolution, but language-visible iteration follows the `head -> next -> ... -> tail` insertion-order chain. The header `value_type` is now only a coarse summary; correctness-critical runtime paths read each entry's `value_tag` instead. For the full runtime layout and iteration contract, see [Memory Model](memory-model.md).
+
+### Object layout (heap-allocated)
+
+```
+Offset  Size  Field
+  0      8    class_id  (identifies which class this object belongs to)
+  8     16    prop[0]   (first property — 16 bytes regardless of type)
+ 24     16    prop[1]   (second property)
+ ...    ...   ...
+```
+
+Total size: `8 + (num_properties × 16)`. Properties are stored at fixed offsets determined at compile time in parent-first order across the inheritance chain. Property access is `base + resolved_property_offset`.
+
+### Method dispatch
+
+- Instance methods: codegen resolves a stable slot number from the static class metadata, then uses the object's `class_id` to load the concrete class vtable entry and `blr` to the implementation. The object pointer is still passed as the first argument in `x0` (as `$this`).
+- Private instance methods are excluded from the vtable and emitted as direct calls within the declaring class, preserving PHP's lexical binding for parent-private helpers.
+- Interfaces and abstract classes are enforced at compile time. Runtime method calls still use the existing class vtables, while dedicated interface metadata tables are emitted alongside the class metadata for roadmap-aligned interface bookkeeping and future dispatch work.
+- Static methods: `bl _static_ClassName_methodName`. No object pointer is passed.
+- `self::method()` / `parent::method()`: emitted as direct lexical calls, but static targets still forward the current "called class" id for later `static::` lookups.
+- `static::method()`: uses a per-class static-method table keyed by the forwarded called-class id, so late static binding works across inherited static overrides.
+- Undefined property reads can fall back to `__get($name)`, and undefined property writes can fall back to `__set($name, $value)`, reusing the same instance-method dispatch path once the type checker has validated those magic methods.
+- Object values used in string contexts can fall back to `__toString()`, which is enforced by the type checker and lowered through the same instance-method dispatch machinery.
+
+Traits are flattened into the owning class before inheritance metadata is built. That means trait members participate in the same inherited property layout and vtable construction as ordinary class members after `use` / `as` / `insteadof` resolution.
+
+### String buffer
+
+64KB scratch buffer in BSS (`_concat_buf`). Used by `itoa`, `concat`, `strtolower`, and all string-producing runtime routines. Reset to offset 0 at the start of each statement. Strings that need to persist beyond the current statement are copied to the heap via `__rt_str_persist`.
+
+### I/O buffers
+
+Two 4KB C-string conversion buffers (`_cstr_buf`, `_cstr_buf2`) are still used by low-level I/O helpers and syscalls. FFI string calls do not use these scratch buffers anymore; they allocate per-call C strings through `__rt_str_to_cstr` so multiple string arguments remain valid across the same native call and are then released as soon as control returns from C. A 256-byte EOF flag array (`_eof_flags`) tracks end-of-file state per file descriptor. `chown()` / `chgrp()` string-name variants resolve local principals by scanning `/etc/passwd` and `/etc/group` through `_principal_lookup_buf` and fixed path/mode literals, avoiding NSS calls in static Linux binaries.
