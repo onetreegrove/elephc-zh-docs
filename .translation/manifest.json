@@ -1695,181 +1695,181 @@
       "sourcePath": "docs/internals/builtins/filesystem/umask.md",
       "targetPath": "content/docs/internals/builtins/filesystem/umask.md",
       "sourceHash": "sha256:d35cf16d5ff0957963e9836a3361560f0a42bd130e0c45dddfde57b2327c04ee",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:50:39.200Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/umask",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/unlink.md",
       "targetPath": "content/docs/internals/builtins/filesystem/unlink.md",
       "sourceHash": "sha256:e244c8fdbdb8c07a336a4a0cad970184bc59cdaeb592b8f2f59023ac575b96b9",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:51:04.673Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/unlink",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/closedir.md",
       "targetPath": "content/docs/internals/builtins/io/closedir.md",
       "sourceHash": "sha256:0ef311ac522e9d4e7dbd4bc35127863b5973b394177a2a0f509154943996c168",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:51:28.559Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/closedir",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fclose.md",
       "targetPath": "content/docs/internals/builtins/io/fclose.md",
       "sourceHash": "sha256:583262b8b207724cee9b1a02353d6510be354d033bc68053f5e203a9d61d3448",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:51:58.831Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fclose",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fdatasync.md",
       "targetPath": "content/docs/internals/builtins/io/fdatasync.md",
       "sourceHash": "sha256:e51ae67ca189bb3c1d6f9de08943b327a762687f9febf18185d676052bf98d37",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:52:21.936Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fdatasync",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/feof.md",
       "targetPath": "content/docs/internals/builtins/io/feof.md",
       "sourceHash": "sha256:6e7415dbceb830baa45580addba5798e48e95c11ea88abf5eb3d98d490f950f0",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:52:46.368Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/feof",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fflush.md",
       "targetPath": "content/docs/internals/builtins/io/fflush.md",
       "sourceHash": "sha256:7111baa5dd88ecedf980f081b6ac9279b466f55edf28e43fa3c6e0e4442da77a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:53:25.120Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fflush",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fgetc.md",
       "targetPath": "content/docs/internals/builtins/io/fgetc.md",
       "sourceHash": "sha256:9e0e7622bbe762ae283a3f8950bd7483e09f843dc85571caa44b7c4d2ba04e08",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:53:57.332Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fgetc",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fgetcsv.md",
       "targetPath": "content/docs/internals/builtins/io/fgetcsv.md",
       "sourceHash": "sha256:a40a0f6eb8222828858b165a3af3787202057a4a5f0eaa6bf83d1d4114b7050e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:54:19.097Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fgetcsv",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fgets.md",
       "targetPath": "content/docs/internals/builtins/io/fgets.md",
       "sourceHash": "sha256:94300e3f5bb6d06cb8a22ccb0649fb998d65a720c5a4392874ddf69123c02d6c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:54:58.436Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fgets",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/file_get_contents.md",
       "targetPath": "content/docs/internals/builtins/io/file_get_contents.md",
       "sourceHash": "sha256:e272834971baf681de27c9c122bd05815e9d66da344aaff82085e4b8fa781384",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:55:23.936Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/file_get_contents",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/file_put_contents.md",
       "targetPath": "content/docs/internals/builtins/io/file_put_contents.md",
       "sourceHash": "sha256:ebded6bde583ddb74f3ede270d506b9674bce103c24dacfbedf209f521aab8d2",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:56:07.886Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/file_put_contents",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/file.md",
       "targetPath": "content/docs/internals/builtins/io/file.md",
       "sourceHash": "sha256:c0cebfd90001a1bd72cc8e4337f0a1753871ecf8c05970ec0f68f71e6c98b09f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:56:30.269Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/file",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/flock.md",
       "targetPath": "content/docs/internals/builtins/io/flock.md",
       "sourceHash": "sha256:451dbc7ec1f1b2e4fba93e24abc1fde9a28d3c68043520faad3dd8bbd8211f76",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:56:56.542Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/flock",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fopen.md",
       "targetPath": "content/docs/internals/builtins/io/fopen.md",
       "sourceHash": "sha256:679a6e0c1c6c57b8cf7a8308b94f395551d6fc181e6c675b08b74338035b2795",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:57:21.507Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fopen",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fpassthru.md",
       "targetPath": "content/docs/internals/builtins/io/fpassthru.md",
       "sourceHash": "sha256:bf12a69112e63cc1c5e3552bfb3441ab7899059ee5b49d8824f5ebed07234dda",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:57:50.087Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fpassthru",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fprintf.md",
       "targetPath": "content/docs/internals/builtins/io/fprintf.md",
       "sourceHash": "sha256:731a63cb0d1086a3e99b85a40a18c36707d4df3005eb741430b2ca5a2e3d6c74",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:58:29.734Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fprintf",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fputcsv.md",
       "targetPath": "content/docs/internals/builtins/io/fputcsv.md",
       "sourceHash": "sha256:c16e3fe00ac210caa124d2b4c7aa0c027f26d4f69d1efadda86a009a277c0a37",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:58:52.044Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fputcsv",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fread.md",
       "targetPath": "content/docs/internals/builtins/io/fread.md",
       "sourceHash": "sha256:0d60c8e434d67ed9c3c66e4a6c9515e98dd37b5eaf42896540da31909ab1376f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:59:15.384Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fread",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fscanf.md",
       "targetPath": "content/docs/internals/builtins/io/fscanf.md",
       "sourceHash": "sha256:93ad6475f6d03e1f7b0c4d9a91373ca44081664c247867f56e4a653fc7027a83",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:59:54.545Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/fscanf",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/fseek.md",
