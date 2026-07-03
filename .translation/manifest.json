@@ -1515,181 +1515,181 @@
       "sourcePath": "docs/internals/builtins/filesystem/link.md",
       "targetPath": "content/docs/internals/builtins/filesystem/link.md",
       "sourceHash": "sha256:620214bed4bc60efdf740d1d91fb4df88453ed141b4d0d46847cc5e45b85db10",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:30:30.806Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/link",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/linkinfo.md",
       "targetPath": "content/docs/internals/builtins/filesystem/linkinfo.md",
       "sourceHash": "sha256:6252ae5979025a6ce828d6c54960642ac48f23389ed9dc33f5e78da4f975fc4b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:30:57.962Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/linkinfo",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/lstat.md",
       "targetPath": "content/docs/internals/builtins/filesystem/lstat.md",
       "sourceHash": "sha256:135fc81ebcdbd2f8831b5f8cc625f086e94d5ba69a3f0ea06c3c2ef024cd7f9f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:31:32.399Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/lstat",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/mkdir.md",
       "targetPath": "content/docs/internals/builtins/filesystem/mkdir.md",
       "sourceHash": "sha256:8995e13004c83ff42282d8bf07777d44dcbf25b78356c00329472277b65ab00a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:31:52.317Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/mkdir",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/pathinfo.md",
       "targetPath": "content/docs/internals/builtins/filesystem/pathinfo.md",
       "sourceHash": "sha256:a1a3c010f95c0b943a0736b844d072b3103d38c1327c1a41af73182aefd05fa1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:32:36.995Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/pathinfo",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/putenv.md",
       "targetPath": "content/docs/internals/builtins/filesystem/putenv.md",
       "sourceHash": "sha256:3324bda148544d7512550e4bd570307a2819fabb927d24652f9d853f681418be",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:32:54.741Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/putenv",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/readfile.md",
       "targetPath": "content/docs/internals/builtins/filesystem/readfile.md",
       "sourceHash": "sha256:0867b15e2e8e467d86c6141331dde640c15fe94cd9bc9f7aef24dda11645d7d5",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:33:19.667Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/readfile",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/readlink.md",
       "targetPath": "content/docs/internals/builtins/filesystem/readlink.md",
       "sourceHash": "sha256:1c29d911beba65e94e82c061e83f4a0522345711f00b65a4c5f46eeda1259a5e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:33:38.155Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/readlink",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/realpath_cache_get.md",
       "targetPath": "content/docs/internals/builtins/filesystem/realpath_cache_get.md",
       "sourceHash": "sha256:0a25144e2719a5109926aafb0548c590356a134570fbb11828275e6ab949d2f4",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:34:26.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/realpath_cache_get",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/realpath_cache_size.md",
       "targetPath": "content/docs/internals/builtins/filesystem/realpath_cache_size.md",
       "sourceHash": "sha256:0f081bbef2b3564746f2597300d00cae6205a7340cca1b57a278b2b35179bf89",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:35:18.575Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/realpath_cache_size",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/realpath.md",
       "targetPath": "content/docs/internals/builtins/filesystem/realpath.md",
       "sourceHash": "sha256:e7d9ba3e92c47a96967e39bc6e253cd02aef5c0a891876d1510a7e97daff5217",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:36:02.255Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/realpath",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/rename.md",
       "targetPath": "content/docs/internals/builtins/filesystem/rename.md",
       "sourceHash": "sha256:6c41bcb05e9416e5558c3d72ea7480ca7016801c1209661a802c15238e55e24e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:36:23.719Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/rename",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/rmdir.md",
       "targetPath": "content/docs/internals/builtins/filesystem/rmdir.md",
       "sourceHash": "sha256:202161ede6b140fa75475f8da4673bf569ecb8cbc2c4937f9ab1e8b221b15461",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:37:23.877Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/rmdir",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/scandir.md",
       "targetPath": "content/docs/internals/builtins/filesystem/scandir.md",
       "sourceHash": "sha256:e97bdecb6f5f54290f3ae01083de80af181548ad476c360b78f53d58712328d3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:37:43.015Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/scandir",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/stat.md",
       "targetPath": "content/docs/internals/builtins/filesystem/stat.md",
       "sourceHash": "sha256:fe847435f20c2be13336bc003d7bab67174ef5ae5d96bc36dd9c44a0ee2042fa",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:38:24.319Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/stat",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/symlink.md",
       "targetPath": "content/docs/internals/builtins/filesystem/symlink.md",
       "sourceHash": "sha256:74334466978fc2564c8d399d5976846bb6fe47d1fc960078f80f6782c5938a2d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:39:38.333Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/symlink",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/sys_get_temp_dir.md",
       "targetPath": "content/docs/internals/builtins/filesystem/sys_get_temp_dir.md",
       "sourceHash": "sha256:f6ec58b6a9a6556a9ecb37d7db2176d66adc7a38d1c7ac8a2e2a5b1979258805",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:40:37.545Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/sys_get_temp_dir",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/tempnam.md",
       "targetPath": "content/docs/internals/builtins/filesystem/tempnam.md",
       "sourceHash": "sha256:fe6d5a9d414a016de4761a156639c5f2617e6a98bae355c47b1d99448705e1fb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:41:19.789Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/tempnam",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/tmpfile.md",
       "targetPath": "content/docs/internals/builtins/filesystem/tmpfile.md",
       "sourceHash": "sha256:9c077e6967d661b6193181c78b648d3d52a28ee113d3535d01a9e6f57ebfea3c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:42:25.336Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/tmpfile",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/touch.md",
       "targetPath": "content/docs/internals/builtins/filesystem/touch.md",
       "sourceHash": "sha256:857a3c179a4add3b1f3fe4f8a0427b25d77c9400ecd89a50750aed5b3a86f6ed",
-      "translatedAt": "",
+      "translatedAt": "2026-07-03T06:42:47.757Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/filesystem/touch",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/filesystem/umask.md",
