@@ -2415,181 +2415,181 @@
       "sourcePath": "docs/internals/builtins/json/json_encode.md",
       "targetPath": "content/docs/internals/builtins/json/json_encode.md",
       "sourceHash": "sha256:0fad980bfe3bba55eec581ebbb14df32f9d0339e29c0345195588b171008d2a3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/json/json_encode",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/json/json_last_error_msg.md",
       "targetPath": "content/docs/internals/builtins/json/json_last_error_msg.md",
       "sourceHash": "sha256:7c891d3006242b764683855fd990eabc7bc5f14395fcc4fa171c008e6ed83fec",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/json/json_last_error_msg",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/json/json_last_error.md",
       "targetPath": "content/docs/internals/builtins/json/json_last_error.md",
       "sourceHash": "sha256:91b3cbb486c20681365b13b4170c209c6d3cc0a6e961cecac6a17364f170fec2",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/json/json_last_error",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/json/json_validate.md",
       "targetPath": "content/docs/internals/builtins/json/json_validate.md",
       "sourceHash": "sha256:3a83654d10e17dcd9ae47d3c11a0e62a06c2f0d0b90bf00a3203436f8c24080b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/json/json_validate",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/abs.md",
       "targetPath": "content/docs/internals/builtins/math/abs.md",
       "sourceHash": "sha256:66aa36835a2674cbb22f2d267258986b2e265743433a86719b7f2ddbc496d958",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/abs",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/acos.md",
       "targetPath": "content/docs/internals/builtins/math/acos.md",
       "sourceHash": "sha256:800bdd6ab1363cb825e68813f1a3fc03f691408dae14ee59dbf4c3627257d748",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/acos",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/asin.md",
       "targetPath": "content/docs/internals/builtins/math/asin.md",
       "sourceHash": "sha256:040661cf9136ea9b0ef85e0257a6541aab3be38c69a901dbd9df8f240ebdf76d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/asin",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/atan.md",
       "targetPath": "content/docs/internals/builtins/math/atan.md",
       "sourceHash": "sha256:ccd50bd0aac79ae6553c42b5d4170cb6ecc70b713f388c37292e9f2c20668b15",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/atan",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/atan2.md",
       "targetPath": "content/docs/internals/builtins/math/atan2.md",
       "sourceHash": "sha256:dc045c89027af235cdc9bcd1d82a380e64f3c7e8f235dbc20e70a43c0cdb136a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/atan2",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/ceil.md",
       "targetPath": "content/docs/internals/builtins/math/ceil.md",
       "sourceHash": "sha256:e986c0062af58abe3a6418ff23e8626869e5e161eb3e11c1ef81b4fda9a3fac1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/ceil",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/clamp.md",
       "targetPath": "content/docs/internals/builtins/math/clamp.md",
       "sourceHash": "sha256:3c7cc41c5da3257c4a5e3d8a392b2e1c279b9316e5ba7d3e4b3386f0cb85b979",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/clamp",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/cos.md",
       "targetPath": "content/docs/internals/builtins/math/cos.md",
       "sourceHash": "sha256:c34daa31ec1c1e2071453c8f918bcd90ca77fcf96e735b12b1d2338f84632a44",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/cos",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/cosh.md",
       "targetPath": "content/docs/internals/builtins/math/cosh.md",
       "sourceHash": "sha256:4506569033da699a5b4a20c6afa4db8b614ef69dfd0d10681986aaef9f1c2146",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/cosh",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/deg2rad.md",
       "targetPath": "content/docs/internals/builtins/math/deg2rad.md",
       "sourceHash": "sha256:81eb49497cd413e33dc82d7e755b59390e34c19ee05190618d81770c42eec7ec",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/deg2rad",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/exp.md",
       "targetPath": "content/docs/internals/builtins/math/exp.md",
       "sourceHash": "sha256:c1deeb766a616f650798d097ee30eedca4f9f5550ade7dc29a8a6374a5b36999",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/exp",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/fdiv.md",
       "targetPath": "content/docs/internals/builtins/math/fdiv.md",
       "sourceHash": "sha256:a2359d698c7192fcaa621a22ca9794cac8fc395bcd47ee319931575d8cb69db2",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/fdiv",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/floor.md",
       "targetPath": "content/docs/internals/builtins/math/floor.md",
       "sourceHash": "sha256:022e0258080469e04be94ded2fb7678b9c1fba29162a21516800ac7fdee87344",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/floor",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/fmod.md",
       "targetPath": "content/docs/internals/builtins/math/fmod.md",
       "sourceHash": "sha256:051a4d49bd00856e7ccbe67f361de1879b104ae7b2767950210f69a23d22b477",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/fmod",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/hypot.md",
       "targetPath": "content/docs/internals/builtins/math/hypot.md",
       "sourceHash": "sha256:1c444c9e4aed841424cb73f2355f3c1a6c54b8c7cd1a86280cf5360781581262",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/hypot",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/intdiv.md",
       "targetPath": "content/docs/internals/builtins/math/intdiv.md",
       "sourceHash": "sha256:8784fe300660289d0576655d92188fdf782ef367cbf385012157234a3fdc0852",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T02:28:35.123Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/intdiv",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/is_finite.md",
