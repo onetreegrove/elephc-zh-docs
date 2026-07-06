@@ -1,0 +1,652 @@
+---
+title: "Memory Model"
+description: "Stack frames, heap allocation, and memory management."
+sidebar:
+  order: 9
+---
+
+elephc manages memory without calling `malloc`/`free` for PHP values directly. Storage lives on the **stack** (automatic, per-function), in fixed BSS regions, or in a compiler-managed **heap buffer** with a free-list allocator, reference counting, and a targeted cycle collector for array/hash/object graphs. The final binary still links the target platform's system C library for OS and libc services.
+
+This page explains where every value lives in memory at runtime.
+
+## Runtime memory regions
+
+```
+┌─────────────────────────────┐  High addresses
+│         Stack                │  ← grows downward (sp decreases)
+│  (function frames, locals)   │
+├─────────────────────────────┤
+│         (unused)             │
+├─────────────────────────────┤
+│       Heap buffer            │  _heap_buf: 8MB default (--heap-size)
+│  (arrays, hash tables,       │  Free-list + bump allocator
+│   objects, persisted strings) │
+├─────────────────────────────┤
+│     String buffer            │  _concat_buf: 64KB, scratch pad
+│  (temporary string results)  │  Reset at each statement
+├─────────────────────────────┤
+│     I/O and stream buffers   │  _cstr_buf/_cstr_buf2, _eof_flags,
+│  (C strings, streams, TLS,   │  _stream_*, _http_*, _ftp_*, wrapper/filter
+│   wrappers, filters)         │  tables, protocol/service/principal lookup buffers
+├─────────────────────────────┤
+│   Runtime metadata (BSS)     │  _concat_off, _global_argc/_argv,
+│  (heap state, counters,      │  _heap_off, _heap_free_list,
+│   globals, static storage)   │  _heap_small_bins, _heap_debug_enabled,
+│                              │  _gc_allocs/_frees/_live/_peak,
+│                              │  _gc_collecting/_gc_release_suppressed,
+│                              │  _exc_handler_top, _exc_call_frame_top,
+│                              │  _exc_value, _rt_diag_suppression,
+│                              │  _json_last_error, _json_active_*,
+│                              │  _json_indent_depth, _json_validate_*,
+│                              │  _json_decode_assoc, _json_error_*,
+│                              │  _fiber_current, _fiber_main_saved_*,
+│                              │  _generator_class_id,
+│                              │  _include_once_*, _fn_variant_active_*,
+│                              │  _elephc_crypto_*_fn, _elephc_tls_*_fn, ...
+├─────────────────────────────┤
+│       Data section           │  String literals, float constants
+│  (.data — read-only)         │
+├─────────────────────────────┤
+│       Code section           │  Instructions
+│  (.text — executable)        │
+└─────────────────────────────┘  Low addresses
+```
+
+## The stack
+
+The stack is the primary storage for local variables. See [Introduction to ARM64 Assembly](arm64-assembly.md#the-stack-function-local-storage) for the basics.
+
+### Stack frame layout
+
+Each function has a stack frame. The [code generator](the-codegen.md) calculates the size during compilation by counting all local variables:
+
+```
+                         x29 (frame pointer)
+                          │
+                          ▼
+┌────────────┬────────────┬────────────┬────────────┐
+│  saved x29 │  saved x30 │   $x (8B)  │   $y (8B)  │ ...
+└────────────┴────────────┴────────────┴────────────┘
+  [x29, #0]    [x29, #8]   [x29, #-8]   [x29, #-16]
+```
+
+- `x29` and `x30` are saved at the top of the frame (positive offsets from `x29`)
+- Local variables live at **negative offsets** from `x29`
+- Strings take **two slots** (16 bytes): pointer at `[x29, #-offset]`, length at `[x29, #-(offset-8)]`
+- The total frame size is always 16-byte aligned (ARM64 ABI requirement)
+
+On the EIR backend the frame also reserves one save slot per callee-saved register that the linear-scan register allocator uses, and short-lived scalar SSA temporaries may live in registers instead of a stack slot. PHP local variables themselves are still slot-backed as shown above. See [The IR](the-ir.md) for the register allocation pass.
+
+### Variable allocation
+
+Variables are allocated stack slots when the [code generator](the-codegen.md) scans the function body (`collect_local_vars`). The allocation is determined at compile time — there's no dynamic stack growth.
+
+For heap-backed values, stack slots also carry compile-time ownership metadata in codegen: `Owned`, `Borrowed`, `MaybeOwned`, or `NonHeap`. This metadata is not stored in the generated binary; it only guides when codegen must retain a borrowed heap value before storing it into a new owner, and which local aliases must not be blindly decreffed yet.
+
+| Type | Stack space | Stored as |
+|---|---|---|
+| `Int` | 8 bytes | Signed 64-bit value |
+| `Float` | 8 bytes | IEEE 754 double |
+| `Bool` | 8 bytes | 0 or 1 (stored as 64-bit for alignment) |
+| `Str` | 16 bytes | 8-byte pointer + 8-byte length |
+| `Array` | 8 bytes | Pointer to heap-allocated header |
+| `AssocArray` | 8 bytes | Pointer to heap-allocated hash table |
+| `Iterable` | 8 bytes | Type-erased heap pointer for arrays or Traversable objects |
+| `Mixed` | 8 bytes | Pointer to heap-allocated boxed mixed cell |
+| `Void` (null) | 8 bytes | Sentinel value `0x7FFFFFFFFFFFFFFE` |
+| `Object` | 8 bytes | Pointer to heap-allocated object |
+| `Callable` | 8 bytes | Function pointer |
+| `Pointer` | 8 bytes | Raw 64-bit address |
+| `Resource` | 8 bytes | Native resource payload, such as a stream descriptor |
+| `Buffer` | 8 bytes | Pointer to buffer header |
+| `Packed` | 8 bytes | Metadata-only nominal type, accessed via pointer |
+| `Union` | 8 bytes | Boxed runtime-tagged payload (same storage as Mixed) |
+| `TaggedScalar` | 16 bytes | 8-byte payload + 8-byte runtime tag (tagged null representation) |
+
+### Null representations
+
+elephc has two representations for PHP `null` in scalar slots, selected per compilation by
+`--null-repr=sentinel|tagged` (or `ELEPHC_NULL_REPR`). The tagged representation is the
+default; the sentinel is the legacy opt-out.
+
+#### The in-band sentinel (legacy opt-out)
+
+`null` is represented as the integer `0x7FFFFFFFFFFFFFFE` (`PHP_INT_MAX - 1`). Because every
+64-bit pattern is a valid PHP int, this sentinel collides with the real integer
+`9223372036854775806`, which is misread as `null` by null checks. Before arithmetic
+operations, the codegen checks for this sentinel and replaces it with 0:
+
+```asm
+; coerce null to zero
+movz x9, #0xFFFE
+movk x9, #0xFFFF, lsl #16
+movk x9, #0xFFFF, lsl #32
+movk x9, #0x7FFF, lsl #48
+cmp x0, x9
+csel x0, xzr, x0, eq      ; if x0 == sentinel, replace with 0
+```
+
+See [ARM64 Instruction Reference](arm64-instructions.md#move-and-immediate) for how `movz`/`movk` work.
+
+#### The tagged scalar representation (default)
+
+Under the tagged representation, null-capable scalar slots use an inline two-word
+`{payload, tag}` pair (`TaggedScalar`) instead of the in-band sentinel: the payload travels
+in the integer result register (`x0`/`rax`) and the runtime tag in the adjacent register
+(`x1`/`rdx`), mirroring the string pointer/length convention. The tag reuses the runtime
+value tag scheme (0 = int, 8 = null), so a tagged scalar is word-compatible with a boxed
+Mixed cell's tag/payload words. On the stack the payload sits at `offset` and the tag at
+`offset - 8`.
+
+Null-capable producers — miss-capable int array reads, `array_pop`/`array_shift` on int
+arrays — yield a tagged scalar; consumers (`echo`, `var_dump`, `is_null`, `??`, `??=`,
+`isset`, `empty`, `gettype`, casts, arithmetic narrowing, `===` through the Mixed boxing
+path) dispatch on the tag word. A plain non-nullable `Int` is statically never null, so its
+sentinel checks disappear entirely and the full 64-bit range round-trips:
+
+```asm
+; null check on a tagged scalar
+cmp x1, #8                ; runtime tag 8 = PHP null
+b.eq value_is_null
+```
+
+A tagged null carries the legacy sentinel as its payload word, so boxing it into a Mixed
+cell produces exactly the legacy `{tag 8, sentinel}` words and un-audited consumers degrade
+to the legacy behavior. `?int` parameters, returns, and properties keep their boxed Mixed
+representation under both modes.
+
+### Pointer values
+
+Pointers are stored as raw 64-bit addresses. An opaque pointer and a typed `ptr<T>` value have the same runtime representation; the type tag only exists in the checker. Null pointers use address `0x0`, and dereference helpers explicitly trap on null via `__rt_ptr_check_nonnull`.
+
+### Fiber stacks and scheduler state
+
+`Fiber` objects own native stacks rather than borrowing the caller's stack. The runtime allocates each fiber stack through `mmap` (256 KiB usable by default, plus the guard page), protects the bottom 16 KiB with `mprotect(PROT_NONE)` as a guard page, and stores both the mapping base and total mapped size in the Fiber object so `__rt_fiber_free_stack` can later return it with `munmap`.
+
+The currently running fiber is tracked in `_fiber_current`. When execution switches away from the main stack, `_fiber_main_saved_sp`, `_fiber_main_saved_exc`, and `_fiber_main_saved_call_frame` preserve the main stack pointer, exception-handler chain, and activation-record cleanup chain. A suspended Fiber stores the same state inside its object payload (`saved_sp`, `own_exc_head`, and `own_call_frame`), so `__rt_fiber_switch` can swap between main and fiber contexts without mixing exception or cleanup chains.
+
+## The string buffer (scratch pad)
+
+```asm
+.comm _concat_buf, 65536    ; 64KB scratch buffer
+.comm _concat_off, 8        ; current write offset (reset per statement, to the frame base)
+```
+
+The string buffer (`_concat_buf`) is a 64KB scratch region used by all string operations — `itoa`, `ftoa`, `concat`, `strtolower`, `str_replace`, etc. Each operation writes its result at the current offset and advances the offset.
+
+**The buffer is reset at the start of every statement — to the frame's inherited base, not necessarily 0.** Strings in the buffer are temporary: they live only for the duration of one statement's evaluation, *plus* (for an argument passed into a call) the lifetime of the callee. See [Cross-call slice arguments](#cross-call-slice-arguments) below.
+
+### How it works
+
+Within a single statement like `echo strtolower("HELLO") . " " . $name;`:
+
+```
+_concat_buf:
+┌──────────┬──────────┬──────────────┬──────────────────┐
+│  "hello" │  " "     │  "hello Joe" │  (free space)    │
+└──────────┴──────────┴──────────────┴──────────────────┘
+ offset=0    offset=5   offset=6      _concat_off = 17
+```
+
+Each sub-expression writes its result further into the buffer. After the statement completes (echo writes to stdout), the next statement resets `_concat_off` back to the current frame's base offset (0 in `main`).
+
+### Cross-call slice arguments
+
+A string operation returns a *borrowed slice* into `_concat_buf` (a pointer + length), not a heap copy. When such a slice is passed **as an argument** to a function, method, or closure, the callee runs its own statements — and resetting `_concat_off` all the way to 0 would overwrite the caller's slice bytes before the callee could read them.
+
+To prevent that, each frame records, on entry, the `_concat_off` value it inherited from the caller (the high-water mark below which the caller's live slices sit). That value is the frame's **base**: per-statement resets restore `_concat_off` to the base rather than 0, so the callee's own concatenations append *above* the caller's slices instead of clobbering them. `main` (and other root contexts) have a base of 0, so their behaviour is unchanged. The cursor is also saved/restored around each nested call so the caller can keep concatenating after the call returns.
+
+A consequence is that `_concat_buf` usage grows with the depth of nested calls that are *holding live slice arguments* (each frame reserves its caller's region). In practice this depth is shallow; deeply recursive string builders that would accumulate are a separate, pre-existing compile-time limitation, so the 64KB budget is not a concern for ordinary code.
+
+### Copy-on-store
+
+When a string result is stored to a variable (e.g., `$x = "a" . "b";`), the codegen calls `__rt_str_persist` which copies the string from the concat buffer to the **heap**. This ensures:
+
+- **Variables always point to heap memory**, never into the scratch buffer
+- **The buffer can safely reset** without invalidating stored values
+- **Hash table keys** are also persisted to heap (via `str_persist`)
+
+### Implications
+
+- **Bounded usage.** Because the buffer resets each statement, only one statement's worth of string operations needs to fit in 64KB — plus the slice arguments held by any enclosing calls on the current stack (see [Cross-call slice arguments](#cross-call-slice-arguments)). For ordinary code this is comfortably within 64KB.
+- **No mutation.** You can't modify a string in place — you always create a new one.
+- **Scratch only.** The buffer is strictly temporary. Anything that needs to survive goes to the heap.
+
+## The heap
+
+```asm
+.comm _heap_buf, 8388608    ; 8MB buffer (configurable via --heap-size)
+.comm _heap_off, 8          ; current bump allocation offset
+.comm _heap_free_list, 8    ; head of the general free block linked list
+.comm _heap_small_bins, 32  ; 4 x 8-byte heads for <=8/16/32/64-byte cached blocks
+.comm _heap_debug_enabled, 8 ; heap-debug toggle
+.comm _gc_collecting, 8     ; cycle collector re-entry guard
+.comm _gc_release_suppressed, 8 ; suppress nested collection during deep free
+.comm _gc_allocs, 8         ; allocation counter
+.comm _gc_frees, 8          ; free counter
+.comm _gc_live, 8           ; current live heap footprint in bytes
+.comm _gc_peak, 8           ; heap high-water mark
+```
+
+The heap (`_heap_buf`) is an 8MB region (by default) for dynamically-sized data — arrays, hash tables, objects, and persisted strings. It uses a **free-list + bump hybrid allocator** with segregated small-block bins for the hottest tiny allocations.
+
+### How heap allocation works
+
+Every allocation has a **16-byte header**: two 32-bit fields for block size and reference count, followed by an 8-byte uniform heap-kind tag:
+
+```
+┌───────────┬────────────┬────────────┬──────────────────┐
+│ size (4B) │ refcnt (4B)│ kind (8B)  │  user data ...   │
+└───────────┴────────────┴────────────┴──────────────────┘
+       header (16 bytes total)          ← pointer returned to caller
+```
+
+The size is stored at header offset `+0`, the reference count at `+4`, and the heap kind tag at `+8`. New allocations start with refcount `1`; typed constructors then stamp the kind as `1=string`, `2=indexed array`, `3=assoc/hash`, `4=object`, `5=boxed mixed`, while raw helper buffers remain `0`. Generator frames are stamped as kind `4` object blocks because `Generator` is a built-in class with a custom payload layout. For array/hash containers, the low 16 bits of the kind word are persistent metadata: the low byte is still the heap kind, indexed arrays still pack their runtime `value_type` in the next byte, and bit 15 is reserved as the persistent copy-on-write container flag. Higher bits remain transient collector metadata.
+
+The runtime routine `__rt_heap_alloc`:
+
+1. **Probe the segregated small bins** — requests up to 64 bytes first check `_heap_small_bins` (`<=8`, `<=16`, `<=32`, `<=64`) and reuse a cached block from the smallest fitting class available.
+2. **Walk the general free list** — if no cached small block fits, check the address-ordered free list (first-fit). If a block with `size >= requested` is found, either unlink it whole or split it so the remainder stays on the free list, then reset the allocated block's refcount to 1 and return it.
+3. **Bump allocate** — if neither free path fits, allocate from the end of the heap: write size and refcount=1 to the header, advance `_heap_off`, return user pointer.
+4. **Bounds check** — if the bump would exceed `_heap_max`, print a fatal error and exit.
+
+Minimum allocation is 8 bytes (to fit the next pointer when the block is later freed).
+
+### How heap freeing works
+
+The runtime routine `__rt_heap_free`:
+
+1. Read the block size (32-bit) from the 16-byte header at `user_pointer - 16`
+2. If the block is exactly at the bump tail, shrink `_heap_off` immediately
+3. Otherwise, payloads up to 64 bytes are cached into one of four segregated small-bin heads (`<=8`, `<=16`, `<=32`, `<=64`) so later tiny allocations can reuse them without scanning the larger free list
+4. Larger non-tail blocks are inserted into the general free list in address order, merged with adjacent free neighbors, and repeatedly trim any now-free tail chain back into `_heap_off`
+5. Free blocks reuse the same 16-byte header, clear the kind back to `0`, and then store the next pointer immediately after it: `[size:4][refcnt:4][kind:8][next_ptr:8][...unused...]`
+
+The variant `__rt_heap_free_safe` validates that the pointer is within `_heap_buf` range before freeing — safe to call with garbage, null, or `.data` section pointers.
+
+### Heap debug mode
+
+Passing `--heap-debug` enables additional runtime verification without changing normal ownership behavior:
+
+- `__rt_heap_free` rejects duplicate insertion of the same block into the free list (`double free`)
+- `__rt_incref` / `__rt_decref_*` reject zero-refcount heap blocks before mutating them (`bad refcount`)
+- `__rt_heap_alloc` / `__rt_heap_free` validate the ordered free list plus the segregated small-bin chains and trap on out-of-range, overlapping, cyclic, mis-sized, or merely-adjacent free blocks (`free-list corruption`)
+- `__rt_heap_free` poisons freed payload bytes with `0xA5`, so stale raw reads stand out immediately in debug repros
+- process exit prints a heap-debug summary with alloc/free counts, live blocks, live bytes, a leak summary line, and the peak live-byte watermark
+
+When one of these checks trips, the program exits with a fatal heap-debug error instead of continuing with corrupted allocator state.
+
+### When memory is freed
+
+- **Variable reassignment**: when a heap-backed local/global/static slot is overwritten, codegen releases the previous owner through the appropriate runtime path (`__rt_heap_free_safe` for persisted strings, `__rt_decref_*` for refcounted arrays / hashes / objects)
+- **`unset()`**: releases the current heap-backed value before nulling the slot
+- **Targeted cycle collection**: when decref reaches a container/object graph that may only be keeping itself alive, `__rt_gc_collect_cycles` counts heap-only incoming edges, marks externally reachable blocks, and deep-frees the remaining unreachable array/hash/object island
+- **Generator frame release**: Generator frames are object-kind heap blocks, but their custom Mixed slots and active `yield from` delegate are released by a Generator-specific branch in object deep-free
+- **Object destructors (`__destruct`)**: at the top of `__rt_object_free_deep`, before any property payloads are released, `__rt_call_object_destructor` looks up the object's class in the class_id-indexed `_class_destruct_ptrs` table and, if the class (or an ancestor) declares `__destruct`, calls it with `$this` borrowed. A bit set in the refcount word marks destruction in progress so a balanced `$tmp = $this;` inside the body cannot re-enter the free path; object resurrection is intentionally not supported (the block is still freed). Classes without a destructor have a `0` table entry and pay only one load and branch
+- **Process exit**: all memory is reclaimed by the OS
+
+### Configurable heap size
+
+The default heap is 8MB. For programs that need more (or less), use:
+
+```bash
+elephc --heap-size=16777216 heavy.php    # 16MB heap
+elephc --gc-stats heavy.php              # print alloc/free counters to stderr
+elephc --heap-debug heavy.php            # enable runtime heap verification
+```
+
+The minimum is 64KB.
+
+## Array layout
+
+Arrays are heap-allocated with a 24-byte header followed by contiguous elements:
+
+```
+_heap_buf + offset:
+┌──────────┬──────────┬──────────┬──────┬──────┬──────┬─────┐
+│ length   │ capacity │ elem_sz  │ [0]  │ [1]  │ [2]  │ ... │
+│ (8 bytes)│ (8 bytes)│ (8 bytes)│      │      │      │     │
+└──────────┴──────────┴──────────┴──────┴──────┴──────┴─────┘
+ offset+0   offset+8   offset+16  offset+24  ...
+```
+
+| Field | Size | Description |
+|---|---|---|
+| `length` | 8 bytes | Current number of elements |
+| `capacity` | 8 bytes | Number of allocated slots |
+| `elem_size` | 8 bytes | Size per element: 8 (int) or 16 (string) |
+
+### Integer arrays
+
+Each element is 8 bytes (one `i64`):
+
+```
+Header (24 bytes) │ elem[0] (8B) │ elem[1] (8B) │ elem[2] (8B) │ ...
+```
+
+Access: `base + 24 + (index × 8)`
+
+### String arrays
+
+Each element is 16 bytes (pointer + length):
+
+```
+Header (24 bytes) │ ptr[0] (8B) │ len[0] (8B) │ ptr[1] (8B) │ len[1] (8B) │ ...
+```
+
+Access: `base + 24 + (index × 16)` for pointer, `base + 24 + (index × 16) + 8` for length
+
+### Array growth
+
+When `array_push` finds that `length >= capacity`, the array grows automatically:
+
+1. `__rt_array_grow` first runs `__rt_array_ensure_unique`, so shared arrays split before reallocation
+2. Allocates a new array with **2× capacity** (minimum 8)
+3. Copies the 24-byte header and all elements to the new array
+4. Frees the previous unique storage and returns the new array pointer
+
+The caller updates its stored pointer to the new array. This means arrays are truly dynamic — you can push unlimited elements (limited only by heap size). Direct indexed writes into empty arrays now also grow the backing storage and extend `length` to cover the highest written index.
+
+### Copy-on-write containers
+
+Indexed arrays and associative arrays now follow **shared-until-modified** semantics:
+
+1. Plain assignment or by-value argument passing shares the existing heap container and bumps its refcount
+2. The first mutating write runs `__rt_array_ensure_unique` or `__rt_hash_ensure_unique`
+3. If the refcount is already 1, the write proceeds in place
+4. If the refcount is greater than 1, the runtime clones the container structure, retains nested heap-backed children (or re-persists immutable strings/keys), decrements the mutator's old owner slot, rewrites the mutating owner to the clone, and only then performs the write
+
+This is what lets PHP-style code such as `$b = $a; $b[0] = 9;` leave `$a` unchanged without requiring deep copies on every assignment. Nested arrays and hashes remain shallow-shared until their own first mutation.
+
+## Hash table layout (associative arrays)
+
+Associative arrays use a separate heap-allocated structure: an open-addressing hash table for lookup plus an insertion-order linked list threaded through the entries.
+
+### Header (40 bytes)
+
+```
+┌──────────┬──────────┬──────────┬──────────┬──────────┐
+│  count   │ capacity │ val_type │   head   │   tail   │
+│ (8 bytes)│ (8 bytes)│ (8 bytes)│ (8 bytes)│ (8 bytes)│
+└──────────┴──────────┴──────────┴──────────┴──────────┘
+ offset+0   offset+8   offset+16  offset+24  offset+32
+```
+
+| Field | Size | Description |
+|---|---|---|
+| `count` | 8 bytes | Number of occupied entries |
+| `capacity` | 8 bytes | Total number of slots |
+| `val_type` | 8 bytes | Coarse value-type summary (0=int, 1=str, 2=float, 3=bool, 4=array, 5=assoc, 6=object, 7=mixed) |
+| `head` | 8 bytes | Slot index of the first inserted entry, or `-1` when empty |
+| `tail` | 8 bytes | Slot index of the most recently inserted entry, or `-1` when empty |
+
+### Entries (64 bytes each)
+
+Starting at offset +40, each slot is 64 bytes:
+
+```
+┌──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┬──────────┐
+│ occupied │ key_ptr  │ key_len  │ value_lo │ value_hi │ value_tag│   prev   │   next   │
+│ (8 bytes)│ (8 bytes)│ (8 bytes)│ (8 bytes)│ (8 bytes)│ (8 bytes)│ (8 bytes)│ (8 bytes)│
+└──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┴──────────┘
+```
+
+| Field | Description |
+|---|---|
+| `occupied` | 0 = empty, 1 = occupied, 2 = tombstone (deleted) |
+| `key_ptr` | String key pointer, or the integer key payload when `key_len == -1` |
+| `key_len` | String key length, or `-1` sentinel for integer keys |
+| `value_lo` | Value (integer) or value pointer (string) |
+| `value_hi` | String length (for string values), unused for single-word payloads |
+| `value_tag` | Authoritative per-entry runtime tag used by lookup, iteration, JSON, search, and GC |
+| `prev` | Previous inserted slot index, or `-1` for the head entry |
+| `next` | Next inserted slot index, or `-1` for the tail entry |
+
+### Hashing and collision resolution
+
+String keys are normalized before lookup or insertion: PHP integer-form numeric strings become integer keys, while leading-zero strings such as `"01"` remain string keys. String keys are hashed with **FNV-1a** (fast, good distribution for short strings); integer keys use a scalar integer mix. Collisions are resolved by **linear probing** — if slot `hash % capacity` is occupied, try `(hash + 1) % capacity`, and so on.
+
+Entry address: `base + 40 + (slot_index × 64)`
+
+### Iteration order
+
+Lookup still probes physical buckets, but iteration walks the `head -> next -> ... -> tail` chain. The header `val_type` is only a summary now; correctness-critical paths read each entry's `value_tag`. This preserves PHP insertion order across:
+
+- `foreach` on associative arrays
+- `array_keys()` and `array_values()`
+- `array_search()` / `in_array()` when duplicate values exist
+- `json_encode()` on associative arrays
+- Rehashing during growth and copy-on-write cloning
+
+### Comparison with indexed arrays
+
+| | Indexed array | Associative array |
+|---|---|---|
+| Header | 24 bytes | 40 bytes |
+| Element size | 8 or 16 bytes | 64 bytes (fixed) |
+| Access | O(1) by index | O(1) average by hash |
+| Iteration | Sequential | Insertion-order linked walk over occupied slots |
+| Keys | Implicit (0, 1, 2, ...) | Explicit strings |
+
+## Object layout
+
+Objects are heap-allocated with a fixed layout determined at compile time. Each object starts with an 8-byte class identifier, followed by 16 bytes per property across the full inheritance chain:
+
+```
+_heap_buf + offset:
+┌──────────┬──────────────────┬──────────────────┬─────┐
+│ class_id │   prop[0] (16B)  │   prop[1] (16B)  │ ... │
+│ (8 bytes)│                  │                  │     │
+└──────────┴──────────────────┴──────────────────┴─────┘
+ offset+0    offset+8           offset+24          ...
+```
+
+| Field | Size | Description |
+|---|---|---|
+| `class_id` | 8 bytes | Identifies which class this object belongs to |
+| `prop[n]` | 16 bytes | Property value (16 bytes regardless of type, for uniform offsets) |
+
+Total object size: `8 + (num_properties × 16)`
+
+Property access is O(1) — the compiler resolves each property's final inherited offset at compile time and emits a direct load/store at that offset. No runtime lookup or hash table is needed.
+
+Unlike arrays, objects are not resizable. The number of properties is fixed by the class declaration. Properties are stored in parent-first order, then by the child class's own declarations.
+
+## Generator frame layout
+
+`Generator` objects are heap-allocated object-kind blocks with a fixed custom header, followed by generator-specific parameter/local slots. The first word is still a class id, so ordinary `instanceof Generator` and `Iterator` checks work, but the rest of the payload is interpreted by the generated resume function and `__rt_gen_*` runtime helpers rather than by property metadata.
+
+```
+Offset  Size  Field
+  0      8    class_id
+  8      8    resume_fn_ptr
+ 16      4    state_idx
+ 20      4    flags (bit 0 = rewound, bit 1 = terminated)
+ 24      8    auto_key_counter
+ 32      8    last_key boxed Mixed pointer
+ 40      8    last_value boxed Mixed pointer
+ 48      8    return_value boxed Mixed pointer
+ 56      8    sent_value boxed Mixed pointer
+ 64      8    delegated_iter pointer used by `yield from`
+ 72      8    layout_id
+ 80      ...  parameter and local slots, 8 bytes each
+```
+
+The Mixed fields own boxed cells while present. When a generator frame is released, object deep-free detects `_generator_class_id` and releases `last_key`, `last_value`, `return_value`, `sent_value`, and any active delegated iterator through the same refcounted runtime paths used elsewhere.
+
+## The data section
+
+String literals and float constants are embedded directly in the binary:
+
+```asm
+.data
+_str_0: .ascii "Hello, world!\n"
+_str_1: .ascii "Error: "
+.align 3
+_float_0: .quad 0x400921FB54442D18    ; 3.14159...
+_float_1: .quad 0x4000000000000000    ; 2.0
+```
+
+- Strings are stored as raw bytes (no null terminator — length is known at compile time)
+- Floats are stored as 64-bit IEEE 754 bit patterns
+- Identical literals are deduplicated (two `"hello"` in source = one `_str_0` in binary)
+
+These are **read-only** — the program never modifies them. When a string operation needs to work with a literal, it reads from the data section and writes the result to the [string buffer](#the-string-buffer).
+
+The runtime data layer is split into fixed shared data, user-program data, and dynamic `instanceof` lookup formatting under `src/codegen/runtime/data/`. Together they emit these static data tables:
+- `_fmt_g` — printf format string for float-to-string conversion (`%.14G`)
+- `_b64_encode_tbl` — 64-byte Base64 encoding lookup table
+- `_b64_decode_tbl` — 256-byte Base64 decoding lookup table
+- `_spl_autoload_exts_default`, `_spl_autoload_exts_ptr`, `_spl_autoload_exts_len` — mutable SPL autoload extension state
+- `_heap_err_msg`, `_arr_cap_err_msg`, `_ptr_null_err_msg` — fatal runtime error strings
+- `_buffer_bounds_msg`, `_buffer_uaf_msg`, `_match_unhandled_msg`, `_static_prop_private_access_msg`, `_instanceof_target_type_msg`, `_iterable_unsupported_kind_msg` — fatal runtime error strings for buffers, `match`, late-bound private static-property access, dynamic `instanceof` target validation, and iterable dispatch
+- `_fiber_msg_*` — Fiber state-error message strings used when constructing `FiberError`
+- `_rt_diag_suppression`, `_diag_fopen_failed_msg`, `_diag_file_get_contents_failed_msg`, `_diag_define_already_defined_msg` — runtime warning suppression depth and warning strings used by `@`
+- `_resource_id_prefix` — prefix used by resource display helpers
+- `_php_uname_mode_len_msg`, `_php_uname_mode_value_msg` — fatal `php_uname()` diagnostics for invalid mode arguments
+- `_filetype_*`, `_stat_key_*`, `_dirname_*`, `_pathinfo_key_*`, `_tmpfile_template` — file metadata, path, stat-array, and temporary-file lookup strings used by I/O helpers
+- `_locale_utf8_name`, `_locale_env_name` — locale selectors used by runtime helpers that need host locale fallback
+- `_json_true`, `_json_false`, `_json_null` — JSON keyword strings (4, 5, and 4 bytes) used by `json_encode` for boolean and null values
+- `_json_int_max_str`, `_json_int_min_str` — decimal threshold strings used by `JSON_BIGINT_AS_STRING`
+- `_json_err_msg_0` ... `_json_err_msg_10`, `_json_err_msg_table`, `_json_err_msg_count`, `_json_err_loc_prefix`, `_json_err_loc_colon` — `json_last_error_msg()` message lookup data and decode-location suffix fragments
+- `_day_names` — 84-byte table (7 entries x 12 bytes each) with day names, lengths, and padding. Used by `date()` for day-of-week formatting
+- `_month_names` — 144-byte table (12 entries x 12 bytes each) with month names, lengths, and padding. Used by `date()` for month formatting
+- `_strtotime_keyword_tab`, `_strtotime_unit_tab` — keyword, weekday, modifier, and unit lookup tables used by `strtotime()`
+- `_instanceof_target_count`, `_instanceof_target_entries`, `_instanceof_name_*` — case-insensitive class/interface name metadata for dynamic `instanceof` string targets, including leading-backslash aliases
+- `_generator_class_id` — per-program class id used to recognize Generator frames during object deep-free
+- `_json_exception_class_id`, `_stdclass_class_id` — per-program class ids used by JSON throw paths and stdClass dynamic-property helpers
+- `_class_gc_desc_count`, `_class_gc_desc_ptrs`, `_class_gc_desc_<id>` — per-class property traversal descriptors used by object deep-free and cycle collection
+- `_class_json_desc_ptrs`, `_class_json_desc_<id>`, `_class_json_pname_<id>_<slot>` — per-class JSON descriptors used by object encoding and JsonSerializable dispatch
+- `_class_attribute_count`, `_class_attribute_ptrs`, `_class_attributes_<id>` — per-class PHP attribute metadata emitted from `ClassInfo`; current helper and Reflection APIs materialize supported static lookups during codegen instead of performing dynamic runtime class/member lookup
+- `_class_vtable_ptrs`, `_class_vtable_<id>` — per-class virtual tables used for inherited instance-method dispatch
+- `_class_static_vtable_ptrs`, `_class_static_vtable_<id>` — per-class static-method tables used for late static binding
+- `_class_destruct_ptrs` — class_id-indexed `__destruct` method pointers (or `0`) consulted during object deep-free
+- `_classes_by_name`, `_classes_by_name_count` — case-insensitive class-name lookup table used by `new $variable()` instantiation
+- enum-case `.comm` symbols produced via `enum_case_symbol(...)` — one 8-byte singleton storage slot per declared enum case
+
+### Global variables
+
+Two 8-byte BSS slots store the program's command-line arguments:
+
+```asm
+.comm _global_argc, 8       ; saved argc from OS
+.comm _global_argv, 8       ; saved argv pointer from OS
+```
+
+These are written once in `_main` (from the OS-provided `x0` and `x1`) and read by the `__rt_build_argv` routine to construct `$argv`.
+
+### User global variables (`global $var`)
+
+When a function uses `global $var`, the compiler allocates BSS storage for that variable:
+
+```asm
+.comm _gvar_x, 16, 3        ; 16 bytes for global $x (enough for string ptr+len or int/float)
+.comm _gvar_y, 16, 3        ; 16 bytes for global $y
+```
+
+Each global variable gets 16 bytes of BSS storage (enough to hold any PHP value). The `_main` scope writes to these slots when assigning to variables that any function declares as `global`, and functions read/write through these slots instead of using local stack slots.
+
+### Enum case singleton storage
+
+User-defined enums also contribute BSS storage. During `emit_runtime_data_user()`, the compiler emits one 8-byte `.comm` symbol per declared case, using the mangled name from `enum_case_symbol(...)`.
+
+These slots let enum cases behave like stable singleton values at runtime: codegen can load the canonical case address directly, and helper paths such as `Enum::from()` can compare or return those canonical case objects without constructing ad-hoc heap values.
+
+### Static variables (`static $var`)
+
+Static variables persist their value across calls to the same function. Each static variable gets two BSS allocations:
+
+```asm
+.comm _static_counter_count, 16, 3    ; 16 bytes for the persisted value
+.comm _static_counter_count_init, 8, 3 ; 8-byte init flag (0 = uninitialized)
+```
+
+The naming pattern is `_static_FUNCNAME_VARNAME`. The init flag ensures the initial value expression is evaluated only on the first call. At function epilogue, variables marked as static are saved back to their BSS storage.
+
+### Static properties (`ClassName::$prop`)
+
+Static properties are class-scoped storage rather than object fields. During `emit_runtime_data_user()`, each effective declaring class property gets one 16-byte BSS slot:
+
+```asm
+.comm _static_prop_Counter_count, 16, 3 ; 16 bytes for Counter::$count
+```
+
+The naming pattern comes from `static_property_symbol(...)`. Inherited static properties point back to the declaring class slot, so `Base::$count` and `Child::$count` share storage when the property is declared only on `Base`. When a subclass redeclares the static property, that subclass receives its own slot and `static::$count` dispatches to it through the called-class id at runtime. `_main` evaluates static-property defaults before user statements run, and later reads/writes load from or store to the resolved slot directly.
+
+## Memory limits and trade-offs
+
+| Resource | Size | What happens when full |
+|---|---|---|
+| Stack | OS default (~8MB) | Stack overflow (crash) |
+| String buffer | 64KB | Resets each statement — effectively unlimited |
+| Heap | 8MB (configurable) | Fatal error: "heap memory exhausted" |
+| Heap metadata | `_heap_off`, `_heap_free_list`, `_heap_small_bins`, `_heap_debug_enabled`, `_gc_*` flags/counters = 104 bytes total | Fixed-size bookkeeping, not user-visible |
+| Exception state | `_exc_handler_top`, `_exc_call_frame_top`, `_exc_value` = 24 bytes total | Fixed-size setjmp/longjmp handler and thrown-value bookkeeping |
+| Fiber scheduler state | `_fiber_current`, `_fiber_main_saved_sp`, `_fiber_main_saved_exc`, `_fiber_main_saved_call_frame` = 32 bytes total | Fixed-size current-fiber and main-frame resume bookkeeping |
+| Runtime diagnostics | `_rt_diag_suppression` = 8 bytes total | Fixed-size warning-suppression depth used by `@` and exception unwinding |
+| JSON state | `_json_last_error`, `_json_active_flags`, `_json_active_depth`, `_json_indent_depth`, `_json_depth_limit`, `_json_validate_idx`, `_json_validate_ptr`, `_json_validate_len`, `_json_decode_assoc`, `_json_error_source_ptr`, `_json_error_location_active`, `_json_error_line`, `_json_error_column` = 104 bytes total | Fixed-size bookkeeping for JSON calls and decode error locations |
+| CLI globals | `_global_argc`, `_global_argv` = 16 bytes total | Fixed-size bookkeeping |
+| User globals | 16 bytes per `global $var` slot | Grows with number of referenced globals |
+| Static vars | 24 bytes per `static $var` (`16 + 8 init flag`) | Grows with number of declared static locals |
+| Static properties | 16 bytes per effective declaring class static property | Grows with number of declared and redeclared static properties |
+| Array capacity | Fixed at creation until grow/re-hash logic runs | Fatal error: "array capacity exceeded" if a hard limit is hit |
+| C-string buffers | `_cstr_buf`, `_cstr_buf2` = 4KB each, `_empty_str` = 1 byte | Long converted paths/strings are truncated to buffer size; `_empty_str` is a safe zero-length string pointer |
+| File descriptor state | `_eof_flags`, `_stream_read_filters`, `_stream_write_filters` = 256 bytes each; `_popen_files`, `_dir_handles`, `_glob_handles`, `_zstream_handles`, `_bzstream_handles`, `_iconv_handles`, `_tls_sessions`, `_stream_chunk_size` = 2048 bytes each | Per-fd stream, process, directory, compression, iconv, TLS, and chunk-size bookkeeping for up to 256 descriptors |
+| Stream filter scratch | `_stream_filter_buf`, `_stream_grow_scratch` = 64KB each | Scratch space for stream filters, including length-growing filters such as base64 and quoted-printable encoders |
+| Stream context and callbacks | `_stream_context_options`, `_stream_notification_callback`, `_stream_connect_host`, `_stream_open_opened_path_scratch`, `_url_stat_matched` | Current stream-context options hash, notification callback, TLS peer host, wrapper opened-path scratch, and wrapper url_stat match flag |
+| TLS and crypto function slots | `_elephc_tls_*_fn`, `_zlib_*_fn`, `_bz2_*_fn`, `_phar_zlib_*_fn`, `_phar_bz2_*_fn`, `_iconv_*_fn`, `_elephc_crypto_*_fn` = 8 bytes per slot | Late-bound function pointers so programs only link optional TLS/compression/iconv/crypto support when a call site publishes the symbol |
+| HTTP/HTTPS/FTP buffers | `_http_resp_buf`, `_https_resp_buf`, `_user_wrapper_drain_buf`, `_phar_write_out` = 1MB each; `_http_req_scratch` = 8KB; `_http_redirect_path_buf`, `_fgc_url_retr` = 2KB each; `_fgc_url_addr`, `_fsockopen_addr` = 512 bytes each; `_ftp_resp_buf` = 4KB; `_ftp_data_addr`, `_ftp_cmd_scratch` = 64 bytes each | Protocol-specific response, request, redirect, FTP, wrapper, and PHAR writer scratch buffers |
+| HTTP active context | `_http_active_ignore_errors`, `_http_active_max_redirects`, `_http_active_timeout_seconds`, `_http_active_proxy_ptr`, `_http_active_proxy_len`, `_http_active_host_ptr`, `_http_active_host_len`, `_http_redirect_path_len` | Fixed-size state shared between HTTP request construction and redirect/open helpers |
+| Socket address scratch | `_recvfrom_addr_ptr`, `_recvfrom_addr_len`, `_accept_peer_ptr`, `_accept_peer_len` = 8 bytes each | Stores peer/address strings returned through by-reference socket parameters |
+| Protocol/service lookup buffers | `_protoent_buf` = 32KB, `_servent_buf` = 1MB | Scratch buffers for protocol and service database lookups |
+| Principal lookup buffers | `_principal_lookup_buf` = 4KB, `_etc_passwd_path`, `_etc_group_path`, `_principal_lookup_read_mode` | Scratch line buffer and fixed literals for `/etc/passwd` / `/etc/group` scans used by `chown()` / `chgrp()` string-name resolution without NSS |
+| User wrapper and filter registries | `_user_wrappers`, `_user_wrapper_handles` = 2048 bytes each; `_user_filter_registry`, `_user_filter_instances` = 4096 bytes each | Registered stream wrappers, active wrapper handles, user filter definitions, and attached filter instances |
+| PHAR writer state | `_phar_write_len`, `_phar_write_tpl_len`, `_phar_write_path_ptr`, `_phar_write_path_len`, `_phar_write_entry_ptr`, `_phar_write_entry_len`, `_phar_write_url_ptr`, `_phar_write_url_len` = 8 bytes each | State paired with the 1MB `_phar_write_out` archive buffer |
+| Data section | No fixed limit | Grows with number of unique literals |
+
+## Memory management strategy
+
+elephc uses a **free-list allocator with reference counting plus a targeted cycle collector** — not pure bump-allocation, and not a whole-heap tracing runtime either. Memory is reclaimed in specific situations:
+
+1. **Reference counting** — every heap allocation carries a 32-bit refcount (initialized to 1). When a reference is shared, `__rt_incref` increments it. When a reference is dropped, `__rt_decref_array`, `__rt_decref_hash`, or `__rt_decref_object` decrements it and frees the block when it reaches zero
+2. **Copy-on-write splitting for arrays/hashes** — plain assignment still shares container storage, but the first mutating write clones a shared container before modifying it
+3. **Codegen ownership tracking** — locals, globals, statics, `foreach` variables, `list(...)` targets, and call arguments are classified as owned or borrowed at compile time so new owners retain borrowed heap values before storing them
+4. **Variable reassignment** — when `$x = "new value"` overwrites a string or array, the old heap block is freed or decreffed and returned to the allocator for reuse
+5. **`unset($x)`** — explicitly frees the variable's heap allocation
+6. **FFI string-call cleanup** — temporary C strings created for `extern function foo(string $s)` calls are released immediately after the native call returns
+7. **String buffer reset** — the concat buffer resets at each statement, with strings that need to survive copied to heap via `__rt_str_persist`
+8. **Stack memory** — automatically reclaimed when functions return
+9. **Generator frame release** — Generator frames participate in object refcounting, with a custom deep-free branch for their frame slots and delegated iterator
+10. **Resource scope-cleanup** — Mixed-boxed resources (tag 9) carry a resource-kind subtype in the high payload word, and `__rt_mixed_free_deep` runs the matching destructor when the box is released: kind 1 = native stream fd (`close()`), kind 2 = HashContext handle (`elephc_crypto_free` through `__rt_hash_ctx_free`), kind 3 = `popen` pipe (`__rt_pclose`, which closes the `FILE*` and reaps the child), kind 4 = `opendir` stream (`__rt_closedir`). Kind 0 resources (generic resources) are skipped, and every fd-backed kind also skips handles `>= 0x40000000` — synthetic wrapper handles and the `-1` sentinel that an explicit `fclose`/`pclose`/`closedir` stamps into the box so the descriptor is never released twice (even if its fd number was reused). Alias safety comes from the Mixed box refcount — `$b = $a` increfs the box, so only the last release triggers the destructor
+11. **Process exit** — all memory reclaimed by the OS
+
+### What is NOT freed
+
+- **Non-adjacent free blocks** are still not compacted — fragmentation can still occur over time even though adjacent neighbors are coalesced on free and oversized free blocks are split on allocation
+- **Pointer targets** are not ownership-tracked just because a raw pointer exists; the pointer value itself is only an address
+- **Intermediate scratch strings** in `_concat_buf` are not individually freed — the buffer is simply reset per statement
+- **General function epilogues** do not blanket-decref all heap locals. They now selectively clean up slots proven `Owned`, and exhaustive `if` / `elseif` / `else` branches can restore that cleanup when every fallthrough branch directly assigns the same heap-backed type to the same local. More dynamic borrowed/control-flow paths still remain excluded on purpose
+- **Container-copying builtins** no longer blindly duplicate borrowed heap handles for common nested payload paths: refcounted runtime variants now retain values before new arrays/hash tables take ownership (`array` literals with spreads, `array_merge`, `array_chunk`, `array_slice`, `array_reverse`, `array_pad`, `array_unique`, `array_splice`, `array_diff`, `array_intersect`, `array_filter`, `array_fill`, `array_combine`, `array_fill_keys`)
+- **Regression coverage now explicitly exercises** local aliases, borrowed nested-container returns, `Owned`/`Borrowed` control-flow merges, and scope-exit paths so future ownership work has focused tripwires instead of relying only on large end-to-end suites
+- **Raw/off-heap ownership cycles** are still outside the collector. `ptr` values, extern-managed buffers, and raw helper allocations (`kind=0`) are not traversed just because an address exists somewhere
+- **Kind-0 resources** (generic/unknown resource kind, including synthetic user-wrapper handles `>= 0x40000000`) are not auto-freed by the Mixed deep-free path — their lifecycle remains managed by the wrapper layer or the user's explicit `close()` call. Kinds 1–4 (native stream fd, HashContext, `popen` pipe, `opendir` stream) are auto-released at scope exit
+- **HashContext reuse after `hash_final()`** is memory-safe but not PHP-equivalent: `elephc_crypto_final` finalizes a *clone* and leaves the original handle live and owned by its Mixed box, so the box's kind-2 destructor frees it exactly once. A second `hash_final()` or a `hash_update()`/`hash_copy()` on the same handle therefore does not double-free or use-after-free (where PHP throws "Supplied resource is not a valid Hash Context resource"), it simply keeps hashing the still-live context (documented in `src/codegen/runtime/strings/hash_context.rs`)
+
+### Targeted cycle collection
+
+The runtime now includes a targeted collector for heap-backed `array`, associative-array/hash, and `object` graphs:
+
+- the allocator header carries a uniform heap-kind tag (`raw`, `string`, `array`, `hash`, `object`, `boxed mixed`)
+- indexed arrays pack their runtime `value_type` into the same kind word so the collector knows whether their elements can contain nested heap pointers
+- objects record runtime property tags/metadata, with `_class_gc_desc_*` tables as a compile-time fallback for property traversal; Generator frames are object-kind blocks with a custom deep-free branch keyed by `_generator_class_id`
+- mixed release paths use `__rt_decref_any`, so deep-free and GC walks can release nested strings/arrays/hashes/objects through one uniform dispatcher
+
+`__rt_gc_collect_cycles` is intentionally narrower than a full tracing GC: it ignores strings and raw helper buffers, clears transient metadata, counts heap-only incoming edges, marks externally reachable container/object blocks, then frees the unmarked remainder with deep-release helpers. That keeps the collector focused on the structural leak class that plain refcounting cannot solve without turning the whole runtime into a moving or stop-the-world heap.
+
+### Performance characteristics
+
+For a loop like `for ($i = 0; $i < 1000; $i++) { $s .= "x"; }`:
+- Each iteration frees the old `$s` and allocates a new one
+- Old blocks go to the free list, new blocks come from bump allocation (growing size)
+- Net heap usage is O(N) for the final string, not O(N²)
+- With 8MB heap, this handles thousands of iterations comfortably
