@@ -5115,181 +5115,181 @@
       "sourcePath": "docs/php/builtins/date/date.md",
       "targetPath": "content/docs/php/builtins/date/date.md",
       "sourceHash": "sha256:eab7a1665b2aa40339886d78b65eab1cc769b10ef8dbf2d79a85a95a5710446f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/date",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/getdate.md",
       "targetPath": "content/docs/php/builtins/date/getdate.md",
       "sourceHash": "sha256:2eba64ea3b2e591b7b76fd13d2c04d74ec018ff2ae4ae13e988067fabe92a844",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/getdate",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/gmdate.md",
       "targetPath": "content/docs/php/builtins/date/gmdate.md",
       "sourceHash": "sha256:4bc5552236f4e636df762db7bf90e42a0b5bac910f167d765ad16fae36f3f837",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/gmdate",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/gmmktime.md",
       "targetPath": "content/docs/php/builtins/date/gmmktime.md",
       "sourceHash": "sha256:5bc050202242a10f231216920ce4a66b3433764dcca5257849e90e8ce2ec1556",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/gmmktime",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/hrtime.md",
       "targetPath": "content/docs/php/builtins/date/hrtime.md",
       "sourceHash": "sha256:18eedeaf7ecf992f40165c3c22549b6c1e9353bf66bf7b2df0af90543fd2cfcb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/hrtime",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/localtime.md",
       "targetPath": "content/docs/php/builtins/date/localtime.md",
       "sourceHash": "sha256:49ea6ce8d645803f15e8dd348f634696fd56058d42de0d8018c17442653c9a9b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/localtime",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/microtime.md",
       "targetPath": "content/docs/php/builtins/date/microtime.md",
       "sourceHash": "sha256:d6ba28cac7e5a74ccc31ae5126a478215129420b12db1b06c2d87e6a3ccae476",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/microtime",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/mktime.md",
       "targetPath": "content/docs/php/builtins/date/mktime.md",
       "sourceHash": "sha256:a44fbc473c61c499065c20da6e33691430073c6a852769a06852a5a87fc638f5",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/mktime",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/strtotime.md",
       "targetPath": "content/docs/php/builtins/date/strtotime.md",
       "sourceHash": "sha256:da53e24436e266b777485ceee5ae8543ac5fe4a7ca567147bbe4c5e94a804f22",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/strtotime",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/time.md",
       "targetPath": "content/docs/php/builtins/date/time.md",
       "sourceHash": "sha256:285be97a16ebcca8bc6e88bceb66ac2287f0c825d6668a0b095ee143c112ad6f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/time",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem.md",
       "targetPath": "content/docs/php/builtins/filesystem.md",
       "sourceHash": "sha256:3a80ec5ccfabfbe6575583c37e1bef21ff6f3c55778c4193863c802232eb8988",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/filesystem",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem/basename.md",
       "targetPath": "content/docs/php/builtins/filesystem/basename.md",
       "sourceHash": "sha256:09241e5c4c43699c798da0af8f7f0b5732c5f0af9f8c1d1228591717389cfa05",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/filesystem/basename",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem/chdir.md",
       "targetPath": "content/docs/php/builtins/filesystem/chdir.md",
       "sourceHash": "sha256:7c1c0788e04487276075f7b82f08395c3ed9d8d2a197131b4fc384f7154ed0ef",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/filesystem/chdir",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem/chgrp.md",
       "targetPath": "content/docs/php/builtins/filesystem/chgrp.md",
       "sourceHash": "sha256:e975758fcbd4fad48cc19f0a9226c6616e78ebd163e51e75f0af1fb56b0f7f38",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/filesystem/chgrp",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem/chmod.md",
       "targetPath": "content/docs/php/builtins/filesystem/chmod.md",
       "sourceHash": "sha256:05e4cc381e039f5689d3bfa2c9b0e60e5ad89c23556469ddc2f6c5141caf9a3b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/filesystem/chmod",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem/chown.md",
       "targetPath": "content/docs/php/builtins/filesystem/chown.md",
       "sourceHash": "sha256:651a638f5574fe29708f68b075b2a7de1d9f668a003353eb2646aeafa7b8a683",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/filesystem/chown",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem/clearstatcache.md",
       "targetPath": "content/docs/php/builtins/filesystem/clearstatcache.md",
       "sourceHash": "sha256:39ee2c4e3b3ee58e51da4766fee5c92454ee9b885f1d12430d1f3dafc89e87c4",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/filesystem/clearstatcache",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem/copy.md",
       "targetPath": "content/docs/php/builtins/filesystem/copy.md",
       "sourceHash": "sha256:970b1490ff65d906fc623f5ad111d889074ecd37d7fda36632fd78efd8c864bc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/filesystem/copy",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem/dirname.md",
       "targetPath": "content/docs/php/builtins/filesystem/dirname.md",
       "sourceHash": "sha256:97ffa45c69e19f8ed6fa0f3145203a4f69a71b246c96f2cacf54a91a2736fcd7",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/filesystem/dirname",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem/disk_free_space.md",
       "targetPath": "content/docs/php/builtins/filesystem/disk_free_space.md",
       "sourceHash": "sha256:c5d6d72f9aa8b8eaeed27f0319cac6f40b659bcff1db14b1e507d3b18f7425d0",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:36:14.550Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/filesystem/disk_free_space",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/filesystem/disk_total_space.md",
