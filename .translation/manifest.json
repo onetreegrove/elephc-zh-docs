@@ -615,181 +615,181 @@
       "sourcePath": "docs/internals/builtins/array/array_push.md",
       "targetPath": "content/docs/internals/builtins/array/array_push.md",
       "sourceHash": "sha256:e19613aaa46b79e8a4653b21be098d4ccc2db3ac928509346970ae4f16213370",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_push",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_rand.md",
       "targetPath": "content/docs/internals/builtins/array/array_rand.md",
       "sourceHash": "sha256:83e5484c07c8ab9538930ca8fb47a9c071256f56e58a98bfc86be1cf4eef4c32",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_rand",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_reduce.md",
       "targetPath": "content/docs/internals/builtins/array/array_reduce.md",
       "sourceHash": "sha256:1d0d509ee486143c544e860fbf6434bad928dd6336cacd8e65b8f6a699551d8a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_reduce",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_replace_recursive.md",
       "targetPath": "content/docs/internals/builtins/array/array_replace_recursive.md",
       "sourceHash": "sha256:3f4dc1f1bdc8a234bb4d64c33d1212f0030b92892f28548fed00a9be694d6d0b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_replace_recursive",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_replace.md",
       "targetPath": "content/docs/internals/builtins/array/array_replace.md",
       "sourceHash": "sha256:2eb150f141ceea8207f5eae2fa4e58750d19d6e08f77dd6f0339502417a0a0b2",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_replace",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_reverse.md",
       "targetPath": "content/docs/internals/builtins/array/array_reverse.md",
       "sourceHash": "sha256:bc547587f59d851d479421aa909e6f8d39c219528f3cab2c019a997318a00eeb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_reverse",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_search.md",
       "targetPath": "content/docs/internals/builtins/array/array_search.md",
       "sourceHash": "sha256:3bcfcf7b82843a2348c34fab5a2a83a16f7c08753412801157f6ccabd8ea85fb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_search",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_shift.md",
       "targetPath": "content/docs/internals/builtins/array/array_shift.md",
       "sourceHash": "sha256:e972f85522f8fb68e1cdf6752fd027cd895d9510fc17b6765c3a5685dad861ba",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_shift",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_slice.md",
       "targetPath": "content/docs/internals/builtins/array/array_slice.md",
       "sourceHash": "sha256:6d5a6c1a24f0b40c820715d972ea8b1b4cd046552ffe7a95559c3927cf507afd",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_slice",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_splice.md",
       "targetPath": "content/docs/internals/builtins/array/array_splice.md",
       "sourceHash": "sha256:de9dfaed2295b52db1f59a62ab4946f7f53aceb85875698ac0a7cd0cb7f827ab",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_splice",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_sum.md",
       "targetPath": "content/docs/internals/builtins/array/array_sum.md",
       "sourceHash": "sha256:c6e89e4095b9195d1e57cab39f9c60c7acf52aa9e26dc2c45e8b9ee44113c9ed",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_sum",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_udiff.md",
       "targetPath": "content/docs/internals/builtins/array/array_udiff.md",
       "sourceHash": "sha256:2f75bb7b143f13db80c25220e36e54ced13c506d80d750c0e88e43c34ed0b585",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_udiff",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_uintersect.md",
       "targetPath": "content/docs/internals/builtins/array/array_uintersect.md",
       "sourceHash": "sha256:7ee446e4d27d7b5f53cd0ddffcbe65f9807a73ef9637c25ef8d34a32772c994b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_uintersect",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_unique.md",
       "targetPath": "content/docs/internals/builtins/array/array_unique.md",
       "sourceHash": "sha256:33c0135f3c594d9de536a9b197d927f7411e559769ab0b621e1ad4d70208f3e1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_unique",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_unshift.md",
       "targetPath": "content/docs/internals/builtins/array/array_unshift.md",
       "sourceHash": "sha256:e3d1cd99a89f6763520283bd8a552ad16a952c423fff8afcd7e734eb80c92c80",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_unshift",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_values.md",
       "targetPath": "content/docs/internals/builtins/array/array_values.md",
       "sourceHash": "sha256:784678e0ca70fdd791f719bb62a89704eca9187ad1ac8c14add50b9d5adf7160",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_values",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_walk_recursive.md",
       "targetPath": "content/docs/internals/builtins/array/array_walk_recursive.md",
       "sourceHash": "sha256:e1987d547910a64bc4c3389b96a1b200ba2981fe63980c4d49938b7f9015f351",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_walk_recursive",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/array_walk.md",
       "targetPath": "content/docs/internals/builtins/array/array_walk.md",
       "sourceHash": "sha256:59dbe76b673ba42af940060671194a8cae0d5aff2f37539d2c1819c71268c7ca",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/array_walk",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/arsort.md",
       "targetPath": "content/docs/internals/builtins/array/arsort.md",
       "sourceHash": "sha256:d9ae6e6d7a93d573cd53b12d9693ddc798264a10b4150385683f6d0512ba69d8",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/arsort",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/asort.md",
       "targetPath": "content/docs/internals/builtins/array/asort.md",
       "sourceHash": "sha256:29b94b6b7c173ff0f9708a42240af1f8197103764eea6429e2290e5f11aa5762",
-      "translatedAt": "",
+      "translatedAt": "2026-07-02T08:01:11.800Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/array/asort",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/array/count.md",
