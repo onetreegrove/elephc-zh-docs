@@ -2595,181 +2595,181 @@
       "sourcePath": "docs/internals/builtins/math/is_finite.md",
       "targetPath": "content/docs/internals/builtins/math/is_finite.md",
       "sourceHash": "sha256:323c735114038b3e3c357e85f9f49407932818959e1b132cf0b966888c8db3b1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/is_finite",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/is_infinite.md",
       "targetPath": "content/docs/internals/builtins/math/is_infinite.md",
       "sourceHash": "sha256:9ba4684f009dcf3e663b82ffa4da6e19be4d5ba1632e8a17c95e681e3d6e2959",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/is_infinite",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/is_nan.md",
       "targetPath": "content/docs/internals/builtins/math/is_nan.md",
       "sourceHash": "sha256:159468c58e5417b4b4cc7f6e85afd1fd02a1da2c4c8cc158f8523ad09819c9f3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/is_nan",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/log.md",
       "targetPath": "content/docs/internals/builtins/math/log.md",
       "sourceHash": "sha256:a9a715b819c5411afcde301a1f3d807ad555d2c6981f520749a7ee2bbb3ea9a0",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/log",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/log10.md",
       "targetPath": "content/docs/internals/builtins/math/log10.md",
       "sourceHash": "sha256:e0cf656957461d3f2318d94c674c5c0461bcc41c79b1a19b53fe3316c6637d66",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/log10",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/log2.md",
       "targetPath": "content/docs/internals/builtins/math/log2.md",
       "sourceHash": "sha256:48a438e9e5a94ffdda540ab7eb66700a05681c88c966a17e27818d24b5cfc795",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/log2",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/max.md",
       "targetPath": "content/docs/internals/builtins/math/max.md",
       "sourceHash": "sha256:2119d6cb0dd00802ca300adfb8f8690fe4062db370cbb783b5b4fdae476fa86d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/max",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/min.md",
       "targetPath": "content/docs/internals/builtins/math/min.md",
       "sourceHash": "sha256:9d8ec9d01592ce6fb6a23b364c72881fafd5ce43dc501530060d9539295aca01",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/min",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/mt_rand.md",
       "targetPath": "content/docs/internals/builtins/math/mt_rand.md",
       "sourceHash": "sha256:50e24e5364e2906cc1745d3408cfb69fa475118cc80aaa4f0ad2437ed0a9ebcb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/mt_rand",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/pi.md",
       "targetPath": "content/docs/internals/builtins/math/pi.md",
       "sourceHash": "sha256:baeb5860ccfb7d3a6a6b396aa7f6e6fd5d179faf1db5aeec5d17ed94ae39ca96",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/pi",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/pow.md",
       "targetPath": "content/docs/internals/builtins/math/pow.md",
       "sourceHash": "sha256:e83217b920aec52c901f26b6bdd8d5646d40a706daaef2f9caee38275d4b6ed3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/pow",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/rad2deg.md",
       "targetPath": "content/docs/internals/builtins/math/rad2deg.md",
       "sourceHash": "sha256:fec4bdf7efe2840cc212e4ee4704000f9c4c17daa5f3b6b1dd8f66484608bb97",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/rad2deg",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/rand.md",
       "targetPath": "content/docs/internals/builtins/math/rand.md",
       "sourceHash": "sha256:af956f61ce6d66cc8223639e3d3c598cdd1513e825c99c0add5684d76e858a21",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/rand",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/random_int.md",
       "targetPath": "content/docs/internals/builtins/math/random_int.md",
       "sourceHash": "sha256:ed8f86d0e38d8c4f8a99b9ae9bbdab5e6a51249a27e4104109a34b3cbe7aa121",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/random_int",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/round.md",
       "targetPath": "content/docs/internals/builtins/math/round.md",
       "sourceHash": "sha256:da7e579c065b5303739a7b317690a7e4d13f9241b7792f3259b6239f306fd1a3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/round",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/sin.md",
       "targetPath": "content/docs/internals/builtins/math/sin.md",
       "sourceHash": "sha256:6e25ef73d50a7b21451a6d43411495061e16482d9d1b6a11e89d1adfac86fc31",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/sin",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/sinh.md",
       "targetPath": "content/docs/internals/builtins/math/sinh.md",
       "sourceHash": "sha256:df23e7597ccbf21f7a469175e70182fe7bc69df8a6c9a28b17f0e033414a2f90",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/sinh",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/sqrt.md",
       "targetPath": "content/docs/internals/builtins/math/sqrt.md",
       "sourceHash": "sha256:e8a1befec2f4f40b63e4c6783b7f7b6ad24e2b6c30b1382237d481d730e584df",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/sqrt",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/tan.md",
       "targetPath": "content/docs/internals/builtins/math/tan.md",
       "sourceHash": "sha256:0735d250336002420761fab1fc904bb42c4b19af2c9fa515b7349a7f1315ce0f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/tan",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/math/tanh.md",
       "targetPath": "content/docs/internals/builtins/math/tanh.md",
       "sourceHash": "sha256:759d42c83c867079574ec7b7783cb1575ecc82f39b8c71e9748a31be83f3bacf",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T03:13:59.234Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/math/tanh",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/misc/buffer_new.md",
