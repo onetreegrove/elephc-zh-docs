@@ -1,0 +1,441 @@
+---
+title: "The Pipeline"
+description: "The full journey from PHP source to a running binary."
+sidebar:
+  order: 2
+---
+
+This page walks through the entire compilation process — from PHP source to running binary — using a concrete example.
+
+## The example
+
+```php
+<?php
+$x = 10;
+if ($x > 5) {
+    echo "big\n";
+}
+```
+
+Let's follow this through every phase.
+
+## Phase 1: Lexing
+
+**File:** `src/lexer/` — See [The Lexer](the-lexer.md) for details.
+
+The lexer reads the source character by character and produces a sequence of tokens:
+
+```
+OpenTag          <?php
+Variable("x")   $x
+Assign           =
+IntLiteral(10)   10
+Semicolon        ;
+If               if
+LParen           (
+Variable("x")   $x
+Greater          >
+IntLiteral(5)    5
+RParen           )
+LBrace           {
+Echo             echo
+StringLiteral("big\n")  "big\n"
+Semicolon        ;
+RBrace           }
+Eof
+```
+
+Each token also carries a **Span** — its line and column number — for error reporting.
+
+## Phase 2: Parsing
+
+**File:** `src/parser/` — See [The Parser](the-parser.md) for details.
+
+The parser reads the token stream and builds an **Abstract Syntax Tree** (AST):
+
+```
+Program [
+    Assign {
+        name: "x",
+        value: IntLiteral(10)
+    },
+    If {
+        condition: BinaryOp {
+            left: Variable("x"),
+            op: Gt,
+            right: IntLiteral(5)
+        },
+        then_body: [
+            Echo(StringLiteral("big\n"))
+        ],
+        elseif_clauses: [],
+        else_body: None
+    }
+]
+```
+
+The tree captures the **structure** — `IntLiteral(5)` is the right operand of `Gt`, and `Echo` is inside the `then_body` of the `If`. Token details like parentheses and braces are gone — they served their purpose during parsing.
+
+## Phase 3: Magic constant lowering
+
+**File:** `src/magic_constants.rs`
+
+Magic constants such as `__DIR__`, `__FILE__`, `__FUNCTION__`, `__CLASS__`, `__METHOD__`, `__NAMESPACE__`, and `__TRAIT__` are lowered to ordinary literals before later semantic passes run. The main file is lowered here; included files are lowered by the resolver as each file is parsed, so included files keep their own file path, namespace, and lexical scope.
+
+In this example, there are no magic constants, so the AST passes through unchanged.
+
+## Phase 4: Conditional compilation
+
+**Files:** `src/conditional/`
+
+If the program uses elephc-only `ifdef SYMBOL { ... } else { ... }` blocks, the conditional pass evaluates them against the active CLI `--define` symbols and removes the inactive branches from the AST before any include resolution or type checking happens.
+
+In this example, there are no `ifdef` blocks, so the AST passes through unchanged.
+
+## Phase 5: Autoload registry build
+
+**Files:** `src/autoload/`
+
+Before include resolution, elephc builds the compile-time autoload registry. This pass reads Composer `autoload` and `autoload-dev` sections from the project and vendor packages, indexes PSR-4 / PSR-0 / classmap declarations, records `autoload.files`, and extracts supported top-level `spl_autoload_register()` rules. Rule bodies are kept as symbolic closures so they can be interpreted later for each missing class-like symbol.
+
+In this example, there is no `composer.json` and no SPL registration, so the registry is empty.
+
+## Phase 6: Resolving
+
+**Files:** `src/resolver/`
+
+If the program had `include` or `require` statements, the resolver would parse those files, lower their file-local magic constants, and inline their ASTs. It also folds compile-time include path expressions, including namespace-aware `const`, `use const`, and `define()` references.
+
+Before inlining, the resolver pre-scans every statically resolvable include target for declarations. Function, class, interface, trait, enum, packed-class, and extern declarations are placed in a compile-time declaration prelude so name resolution and type checking see the whole include graph even when a file is loaded through a function, method, closure, branch, or nested include. The pre-scan tracks sequential blocks separately from mutually exclusive direct `if` / `elseif` / `else` chains, so the same regular include target in exclusive branches is discovered once while sequential or loop-repeatable regular includes still surface duplicate declaration errors. Include-discovered functions are rewritten into hidden implementations with runtime marks at their include points, and codegen emits the public function name as a dispatcher to the implementation that has actually been loaded. When exclusive branches in the same direct chain declare the same public function, the hidden implementations are accepted only if their signatures match exactly.
+
+Executable statements from included files are still left at the include point. For `include_once` and `require_once`, those executable statements are wrapped in an internal runtime guard. That guard is shared per resolved file, so skipped branches, functions, closures, methods, and loop iterations follow PHP execution order instead of compile-time traversal order.
+
+In this example, there's nothing to resolve — the AST passes through unchanged.
+
+## Phase 7: Name resolution
+
+**File:** `src/name_resolver/`
+
+Between include resolution and name resolution, elephc injects demand-loaded PHP
+preludes for built-in surfaces that need helper declarations: PDO,
+timezone-introspection APIs, `DateTimeZone::listIdentifiers()` filtering, and
+`var_export()`. These passes run after includes so usage inside included files is
+detected, and before name resolution so injected declarations participate in the
+same canonical-name pipeline as user code.
+
+After includes are flattened, elephc resolves namespace-aware names. This pass applies the current `namespace`, any `use` / `use function` / `use const` imports, and rewrites references to their canonical fully-qualified names before semantic analysis.
+
+In this example there are no namespaces or imports, so the AST still passes through unchanged.
+
+## Phase 8: Static autoload expansion
+
+**Files:** `src/autoload/`
+
+After names are canonicalized, elephc runs the autoload resolver. It repeatedly scans class-like references, skips names already declared or built in, and inserts the file produced by the Composer index or symbolic SPL rule immediately before the first statement that needs that class. Composer `autoload.files` entries are prefixed before the entry program so their top-level side effects run first.
+
+The inserted files go through parsing, magic-constant lowering, include resolution, name resolution, and alias handling before they join the main program. The pass iterates until the transitive class graph is stable.
+
+In this example, no class references need autoloading.
+
+## Phase 9: Early optimization (constant folding)
+
+**File:** `src/optimize/`
+
+Before type checking, elephc runs a conservative AST simplification pass. This stage folds expressions whose result is already statically known without needing any type-environment information.
+
+Typical examples include:
+
+- `2 + 3 * 4` → `14`
+- `"hello " . "world"` → `"hello world"`
+- `(int)"42"` → `42`
+- `2 < 3 ? 8 : 9` → `8`
+- `null ?? "fallback"` → `"fallback"`
+- `match (1) { 1 => 8, default => 9 }` → `8`
+- `[2, 9][0]` / `["a" => 2]["a"]` → `2`
+
+The pass is deliberately local and side-effect aware. It simplifies scalar computations, but it does not speculate across arbitrary calls or other expressions that may have runtime behavior. More precise call-side purity and `may_throw` reasoning happens later, after type checking, when elephc has enough context to build conservative effect summaries for known call targets.
+
+In our running example there is nothing to fold yet: the pass does not currently propagate `$x = 10` into the later `$x > 5` comparison.
+
+## Phase 10: Type checking
+
+**File:** `src/types/` — See [The Type Checker](the-type-checker.md) for details.
+
+The type checker walks the AST and determines the type of every variable and expression:
+
+```
+$x = 10           →  $x: Int
+$x > 5            →  Int > Int → Bool  ✓
+echo "big\n"      →  Str  ✓
+```
+
+It builds a **type environment** — a map from variable names to their types:
+
+```
+{ "x" → Int, "argc" → Int, "argv" → Array(Str) }
+```
+
+If you tried `$x = "hello"` after `$x = 10`, the type checker would reject it — elephc doesn't allow variables to change type (except from `null`). The checker also resolves class/interface metadata for exception handling, so `throw` only accepts objects implementing `Throwable` and each `catch` target can be matched correctly later in codegen.
+
+On successful type checking, elephc also runs a warning pass that reports issues such as unused variables and unreachable code. On failing compilations, the parser and checker both try to recover conservatively so they can often report more than one independent error in a single run.
+
+After checking, an exports scan (`src/exports.rs`) collects every top-level function marked `#[Export]` and validates its signature against the C-ABI marshaling rules. The result only matters when compiling with `--emit cdylib` — in the default executable mode any `#[Export]` attributes are reported with a warning and ignored. See [Shared Libraries](../beyond-php/cdylib.md).
+
+## Phase 11: Post-typecheck constant propagation
+
+**File:** `src/optimize/`
+
+After the checker succeeds, elephc runs a local constant-propagation pass.
+
+This pass is still conservative, but it can already:
+
+- forward scalar locals through straight-line code
+- merge identical scalar values across simple `if` fallthrough paths
+- merge scalar values across conservative `switch` and `try` / `catch` fallthrough paths
+- use known `switch` subjects and non-throwing `try` bodies to keep unreachable path writes out of the merge
+- infer uniform scalar outcomes from assignments using local `?:` and `match` expressions
+- infer scalar locals from fixed destructuring assignments such as `[$a, $b] = [2, 3]`
+- preserve unrelated scalar locals across simple loops when the loop's local writes are conservatively known, including simple nested `switch`, `try/catch/finally`, `foreach`, other simple nested loop shapes, local array writes such as `$items[] = $i` / `$items[0] = $i`, local property writes such as `$box->last = $i` / `$box->items[] = $i`, and targeted local invalidations like `unset($tmp)`, while also keeping stable scalar values introduced by `for` init clauses
+- summarize known loop paths such as `while(false)`, `do...while(false)`, `while(true)` / `for(;;)` with `break`, and branch-local loop exits whose scalar envs agree
+- re-run folding after substitutions so expressions like `$x ** $y` can collapse to a literal
+
+In our running example, this *does* change the program. The pass can forward `$x = 10` into the later comparison, re-run folding, and effectively turn the condition into `true`:
+
+```php
+<?php
+$x = 10;
+if (true) {
+    echo "big\n";
+}
+```
+
+## Phase 12: Post-typecheck control-flow pruning
+
+**File:** `src/optimize/`
+
+After the checker succeeds, elephc runs a second optimization pass that is allowed to prune dead control flow without hiding diagnostics from the type checker.
+
+This pass currently handles cases such as:
+
+- `if`, `elseif`, and ternaries with constant conditions
+- `while (false)` and `for (...; false; ...)`
+- constant `match` expressions and prunable `switch` prefixes
+- unreachable statements after `return`, `throw`, `break`, or `continue`
+- dead code after exhaustive `if` / `else` and `switch` + `default` structures
+- pure expression statements and pure dead subexpressions that can be dropped safely
+
+This pass also consults the optimizer's local effect summaries. Those summaries track known pure / non-throwing builtins, user functions, static methods, private `$this` methods, closures, and callable aliases that survive merges through `if`, `switch`, and `try` paths. That extra precision is what lets elephc prove that some `try` regions cannot actually throw and trim dead handlers safely.
+
+This split is intentional: elephc folds obvious scalar expressions early, but waits until after type checking to remove whole blocks, so diagnostics still see the original checked structure.
+
+In our running example, the `if (true)` shell is now pruned away:
+
+```php
+<?php
+$x = 10;
+echo "big\n";
+```
+
+## Phase 13: Control-flow normalization
+
+**File:** `src/optimize/`
+
+After control-flow pruning, elephc canonicalizes the remaining control-flow shells. This pass does not try to prove new constants; it rewrites structurally equivalent shapes into simpler, more uniform AST forms so later passes see fewer special cases.
+
+This pass currently handles cases such as:
+
+- canonicalizing `elseif` chains into nested `else { if (...) { ... } }`
+- merging compatible `if` heads/tails and collapsing identical `if` branches
+- merging identical adjacent `switch` cases and folding pure fallthrough labels
+- rewriting safe single-case `switch` shells to `if`
+- merging adjacent identical `catch` handlers into canonical multi-catch clauses with deduplicated, stably ordered type lists
+- folding an outer `finally` into an inner `try` when the wrapper is structurally redundant
+
+## Phase 14: Dead-code elimination
+
+**File:** `src/optimize/`
+
+After normalization, elephc runs a final dead-code-elimination pass over the already-canonical AST.
+
+This pass currently handles cases such as:
+
+- removing empty `if`, `switch`, `ifdef`, and degenerate `try` shells
+- trimming unreachable statements after `return`, `throw`, `break`, or `continue`
+- materializing constant `switch` execution into the exact statement tail that would run
+- hoisting safe non-throwing prefixes out of `try` blocks
+- simplifying non-throwing `try` / `catch` and some non-throwing `try` / `finally` fallthrough cases
+- pruning nested guard contradictions, including boolean/composite guards, strict scalar checks, loose-equality complements, and safe relational-comparison complements
+- using local CFG-lite reachability for structured `if` / `switch` / `try` shapes, including switch throw-path analysis before `catch` guard invalidation
+- dropping pure expression statements and other leftover non-observable statements exposed by earlier passes
+
+In our running example there is nothing else to remove: the remaining assignment and `echo` stay as they are.
+
+## Phase 15: EIR lowering, validation, and optimization
+
+**Files:** `src/ir_lower/`, `src/ir/`, `src/ir_passes/` — See [The EIR Design](the-ir.md) for details.
+
+The default backend lowers the checked and optimized AST into elephc IR (EIR), then validates the module before any assembly is emitted. EIR keeps PHP-visible evaluation order, ownership operations, call metadata, runtime helper references, and block structure explicit while still deferring physical registers and stack layout to the target-aware backend.
+
+In our running example the EIR already sees the optimized statement list:
+
+```text
+function main:
+  store_local $x, 10
+  echo "big\n"
+  return
+```
+
+After validation, a fixed-point optimization pass driver (`src/ir_passes/`) runs the registered EIR transformation passes over each function until none reports a change. The current pass set performs [identity arithmetic folding](the-ir.md#optimization-passes) (`x + 0` → `x`, `x * 0` → `0`, …), local peephole rewrites, per-block constant folding, dominance-aware common-subexpression elimination, loop-invariant code motion, CFG-aware dead-instruction and dead-store elimination, and branch simplification. A cross-function [small-function inliner](the-ir.md#small-function-inlining) splices small, non-recursive, destructor-free helpers into their callers, and the whole pipeline runs to a module-level fixed point so inlining and the per-function passes feed each other. In debug and test builds the driver re-validates each function after every pass, so an optimization bug aborts the compile immediately. These passes are on by default and can be disabled with [`--no-ir-opt`](../compiling/optimization.md#eir-optimization-passes).
+
+The exact textual IR contains value ids, types, ownership, spans, and terminators, but the important point is that the removed `if` shell does not reappear. `--emit-ir` stops here after printing the optimized, validated textual EIR; add `--no-ir-opt` to see the IR before the passes run.
+
+## Phase 16: Code generation
+
+**Files:** `src/codegen_ir/`, plus shared `src/codegen/abi/`, `src/codegen/runtime/`, and target helpers — See [The Code Generator](the-codegen.md) for details.
+
+The EIR backend emits assembly for the selected target. For ordinary control flow this is mostly straight-line branches and labels; for `try` / `catch` / `finally`, the compiler additionally emits handler records and resume labels around `_setjmp` / `_longjmp`-based exception unwinding. The legacy AST backend remains available only through `--ast-backend`; new PHP-visible behavior is expected to go through EIR. By this point our running example has already lost the `if` shell, so the AArch64 form is simpler than the original source (simplified, with comments):
+
+```asm
+.global _main
+.align 2
+
+_main:
+    ; -- prologue: set up stack frame --
+    sub sp, sp, #32
+    stp x29, x30, [sp, #16]
+    add x29, sp, #16
+
+    ; -- $x = 10 --
+    mov x0, #10
+    stur x0, [x29, #-8]
+
+    ; -- echo "big\n" (the if shell was pruned earlier) --
+    adrp x1, _str_0@PAGE
+    add x1, x1, _str_0@PAGEOFF
+    mov x2, #4                   ; length = 4 ("big" + newline)
+    mov x0, #1                   ; fd = stdout
+    mov x16, #4                  ; syscall = write
+    svc #0x80                    ; call kernel
+    ; -- epilogue: exit(0) --
+    mov x0, #0
+    mov x16, #1
+    svc #0x80
+
+.data
+_str_0: .ascii "big\n"
+```
+
+Key observations:
+
+- `$x = 10` → `mov x0, #10` then `stur` to the stack at offset -8 from the frame pointer
+- the `if ($x > 5)` check no longer exists by codegen time because propagation + pruning removed it
+- `echo "big\n"` → load string address + length, then `svc` to write to stdout
+- The string literal lives in the `.data` section, referenced by label `_str_0`
+
+## Phase 17: Runtime preparation, assembly, and linking
+
+**Tools:** native `as` and `ld` (or the equivalent system toolchain)
+
+elephc first prepares the shared runtime object, then writes the user assembly to a `.s` file, and finally invokes the system tools.
+
+The runtime is not reassembled on every compile. elephc caches a pre-assembled runtime object under the user's cache directory (typically `~/.cache/elephc/`) using the compiler version, target, heap size, and generated runtime assembly hash in the cache key. If a matching object already exists, the compile reuses it directly.
+
+The user program still gets its own assembly file. If `--source-map` is enabled, elephc also writes a sidecar `.map` JSON file that records assembly-line to PHP-line/column mappings extracted from source markers inserted during statement emission.
+
+In normal compile mode, the toolchain flow is:
+
+1. Prepare or reuse the cached runtime object
+2. Write the program assembly to `file.s`
+3. Optionally write `file.map`
+4. Assemble `file.s` into `file.o`
+5. Link `file.o` together with the cached runtime object into the final executable
+
+If `--timings` is enabled, elephc prints the duration of each major phase to stderr so you can see where time is being spent.
+
+elephc then invokes the system tools:
+
+On macOS, elephc drives the Apple toolchain directly:
+
+```bash
+as -arch arm64 -o file.o file.s
+ld -arch arm64 -e _main -o file file.o -lSystem -syslibroot /path/to/sdk
+```
+
+On Linux, elephc invokes the native assembler/linker for the requested target.
+
+- **`as`** (assembler) converts the user assembly text mnemonics into binary machine code, producing an object file (`.o`)
+- **`ld`** (linker) resolves label addresses, links the user object together with the cached runtime object and any requested system libraries, and produces the final native executable (Mach-O on macOS, ELF on Linux)
+
+The `.o` file is deleted after linking. The result is a standalone executable.
+
+With `--emit cdylib` the same flow produces a shared library instead: codegen emits position-independent code with no `main` entry, a PIC variant of the runtime object is prepared (cached separately by its assembly hash), and the linker is invoked with `-dylib` (macOS) or `-shared` (Linux) to produce `lib<name>.dylib` / `lib<name>.so`.
+
+## Phase 18: Execution
+
+```bash
+./file
+big
+```
+
+The binary runs directly on the CPU. There is no PHP interpreter or VM at runtime. The kernel loads the executable for the target platform into memory, jumps to the entry point, and the CPU executes the instructions we generated. The binary still contains elephc's emitted helper routines and links the platform's system libraries for OS/libc services.
+
+## The complete flow
+
+```
+"<?php $x = 10; if ($x > 5) { echo \"big\\n\"; }"
+                    │
+                    ▼ Lexer
+    [OpenTag, Variable("x"), Assign, IntLiteral(10), ...]
+                    │
+                    ▼ Parser
+    [Assign{x, 10}, If{Gt(Var(x), 5), [Echo("big\n")]}]
+                    │
+                    ▼ Magic constants (no-op here)
+                    │
+                    ▼ Conditional (ifdef no-op here)
+                    │
+                    ▼ Resolver (no-op here)
+                    │
+                    ▼ Demand-loaded preludes (no-op here)
+                    │
+                    ▼ NameResolver (no-op here)
+                    │
+                    ▼ Optimizer (fold constants, no-op here)
+    [Assign{x, 10}, If{Gt(Var(x), 5), [Echo("big\n")]}]
+                    │
+                    ▼ Type Checker
+    { x: Int } — all types consistent ✓
+                    │
+                    ▼ Optimizer (constant propagation)
+    [Assign{x, 10}, If{true, [Echo("big\n")]}]
+                    │
+                    ▼ Optimizer (prune dead control flow)
+    [Assign{x, 10}, Echo("big\n")]
+                    │
+                    ▼ Optimizer (normalize control flow, no-op here)
+    [Assign{x, 10}, Echo("big\n")]
+                    │
+                    ▼ Optimizer (dead-code elimination, no-op here)
+    [Assign{x, 10}, Echo("big\n")]
+                    │
+                    ▼ EIR lowering + validation
+    main stores x=10, echoes "big\n", returns
+                    │
+                    ▼ EIR Code Generator
+    "sub sp, sp, #32 / stp x29, x30, ... / mov x0, #10 / adrp x1, _str_0 / ..."
+                    │
+                    ▼ Runtime Cache
+    ~/.cache/elephc/runtime-v<version>-<target>-rt<hash>-heap<size>.o
+                    │
+                    ▼ optional Source Map
+    file.map (asm line → PHP line/col)
+                    │
+                    ▼ as (assembler)
+    file.o (machine code bytes for user program)
+                    │
+                    ▼ ld (linker)
+    file (user object + cached runtime object)
+                    │
+                    ▼ CPU
+    "big\n"
+```
