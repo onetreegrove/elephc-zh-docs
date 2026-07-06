@@ -3675,181 +3675,181 @@
       "sourcePath": "docs/internals/builtins/string/ord.md",
       "targetPath": "content/docs/internals/builtins/string/ord.md",
       "sourceHash": "sha256:5319699cceeacb35d74d473deba4aec3669906faba1b73ec0fe939a972c4b485",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/ord",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/printf.md",
       "targetPath": "content/docs/internals/builtins/string/printf.md",
       "sourceHash": "sha256:28d25cd398d9483d53f0d349f71e9aa431ccd947cb2df0c5ace725051d92b838",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/printf",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/rawurldecode.md",
       "targetPath": "content/docs/internals/builtins/string/rawurldecode.md",
       "sourceHash": "sha256:c0ef480712e915daf7abcbaf876a4c646bf073292bcae91385e889b1fea1531f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/rawurldecode",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/rawurlencode.md",
       "targetPath": "content/docs/internals/builtins/string/rawurlencode.md",
       "sourceHash": "sha256:8e96ca4a836d80f10ecc980b0d7af950fcf6a11800411865f68b67ce94d08851",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/rawurlencode",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/rtrim.md",
       "targetPath": "content/docs/internals/builtins/string/rtrim.md",
       "sourceHash": "sha256:51d99df5e011d1fd52a556bfb731e5d3ddd9f6ec470c3c8c87e3182f18aa22f0",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/rtrim",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/sha1.md",
       "targetPath": "content/docs/internals/builtins/string/sha1.md",
       "sourceHash": "sha256:4bc544a452f0c0d7c303513df081a4aacc8a7797bad66af5e708e099f014cf5c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/sha1",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/sprintf.md",
       "targetPath": "content/docs/internals/builtins/string/sprintf.md",
       "sourceHash": "sha256:b97c0707b8252b85476e41155761593804ecab25c4b2b7aa41d6b5cbe068e74b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/sprintf",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/sscanf.md",
       "targetPath": "content/docs/internals/builtins/string/sscanf.md",
       "sourceHash": "sha256:4763b75291b58eaa954abaccd3a652a808d28defae8bf81c03344aef3e37ef81",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/sscanf",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/str_contains.md",
       "targetPath": "content/docs/internals/builtins/string/str_contains.md",
       "sourceHash": "sha256:f3db7754c41beb0cd60a002312aaf1031563d2303e2543f73cf2f6f366ba6db1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/str_contains",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/str_ends_with.md",
       "targetPath": "content/docs/internals/builtins/string/str_ends_with.md",
       "sourceHash": "sha256:8d3b25c00b9b51adf75b6e8bbe75c5198c3fadbfaf1986bfbde37543682fa181",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/str_ends_with",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/str_ireplace.md",
       "targetPath": "content/docs/internals/builtins/string/str_ireplace.md",
       "sourceHash": "sha256:5d6583472239cecc1bacf4c3aa92c505970556ec4452d9cad2ae6507ab65a167",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/str_ireplace",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/str_pad.md",
       "targetPath": "content/docs/internals/builtins/string/str_pad.md",
       "sourceHash": "sha256:d59acfb84dff9724f855e271a2f44dd5b4a67816e3684f27e8693dbb1965f423",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/str_pad",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/str_repeat.md",
       "targetPath": "content/docs/internals/builtins/string/str_repeat.md",
       "sourceHash": "sha256:d7ef6ce84215e5d91ecb896109e999f28a8c6cd0d24fbea87c3ec922e698ce77",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/str_repeat",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/str_replace.md",
       "targetPath": "content/docs/internals/builtins/string/str_replace.md",
       "sourceHash": "sha256:b1b9f3c7aeadf95e039cdce3afd129e647ad0e57c7a0fe2bbbc750ea883d70a1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/str_replace",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/str_split.md",
       "targetPath": "content/docs/internals/builtins/string/str_split.md",
       "sourceHash": "sha256:dc1a0e61c33f00596c143009f0439a449295760d235ce6ccf3770e61aa0ce39e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/str_split",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/str_starts_with.md",
       "targetPath": "content/docs/internals/builtins/string/str_starts_with.md",
       "sourceHash": "sha256:eada3db7146b574e51d5a5818ea78d3fa1b6d0bd85904ad4c3b857bac113ffa1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/str_starts_with",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/strcasecmp.md",
       "targetPath": "content/docs/internals/builtins/string/strcasecmp.md",
       "sourceHash": "sha256:bbbbf6f4cc5749b2025567187f7be5c0247593dbd3262c6547e3107c9c455a6e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/strcasecmp",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/strcmp.md",
       "targetPath": "content/docs/internals/builtins/string/strcmp.md",
       "sourceHash": "sha256:f35d9d24b00ec6cddb150d03f83cc18b3fa7008aacf235eadee71973fecd42cb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/strcmp",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/stripslashes.md",
       "targetPath": "content/docs/internals/builtins/string/stripslashes.md",
       "sourceHash": "sha256:d71f5aca5631c70b827746725101ce7243c6dd2d98c9bd325db451aa80e32240",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/stripslashes",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/strlen.md",
       "targetPath": "content/docs/internals/builtins/string/strlen.md",
       "sourceHash": "sha256:e681935187d5da3bcacc4ce87e0ee082794be3ad90a6b4ce99362f540f90e754",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T08:36:17.512Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/strlen",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/strpos.md",
