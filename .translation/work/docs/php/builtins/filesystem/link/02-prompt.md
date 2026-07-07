@@ -1,0 +1,1 @@
+Translate docs/php/builtins/filesystem/link.md into Simplified Chinese for elephc 中文文档. Preserve Markdown structure, frontmatter keys, code fences, PHP symbols, links, paths, identifiers, and API names. Translate human-facing prose in a concise technical documentation style. This file was template-translated because it is a repetitive PHP builtin reference page.
