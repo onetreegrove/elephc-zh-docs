@@ -7995,181 +7995,181 @@
       "sourcePath": "docs/php/builtins/string/substr_replace.md",
       "targetPath": "content/docs/php/builtins/string/substr_replace.md",
       "sourceHash": "sha256:b639feefc2b593cd6e345d5c2866379d690956fc0f28f09cb7175518731a6b03",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/string/substr_replace",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/string/substr.md",
       "targetPath": "content/docs/php/builtins/string/substr.md",
       "sourceHash": "sha256:0958d0591f5f2bb7262d9643b2ac2e197c485bb278d6e25e486c4b52631e89d3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/string/substr",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/string/trim.md",
       "targetPath": "content/docs/php/builtins/string/trim.md",
       "sourceHash": "sha256:10aaa1cfcaca2823721fa62333444f48d725d9c8cf72f16051b565b44d951e95",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/string/trim",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/string/ucfirst.md",
       "targetPath": "content/docs/php/builtins/string/ucfirst.md",
       "sourceHash": "sha256:7285b33da2a297885276b4df97009614c984299f6714d17ed9a34e3e890c1060",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/string/ucfirst",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/string/ucwords.md",
       "targetPath": "content/docs/php/builtins/string/ucwords.md",
       "sourceHash": "sha256:22bcb5e65aaaf5ef599db5fd79ed412637ae512e9adee36d2891c2a766ad22d5",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/string/ucwords",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/string/urldecode.md",
       "targetPath": "content/docs/php/builtins/string/urldecode.md",
       "sourceHash": "sha256:881f567203909536a8ed54bfbe5afd2725d142ab54198896678bc492d9579ad1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/string/urldecode",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/string/urlencode.md",
       "targetPath": "content/docs/php/builtins/string/urlencode.md",
       "sourceHash": "sha256:8176e5407c08f587e550e5f812a6feacda6593c867d68f8aa4bfe7e078830d7d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/string/urlencode",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/string/vprintf.md",
       "targetPath": "content/docs/php/builtins/string/vprintf.md",
       "sourceHash": "sha256:409ffb8dc40fed9731a2d5f1108dc0c7cf67b664f25af04bf409daa62c9ffedc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/string/vprintf",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/string/vsprintf.md",
       "targetPath": "content/docs/php/builtins/string/vsprintf.md",
       "sourceHash": "sha256:85496cadb0dea7f868b39568a50371efbd8ad883a0dd7857b10eb9659dc4353d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/string/vsprintf",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/string/wordwrap.md",
       "targetPath": "content/docs/php/builtins/string/wordwrap.md",
       "sourceHash": "sha256:bb6e8cf23979e88c35e220f1a7e7ae70ee79ec3d02c649b985003955e2557e06",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/string/wordwrap",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type.md",
       "targetPath": "content/docs/php/builtins/type.md",
       "sourceHash": "sha256:a06c6c276bced18bc23463514c4b4304276cc2629b3b2c98659ee7989fe3a281",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/type",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type/boolval.md",
       "targetPath": "content/docs/php/builtins/type/boolval.md",
       "sourceHash": "sha256:bb15af2fe1d7e664ad38eed39f1159217a5f0d468b38101213056d6bb269deae",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/type/boolval",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type/ctype_alnum.md",
       "targetPath": "content/docs/php/builtins/type/ctype_alnum.md",
       "sourceHash": "sha256:e3ddf7c4b53d02015c2c7dc1e8aebb4dbf103638d4fcff3b1324628558ca13c3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/type/ctype_alnum",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type/ctype_alpha.md",
       "targetPath": "content/docs/php/builtins/type/ctype_alpha.md",
       "sourceHash": "sha256:bcc7c042814d2243c86298edba6a9738b7334e94d2daba6ab955400b2f8184dd",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/type/ctype_alpha",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type/ctype_digit.md",
       "targetPath": "content/docs/php/builtins/type/ctype_digit.md",
       "sourceHash": "sha256:e60c62d1c5a6e4a6d6d2db5e1b45fb7f19e12e50880bc8b4eabf578ae1aa7036",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/type/ctype_digit",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type/ctype_space.md",
       "targetPath": "content/docs/php/builtins/type/ctype_space.md",
       "sourceHash": "sha256:0c56d5ef62c45daad579d9d3c38aabf625442313c1c567e0c831c6703d430f11",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/type/ctype_space",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type/floatval.md",
       "targetPath": "content/docs/php/builtins/type/floatval.md",
       "sourceHash": "sha256:1927b75520366c237d94f95801943b18478c370b5ab3d00f51ed16b485bbff29",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/type/floatval",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type/get_resource_id.md",
       "targetPath": "content/docs/php/builtins/type/get_resource_id.md",
       "sourceHash": "sha256:720642ca41350ea991dbdc078787ab5252d00bd3414341fa402ec320e04e8a7d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/type/get_resource_id",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type/get_resource_type.md",
       "targetPath": "content/docs/php/builtins/type/get_resource_type.md",
       "sourceHash": "sha256:fb28dc77fa51a0dc2c7d02f5313197e5750a7bde1945c2b90791ce9ea10c18c4",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/type/get_resource_type",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type/gettype.md",
       "targetPath": "content/docs/php/builtins/type/gettype.md",
       "sourceHash": "sha256:30927d416c8d4597e965430deadb8c842434ac092bc872ea4aeba945bf3b2407",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T11:20:47.068Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/type/gettype",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/type/intval.md",

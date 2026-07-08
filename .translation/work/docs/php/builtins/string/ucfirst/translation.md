@@ -1,0 +1,31 @@
+---
+title: "ucfirst()"
+description: "通过复制字符串并将第一个 ASCII 字节转为大写来降级处理 `ucfirst()`。"
+sidebar:
+  order: 398
+---
+
+## ucfirst()
+
+```php
+function ucfirst(string $string): string
+```
+
+通过复制字符串并将第一个 ASCII 字节转为大写来降级处理 `ucfirst()`。
+
+**参数**：
+- `$string` (`string`)
+
+**返回值**：`string`
+
+_暂无示例 — 请参阅 `examples/` 和 `showcases/` 目录以了解使用模式。_
+
+
+
+
+
+
+
+## 内部实现
+
+关于 `ucfirst` 在编译器中的实现方式，请参阅[内部实现页面](../../../internals/builtins/string/ucfirst.md)。
