@@ -6555,181 +6555,181 @@
       "sourcePath": "docs/php/builtins/math/deg2rad.md",
       "targetPath": "content/docs/php/builtins/math/deg2rad.md",
       "sourceHash": "sha256:ae7c2ad493f8b40bf55a1a0cb1eedd5c1384de3b22377a435350e45f86200a77",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:41:43.073Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/deg2rad",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/exp.md",
       "targetPath": "content/docs/php/builtins/math/exp.md",
       "sourceHash": "sha256:6aea80979be47533ac96dcd391b6225ebb2a8c29649550034e48093273f9e226",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:42:30.366Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/exp",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/fdiv.md",
       "targetPath": "content/docs/php/builtins/math/fdiv.md",
       "sourceHash": "sha256:8d49522f3a1a9c1f7d226f98c215300ca4945da3a284a32660efc8fcdf0a712c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:43:02.736Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/fdiv",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/floor.md",
       "targetPath": "content/docs/php/builtins/math/floor.md",
       "sourceHash": "sha256:2900699a19a751f8f5ec315c45496ef29d4d5a8f2926161b84ed7aae89324c4e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:43:44.177Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/floor",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/fmod.md",
       "targetPath": "content/docs/php/builtins/math/fmod.md",
       "sourceHash": "sha256:5a618441e6ec73682c82dd66624144cca65d3602cf904447c34088421e56eb1d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:44:57.057Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/fmod",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/hypot.md",
       "targetPath": "content/docs/php/builtins/math/hypot.md",
       "sourceHash": "sha256:aa5794db4a33841cd036f61897986a80f636b6c3336139cf8c0aa1a1c22c0408",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:45:45.040Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/hypot",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/intdiv.md",
       "targetPath": "content/docs/php/builtins/math/intdiv.md",
       "sourceHash": "sha256:ed70bd7c3c05656b57f0d220fbecc00d559bee9a9efa0d77ba5941554b09eb1b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:46:31.733Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/intdiv",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/is_finite.md",
       "targetPath": "content/docs/php/builtins/math/is_finite.md",
       "sourceHash": "sha256:6ce93414a0cd55182417a636bf563f7f824de8b41295cff01df302dec1490610",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:48:10.313Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/is_finite",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/is_infinite.md",
       "targetPath": "content/docs/php/builtins/math/is_infinite.md",
       "sourceHash": "sha256:1d292e1df725feda9123db74c1c8649fd396edf8f31d234c777cd18bf7392590",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:50:04.407Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/is_infinite",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/is_nan.md",
       "targetPath": "content/docs/php/builtins/math/is_nan.md",
       "sourceHash": "sha256:569676650e39cd1a52eddf6f9db50d3157cf61a63becce3a46ee1a42f84f5ab8",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:50:52.362Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/is_nan",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/log.md",
       "targetPath": "content/docs/php/builtins/math/log.md",
       "sourceHash": "sha256:d1409ce60504f4b58441bb4c2616714bb289ffeeb7fd9b3288b9eb1ac3c0387e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:51:28.833Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/log",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/log10.md",
       "targetPath": "content/docs/php/builtins/math/log10.md",
       "sourceHash": "sha256:74564001fbbb567b844aee5dcd5263d509993635c92afe3fd2e249b27cc96344",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:51:54.577Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/log10",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/log2.md",
       "targetPath": "content/docs/php/builtins/math/log2.md",
       "sourceHash": "sha256:cd8a29a37bcdc3ef970157241153ba19bd169cd4bbc54ca6e70a789fcd0c7c60",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:52:47.020Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/log2",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/max.md",
       "targetPath": "content/docs/php/builtins/math/max.md",
       "sourceHash": "sha256:54408d7ab8d230241d982c737d5824f2ba6e16f4b313af730ef20ce2130afac4",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:53:39.401Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/max",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/min.md",
       "targetPath": "content/docs/php/builtins/math/min.md",
       "sourceHash": "sha256:7226cc102a88a760e0a5cec9cb5a1933b0138ca762e2a34909946fe23b143436",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:54:57.534Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/min",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/mt_rand.md",
       "targetPath": "content/docs/php/builtins/math/mt_rand.md",
       "sourceHash": "sha256:2ede726e3c11d4705f279b8daf6d706721bac3083233259dc0d86b16fce0f723",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:56:01.594Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/mt_rand",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/pi.md",
       "targetPath": "content/docs/php/builtins/math/pi.md",
       "sourceHash": "sha256:ca26d5d8f46779123130602227b2f66ccba93d9903b8f625c2f269bca80f5747",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:56:27.114Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/pi",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/pow.md",
       "targetPath": "content/docs/php/builtins/math/pow.md",
       "sourceHash": "sha256:eefee7c0b209d74f7a0b7fd411df345d0ea67c7cbd0789bd3fb0e3ab3072e454",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:57:20.609Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/pow",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/rad2deg.md",
       "targetPath": "content/docs/php/builtins/math/rad2deg.md",
       "sourceHash": "sha256:ba7b15dd93e7d19432a3b1826bb9a5e89e458fcf09729c8a86569455cc916e21",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:57:57.126Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/rad2deg",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/rand.md",
       "targetPath": "content/docs/php/builtins/math/rand.md",
       "sourceHash": "sha256:72a3d7fc5c7a1496eddba6f674e8a505cc98220ef59f665bb7dae25ae6931cbb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:58:43.202Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/rand",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/random_int.md",
