@@ -6735,181 +6735,181 @@
       "sourcePath": "docs/php/builtins/math/random_int.md",
       "targetPath": "content/docs/php/builtins/math/random_int.md",
       "sourceHash": "sha256:76ecf943226ecf54edfce8b7bafdbc7173c7d51382173a8a7b49daf19ec78a70",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:05:32.428Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/random_int",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/round.md",
       "targetPath": "content/docs/php/builtins/math/round.md",
       "sourceHash": "sha256:dfb875e271fe1892e23a7c0aede427b269e0b4c83b6b74f0ee166c22d9a61143",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:06:28.713Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/round",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/sin.md",
       "targetPath": "content/docs/php/builtins/math/sin.md",
       "sourceHash": "sha256:001121f2085e539fa8212a4f4c03869ddeb810c9233bec2220b3e09a6665dc34",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:07:49.776Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/sin",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/sinh.md",
       "targetPath": "content/docs/php/builtins/math/sinh.md",
       "sourceHash": "sha256:e20024eba00b6e2b545705a67428f8a96e2d07a4eb82249332087faf1846571c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:08:35.849Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/sinh",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/sqrt.md",
       "targetPath": "content/docs/php/builtins/math/sqrt.md",
       "sourceHash": "sha256:9dd97faca071eafec9b8e705c63a67529bf75264db88dee56ca6b89fb32088dd",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:09:22.064Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/sqrt",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/tan.md",
       "targetPath": "content/docs/php/builtins/math/tan.md",
       "sourceHash": "sha256:303d75a2d346d892d61c9130906a6b4546cc5716e0243c75b37e4c5aca33c10b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:09:52.135Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/tan",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/tanh.md",
       "targetPath": "content/docs/php/builtins/math/tanh.md",
       "sourceHash": "sha256:e7fefb53df3123d3773da84f42c5cc5d9e86c800a38c7ecfeb5ef2d041a8ccd8",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:10:20.231Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/tanh",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc.md",
       "targetPath": "content/docs/php/builtins/misc.md",
       "sourceHash": "sha256:80e940ad8e57183314632f2b1edf6dbbd85eef6e85fe5b83f9ae8c74a74ca8eb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:10:42.118Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/buffer_new.md",
       "targetPath": "content/docs/php/builtins/misc/buffer_new.md",
       "sourceHash": "sha256:736d5a6f954db3683f37ae383eeab9971ab22d6d5bc9b3eeeff751ba9bf06ee6",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:11:37.865Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/buffer_new",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/call_user_func_array.md",
       "targetPath": "content/docs/php/builtins/misc/call_user_func_array.md",
       "sourceHash": "sha256:d218a7335258a85a23a9619f191c7126ad9213d1bc8db24ad9cdd8a748a16b55",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:12:16.279Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/call_user_func_array",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/call_user_func.md",
       "targetPath": "content/docs/php/builtins/misc/call_user_func.md",
       "sourceHash": "sha256:cb223d4da886d7ea01aaa82e7bc099a7badd50e4035e847c2fa953d4387ca1ca",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:13:09.923Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/call_user_func",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/define.md",
       "targetPath": "content/docs/php/builtins/misc/define.md",
       "sourceHash": "sha256:1ecc15c655a02aab00329bad96a4428fa844ded55fad9b899372340db0eccd02",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:14:00.882Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/define",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/defined.md",
       "targetPath": "content/docs/php/builtins/misc/defined.md",
       "sourceHash": "sha256:c02e42f3e3780b92fd205c2fdb6b98d4769ecd1d87ef1ddec50862ecc670a614",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:14:31.972Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/defined",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/empty.md",
       "targetPath": "content/docs/php/builtins/misc/empty.md",
       "sourceHash": "sha256:1bf4acf4856cba8f1df2625774439fc1f91ba6185ab1e8557af01b638090ae29",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:15:06.216Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/empty",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/header.md",
       "targetPath": "content/docs/php/builtins/misc/header.md",
       "sourceHash": "sha256:3ffab804f6338ea2dafaf9e4edda22be53ea491c17394d48996393eb476887a4",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:15:38.414Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/header",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/http_response_code.md",
       "targetPath": "content/docs/php/builtins/misc/http_response_code.md",
       "sourceHash": "sha256:b0f3489eb9cb2a216c651885abc62dd5680cc4f5f4feef745d8fe9598a94e0a8",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:16:10.260Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/http_response_code",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/isset.md",
       "targetPath": "content/docs/php/builtins/misc/isset.md",
       "sourceHash": "sha256:68738ff4f74aee20b8ca00d7496461079cda744554af04693b8ba494e7edf21d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:16:44.615Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/isset",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/php_uname.md",
       "targetPath": "content/docs/php/builtins/misc/php_uname.md",
       "sourceHash": "sha256:7887740d6ae79434a83f49c5712926ba914029196acd489d05bc3a77928229b4",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:17:18.854Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/php_uname",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/phpversion.md",
       "targetPath": "content/docs/php/builtins/misc/phpversion.md",
       "sourceHash": "sha256:6198ede55de015b5889e085f57620dad504dbb64075f79c176f09ba8607596ff",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:18:11.754Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/phpversion",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/print_r.md",
       "targetPath": "content/docs/php/builtins/misc/print_r.md",
       "sourceHash": "sha256:d5f866e952791f345ec9aa7d9a6b1f538de2235112e7e64ec7ac7fbd5bca4c98",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T10:18:54.968Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/misc/print_r",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/misc/serialize.md",
