@@ -6375,181 +6375,181 @@
       "sourcePath": "docs/php/builtins/io/stream_wrapper_register.md",
       "targetPath": "content/docs/php/builtins/io/stream_wrapper_register.md",
       "sourceHash": "sha256:6a151d3ca470dfde655c69cd8600ab550ffa3a8f42ca4b38b6dc5b1dc6e12d71",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:34:32.647Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_wrapper_register",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_wrapper_restore.md",
       "targetPath": "content/docs/php/builtins/io/stream_wrapper_restore.md",
       "sourceHash": "sha256:019e28ab66ca827d02664cac8343a729ce026b913184fec27715207e89344c18",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:34:32.647Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_wrapper_restore",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_wrapper_unregister.md",
       "targetPath": "content/docs/php/builtins/io/stream_wrapper_unregister.md",
       "sourceHash": "sha256:8011c653ac20b078c1d7e21fd1a13ee39f5b5a23d5f4bc954c9846fd99d7ed4b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:34:32.647Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_wrapper_unregister",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/vfprintf.md",
       "targetPath": "content/docs/php/builtins/io/vfprintf.md",
       "sourceHash": "sha256:faa7515e4012edd7bf580f137a3b5685565c1342c1c85f5f36a9044d7cee351f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:34:32.647Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/vfprintf",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/json.md",
       "targetPath": "content/docs/php/builtins/json.md",
       "sourceHash": "sha256:0b592e58bdc1b836ab66ba3ce112ba5de32e83c8f10d0cbd81d4bd6491a7433f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:14:08.181Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/json",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/json/json_decode.md",
       "targetPath": "content/docs/php/builtins/json/json_decode.md",
       "sourceHash": "sha256:b1b3f205f3136fd4991f7fe7a3a00f046a7e53b0a148506839fd4ac0fdf0abee",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:15:37.503Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/json/json_decode",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/json/json_encode.md",
       "targetPath": "content/docs/php/builtins/json/json_encode.md",
       "sourceHash": "sha256:86d1032e50e4ec2221b972d43bb85478dc77b0d252f9c6b2a95ecdd19f879b6c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:16:10.610Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/json/json_encode",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/json/json_last_error_msg.md",
       "targetPath": "content/docs/php/builtins/json/json_last_error_msg.md",
       "sourceHash": "sha256:ebe869a23afd99873f7d986d605e1c5f7a429b8f6d9b6ac17d38eaf653659d37",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:18:18.259Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/json/json_last_error_msg",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/json/json_last_error.md",
       "targetPath": "content/docs/php/builtins/json/json_last_error.md",
       "sourceHash": "sha256:a967de0e18909311326bbb9edb62bf8ad6301022322b56aca8ab73ed141e03d6",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:19:58.616Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/json/json_last_error",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/json/json_validate.md",
       "targetPath": "content/docs/php/builtins/json/json_validate.md",
       "sourceHash": "sha256:76f0727d0da1bd9fabe6ebeb689876cfebfc1b9c5d96bb28842c8f3418a18fbc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:20:58.795Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/json/json_validate",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math.md",
       "targetPath": "content/docs/php/builtins/math.md",
       "sourceHash": "sha256:e8151d68b7bda2cb3e937926e2a988b38d1030792ce1477aa0c4601d35428d00",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:22:20.435Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/abs.md",
       "targetPath": "content/docs/php/builtins/math/abs.md",
       "sourceHash": "sha256:9d42837cfbecbb2d9fdbf3a9c6cafff32c1295e9ac92a3dca198b9e18fcee8b7",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:23:52.340Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/abs",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/acos.md",
       "targetPath": "content/docs/php/builtins/math/acos.md",
       "sourceHash": "sha256:5d5810f0ddbc75cb3eff4b194b2f17d35120f903681bb9b428752fc5a62e6fc3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:26:16.442Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/acos",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/asin.md",
       "targetPath": "content/docs/php/builtins/math/asin.md",
       "sourceHash": "sha256:b2a1619fef91d66fef7de00ac9c43a84056a04c4b436ec8f56e0dec82f2961af",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:27:44.692Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/asin",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/atan.md",
       "targetPath": "content/docs/php/builtins/math/atan.md",
       "sourceHash": "sha256:d4b878178309d0ec850f3c7399fc3aeacde0dbe52561c9823be101a3e5227385",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:28:30.742Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/atan",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/atan2.md",
       "targetPath": "content/docs/php/builtins/math/atan2.md",
       "sourceHash": "sha256:96172f801530a132ae6f43b522de9eef0ecb33932ebfea5c31538598fdb756ef",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:29:02.687Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/atan2",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/ceil.md",
       "targetPath": "content/docs/php/builtins/math/ceil.md",
       "sourceHash": "sha256:8fac2a53b5781749fd3dec37379a578cfe4b1d5843563e6b50771dac53bc88af",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:29:57.533Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/ceil",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/clamp.md",
       "targetPath": "content/docs/php/builtins/math/clamp.md",
       "sourceHash": "sha256:ac8f3b2e9035eab4b2f52e7137dc6f664477c1a0ad7d28cd784bde2e66fdf099",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:30:55.206Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/clamp",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/cos.md",
       "targetPath": "content/docs/php/builtins/math/cos.md",
       "sourceHash": "sha256:0cbf591f34d75ebc6626be15759245fab72c57ce6c6921821339410b349fa8a3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:32:43.135Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/cos",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/cosh.md",
       "targetPath": "content/docs/php/builtins/math/cosh.md",
       "sourceHash": "sha256:188fb82489f8309a7ce67e88fed5ed29c8cb762d72b241f427ba1d73a18c59e4",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:33:32.940Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/math/cosh",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/math/deg2rad.md",
