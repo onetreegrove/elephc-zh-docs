@@ -8355,118 +8355,118 @@
       "sourcePath": "docs/php/generators.md",
       "targetPath": "content/docs/php/generators.md",
       "sourceHash": "sha256:5f3eaee15d09d2dfb6fb73cd460f6d51a388edd753bdfd34a8e0d2b0051b48ea",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:25:55.927Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/generators",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/image.md",
       "targetPath": "content/docs/php/image.md",
       "sourceHash": "sha256:5f6e6b73e89d9e7f35596ba48ca9419c019f16d268dfb48955911ee68484698d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:25:55.927Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/image",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/magic-constants.md",
       "targetPath": "content/docs/php/magic-constants.md",
       "sourceHash": "sha256:084cc67aa1e9b2ac073332a48a0a2cd8d07933593fd39734cbc6a139dbc08e04",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:08:40.304Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/magic-constants",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/math.md",
       "targetPath": "content/docs/php/math.md",
       "sourceHash": "sha256:50707573322674ccbb9f840f5887a76273dd76b9a11975698a3edc07533d0a09",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:10:08.251Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/math",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/namespaces.md",
       "targetPath": "content/docs/php/namespaces.md",
       "sourceHash": "sha256:eeb81f646f0b44f8398f19747098e51d1a33dfe2db04fd20dcace5b9d04f9fce",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:11:16.026Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/namespaces",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/operators.md",
       "targetPath": "content/docs/php/operators.md",
       "sourceHash": "sha256:0800ed86a7c4ba84b164eb037d869b4f5f3c3e75aaf45754f6072cbd371fbfb6",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:12:51.762Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/operators",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/pdo.md",
       "targetPath": "content/docs/php/pdo.md",
       "sourceHash": "sha256:142901260f9acbfd169f88fd71caa1ad91c2a152c30f1db64aa1703e76e24022",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:14:42.263Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/pdo",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/regex.md",
       "targetPath": "content/docs/php/regex.md",
       "sourceHash": "sha256:054e2210063a42aa7c0a0ac694f31951e69ee6414affeb44ccf86a3524d0851f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:15:32.894Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/regex",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/spl.md",
       "targetPath": "content/docs/php/spl.md",
       "sourceHash": "sha256:2328c4b83d1d9837415608d9838a94b439658c8d63a2f93403788bc2866423da",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:16:48.626Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/spl",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/streams.md",
       "targetPath": "content/docs/php/streams.md",
       "sourceHash": "sha256:d4c54903ab71e4aa4789b7819d7d24ff9284223ab515e772d6c8e8df3c9a18ea",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:18:39.706Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/streams",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/strings.md",
       "targetPath": "content/docs/php/strings.md",
       "sourceHash": "sha256:d1b9879e028271244f77f28e45bab1fbe1169d133c6e0931f8e73b3d95e288f5",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:20:01.958Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/strings",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/system-and-io.md",
       "targetPath": "content/docs/php/system-and-io.md",
       "sourceHash": "sha256:8317598a6ebdae9bb5a50e5c24f621e3bc0134c885a8621e9f1876808a49d5ae",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:21:39.485Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/system-and-io",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/types.md",
       "targetPath": "content/docs/php/types.md",
       "sourceHash": "sha256:3516ee24843f3ead58ccf9d21c2f907d0f426d37b406a7f0d1e4c85489072ffb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:23:58.270Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/types",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/README.md",
@@ -8490,19 +8490,19 @@
       "sourcePath": "showcases/http-server/README.md",
       "targetPath": "content/showcases/http-server/README.md",
       "sourceHash": "sha256:e17c168764c8f3806b8f18d22a2ff63b5f90014aeb4caefcbc0866d754ba63fc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:24:52.625Z",
       "translationMode": "refined",
       "workDir": ".translation/work/showcases/http-server/README",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "examples/cdylib/README.md",
       "targetPath": "content/examples/cdylib/README.md",
       "sourceHash": "sha256:e174037d871fc0a31021d281b49b6c6e73b34b096cd850857bd2f7c3d3d4dbf1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-09T09:25:33.985Z",
       "translationMode": "normal",
       "workDir": ".translation/work/examples/cdylib/README",
-      "status": "pending"
+      "status": "translated"
     }
   ]
 }
