@@ -2055,181 +2055,181 @@
       "sourcePath": "docs/internals/builtins/io/stream_context_create.md",
       "targetPath": "content/docs/internals/builtins/io/stream_context_create.md",
       "sourceHash": "sha256:24ff6f1b1cedab5d5096a8d224d586e406e63975314c9c6e7fd950ee86c29ac9",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:08:30.776Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_context_create",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_context_get_default.md",
       "targetPath": "content/docs/internals/builtins/io/stream_context_get_default.md",
       "sourceHash": "sha256:24395012ecc0444d3b48506d46a18ad0695bd3c86307920b725db9cfccb14069",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:09:10.452Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_context_get_default",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_context_get_options.md",
       "targetPath": "content/docs/internals/builtins/io/stream_context_get_options.md",
       "sourceHash": "sha256:5f36fb9491b0e12609c7aea73cdfb3bca23df865ba6536e06ff5ea9bd7f0c5a9",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:09:42.111Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_context_get_options",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_context_get_params.md",
       "targetPath": "content/docs/internals/builtins/io/stream_context_get_params.md",
       "sourceHash": "sha256:982b70041eb3497012bf28a9090a19a0bb3661e7e6582acd2b0f56378a72aabc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:10:02.050Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_context_get_params",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_context_set_default.md",
       "targetPath": "content/docs/internals/builtins/io/stream_context_set_default.md",
       "sourceHash": "sha256:84a6fadd7b219b35f55417aabff705c1a1fe52b68506c972b064e13d95a9bdc1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:10:38.980Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_context_set_default",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_context_set_option.md",
       "targetPath": "content/docs/internals/builtins/io/stream_context_set_option.md",
       "sourceHash": "sha256:ce5bcedac05dc001bc7c56afb6d466d32af7fa516a688c9d2b5c256baee34a1a",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:11:25.142Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_context_set_option",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_context_set_params.md",
       "targetPath": "content/docs/internals/builtins/io/stream_context_set_params.md",
       "sourceHash": "sha256:e5a915b6167129e97ce3919c1fc9fd10ce690d89d2c25bde3e972cccee686fc1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:12:18.890Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_context_set_params",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_copy_to_stream.md",
       "targetPath": "content/docs/internals/builtins/io/stream_copy_to_stream.md",
       "sourceHash": "sha256:eb3efe878ee9e626e17b31e12ce6797f3b84d2fe672113fd9c8f656196317b85",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:12:55.309Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_copy_to_stream",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_filter_register.md",
       "targetPath": "content/docs/internals/builtins/io/stream_filter_register.md",
       "sourceHash": "sha256:5ebbc9be1ebca87d862f809353180e7f9eaa4117ccaf51fa60357bf24d4b7d04",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:13:19.176Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_filter_register",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_filter_remove.md",
       "targetPath": "content/docs/internals/builtins/io/stream_filter_remove.md",
       "sourceHash": "sha256:eb682333af0f646b0a7da22cbcc3613b6389882be0c65a3ce4602ad72fe6395c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:13:39.200Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_filter_remove",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_get_contents.md",
       "targetPath": "content/docs/internals/builtins/io/stream_get_contents.md",
       "sourceHash": "sha256:9ee9db15081538fe5beb33c49de8a2b04fde31fa2e2cd94f0f792a9282cedb15",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:14:02.729Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_get_contents",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_get_filters.md",
       "targetPath": "content/docs/internals/builtins/io/stream_get_filters.md",
       "sourceHash": "sha256:247b29ee97bd472a1732338b5b025b71ce534299fd8e33d2eb57c46076e7e8f6",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:14:26.735Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_get_filters",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_get_line.md",
       "targetPath": "content/docs/internals/builtins/io/stream_get_line.md",
       "sourceHash": "sha256:870844bc83a76330df10b6c37b93dc6f1754df0022aa3c8e6f9acdd33183b5f9",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:15:26.084Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_get_line",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_get_meta_data.md",
       "targetPath": "content/docs/internals/builtins/io/stream_get_meta_data.md",
       "sourceHash": "sha256:656e628407aebd9423b4d64f6dad0269d64044cee6fe0bf2e166a098630d0bf0",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:16:10.020Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_get_meta_data",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_get_transports.md",
       "targetPath": "content/docs/internals/builtins/io/stream_get_transports.md",
       "sourceHash": "sha256:c0b0fc50b4a07b4483d977df6abfbf16b6ef52e1c37f474700f4971ce46a5077",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:16:32.776Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_get_transports",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_get_wrappers.md",
       "targetPath": "content/docs/internals/builtins/io/stream_get_wrappers.md",
       "sourceHash": "sha256:66586dc8f08c63cc351c1b41f08f5d4c37f4073c668bd628d571f57ae5d50c34",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:17:46.748Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_get_wrappers",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_is_local.md",
       "targetPath": "content/docs/internals/builtins/io/stream_is_local.md",
       "sourceHash": "sha256:00b04f268fbb64248e6bee71451d2db53566062ea1936f30fbc8abc4697228d3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:18:30.058Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_is_local",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_isatty.md",
       "targetPath": "content/docs/internals/builtins/io/stream_isatty.md",
       "sourceHash": "sha256:edbdfedc73081442de19e58c832a13e93bcd2fc0a3ba603c4c86e11e4b9151a0",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:18:55.623Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_isatty",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_resolve_include_path.md",
       "targetPath": "content/docs/internals/builtins/io/stream_resolve_include_path.md",
       "sourceHash": "sha256:93d5777b8cc456a93a5b7fd108a1750b3c248c98f692cb24be601c2d33976860",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:19:16.694Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_resolve_include_path",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_select.md",
       "targetPath": "content/docs/internals/builtins/io/stream_select.md",
       "sourceHash": "sha256:9915d659bd94ba647081e7dbe8c465a0a479aab6a4c66b7da19c9ef6029ad2a7",
-      "translatedAt": "",
+      "translatedAt": "2026-07-04T02:20:43.092Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/io/stream_select",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/io/stream_set_blocking.md",
