@@ -6195,181 +6195,181 @@
       "sourcePath": "docs/php/builtins/io/stream_get_wrappers.md",
       "targetPath": "content/docs/php/builtins/io/stream_get_wrappers.md",
       "sourceHash": "sha256:39e40896fb1ff996ce44c9d0228c695c59c58053c358af44a5372112505eb3bd",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_get_wrappers",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_is_local.md",
       "targetPath": "content/docs/php/builtins/io/stream_is_local.md",
       "sourceHash": "sha256:83b4d015daaa3f76ea6e045bda43a5f88366a4e7ba1187d3a080a44bce1ced76",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_is_local",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_isatty.md",
       "targetPath": "content/docs/php/builtins/io/stream_isatty.md",
       "sourceHash": "sha256:f8eef92f579e25d3366247c8e9ec8b29859c1a13f299cf556d14c13fa8b804a6",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_isatty",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_resolve_include_path.md",
       "targetPath": "content/docs/php/builtins/io/stream_resolve_include_path.md",
       "sourceHash": "sha256:f3487466f335b013335b25f1ce5166884e2f43618a55e8982ec3fed6198630fc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_resolve_include_path",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_select.md",
       "targetPath": "content/docs/php/builtins/io/stream_select.md",
       "sourceHash": "sha256:ab9c45501556b84d4344da5d4bb91da796b59a55028fb235f1753bc313fc8d27",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_select",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_set_blocking.md",
       "targetPath": "content/docs/php/builtins/io/stream_set_blocking.md",
       "sourceHash": "sha256:f8367571cb74afb78e8590a0380bb71237e4c2bb100c6d061910cad5ff60080e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_set_blocking",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_set_chunk_size.md",
       "targetPath": "content/docs/php/builtins/io/stream_set_chunk_size.md",
       "sourceHash": "sha256:9de73b366ddeab80e16406d14d855fc46c24a3160cbd8c2abccd1935b49680e8",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_set_chunk_size",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_set_read_buffer.md",
       "targetPath": "content/docs/php/builtins/io/stream_set_read_buffer.md",
       "sourceHash": "sha256:a8ea79b45b3be88bddb5adb6f2ac2f8122bc0459d3f90b49fe03d33d13d49ddb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_set_read_buffer",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_set_timeout.md",
       "targetPath": "content/docs/php/builtins/io/stream_set_timeout.md",
       "sourceHash": "sha256:7b97a5ada276a86162c375aba5876a3e0b7429f2a093360fe350242753bba333",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_set_timeout",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_set_write_buffer.md",
       "targetPath": "content/docs/php/builtins/io/stream_set_write_buffer.md",
       "sourceHash": "sha256:8cdb003428bf94f125bbad4f567426e6b13610808d6bdb6351de92cd46e3c536",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_set_write_buffer",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_socket_accept.md",
       "targetPath": "content/docs/php/builtins/io/stream_socket_accept.md",
       "sourceHash": "sha256:69467b1e75b93f05c18cdc1daef16bce98bdc7863317c5f02d7a7b7ddca02381",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_socket_accept",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_socket_client.md",
       "targetPath": "content/docs/php/builtins/io/stream_socket_client.md",
       "sourceHash": "sha256:cc2fdc4e5b80b8fb2b3a9688bd7e286f3a2e949c1ac54d48a38b538f1719ffa9",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_socket_client",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_socket_enable_crypto.md",
       "targetPath": "content/docs/php/builtins/io/stream_socket_enable_crypto.md",
       "sourceHash": "sha256:945fddf64623233476be30d9c01b09fc3b4ef4a696e3128668385ec381a7425d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_socket_enable_crypto",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_socket_get_name.md",
       "targetPath": "content/docs/php/builtins/io/stream_socket_get_name.md",
       "sourceHash": "sha256:c0c8242724772a90aa6be64190e30b13327c9249834b88ae8d0ac7053c8911db",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_socket_get_name",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_socket_pair.md",
       "targetPath": "content/docs/php/builtins/io/stream_socket_pair.md",
       "sourceHash": "sha256:558eb053aa143866cdebc49bc96e32dd58beb1ec48dfa67b70502cc5f93726ab",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_socket_pair",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_socket_recvfrom.md",
       "targetPath": "content/docs/php/builtins/io/stream_socket_recvfrom.md",
       "sourceHash": "sha256:ab033a085e319f6329501909db5436188f35c03c4299f693d33d456f2d06493b",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_socket_recvfrom",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_socket_sendto.md",
       "targetPath": "content/docs/php/builtins/io/stream_socket_sendto.md",
       "sourceHash": "sha256:396a0313afab808d7da83a8c8f52e6a3942595728e8b737522c8c4ef82d660a5",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_socket_sendto",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_socket_server.md",
       "targetPath": "content/docs/php/builtins/io/stream_socket_server.md",
       "sourceHash": "sha256:0a571291274e01a23d062fae6a3b017cd8551135e3c9703c5d3d4854d47cf687",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_socket_server",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_socket_shutdown.md",
       "targetPath": "content/docs/php/builtins/io/stream_socket_shutdown.md",
       "sourceHash": "sha256:f4e6d2cbc81fc477ea235a1abe41f66e20439a7ef0416e914ccac46e7e304e54",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_socket_shutdown",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_supports_lock.md",
       "targetPath": "content/docs/php/builtins/io/stream_supports_lock.md",
       "sourceHash": "sha256:590e7040191dd39dce451576de817b160fde27c0eba1e3f551c12b4d6e3d3abd",
-      "translatedAt": "",
+      "translatedAt": "2026-07-08T09:01:31.370Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/io/stream_supports_lock",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/io/stream_wrapper_register.md",
