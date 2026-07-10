@@ -4215,109 +4215,109 @@
       "sourcePath": "docs/internals/memory-model.md",
       "targetPath": "content/docs/internals/memory-model.md",
       "sourceHash": "sha256:3f5be29c17a7dd6ad59227f1268d335c8076a8a529ea56a6bc77c086b7ed2d30",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T09:59:33.243Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/memory-model",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/the-codegen.md",
       "targetPath": "content/docs/internals/the-codegen.md",
       "sourceHash": "sha256:4e0858ef2e52c62afebf3342cfabfb9928658af3d0541febead8e02dcaacadd2",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:17:34.394Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/the-codegen",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/the-ir.md",
       "targetPath": "content/docs/internals/the-ir.md",
       "sourceHash": "sha256:1e368c755a19267e3841b9d1b29f9775712f46e44b8dba24472872cd12645ca8",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:17:34.394Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/the-ir",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/the-lexer.md",
       "targetPath": "content/docs/internals/the-lexer.md",
       "sourceHash": "sha256:7ce752ddf5f6ed7139065a10bbfe7c4e0c28ba200fa4847821f47335e230a1a0",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:13:58.242Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/the-lexer",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/the-optimizer.md",
       "targetPath": "content/docs/internals/the-optimizer.md",
       "sourceHash": "sha256:20656c3e781d2e2273a6bcb5d24b9cce788042ec6206137f93284a4f1a6d8129",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:13:58.256Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/the-optimizer",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/the-parser.md",
       "targetPath": "content/docs/internals/the-parser.md",
       "sourceHash": "sha256:55cee64b1f67bbdd7bdd51c2a5daf05cacf5878036c753ce2b5be7431acd31c1",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:17:34.394Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/the-parser",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/the-runtime.md",
       "targetPath": "content/docs/internals/the-runtime.md",
       "sourceHash": "sha256:67d168aa5fccfb8d1183897ff46f3728037a11a6e09a19e5782d0f7233d2593d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:17:34.394Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/the-runtime",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/the-type-checker.md",
       "targetPath": "content/docs/internals/the-type-checker.md",
       "sourceHash": "sha256:6b3ca56c841b92a8f43179ad6ff64128536cee15431a1f2e1551c7939a598d7f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:17:34.394Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/the-type-checker",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/what-is-a-compiler.md",
       "targetPath": "content/docs/internals/what-is-a-compiler.md",
       "sourceHash": "sha256:be14b7dc62ead47f6b51175d1fa51ef3cc82157df01833e387c4c9d9fdfab0dc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:13:58.261Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/what-is-a-compiler",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/arrays.md",
       "targetPath": "content/docs/php/arrays.md",
       "sourceHash": "sha256:20055b25c98d56c8a4bc22d1d6bd9b08ea7d3ecea899687c476f70286e1935d3",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:13:58.263Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/arrays",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins.md",
       "targetPath": "content/docs/php/builtins.md",
       "sourceHash": "sha256:2e09bf166d4102ee83c377f8c8604c12f7d714115396be3c3a2566d480295598",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:17:34.394Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/php/builtins",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array.md",
       "targetPath": "content/docs/php/builtins/array.md",
       "sourceHash": "sha256:3e46b8b6a15b64be55a47373e88f4d67f1cf0fac3252bea962a564e0d9c44929",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:13:58.266Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/array",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/array/array_all.md",
@@ -5043,73 +5043,73 @@
       "sourcePath": "docs/php/builtins/class/interface_exists.md",
       "targetPath": "content/docs/php/builtins/class/interface_exists.md",
       "sourceHash": "sha256:4e3dd360077aa377615198aae549761d1ba56482d7f013c11495cadbc6a6d55f",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:04:08Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/interface_exists",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/is_a.md",
       "targetPath": "content/docs/php/builtins/class/is_a.md",
       "sourceHash": "sha256:b2d8da53ac2acb1dfd44728e4a710763034e2c281e59e966f20202d96c0e79f7",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:04:08Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/is_a",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/is_subclass_of.md",
       "targetPath": "content/docs/php/builtins/class/is_subclass_of.md",
       "sourceHash": "sha256:5abfc119e26ff7618a5c70e93329cc36249e2d65642d33798017001e1c35acec",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:04:08Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/is_subclass_of",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/class/trait_exists.md",
       "targetPath": "content/docs/php/builtins/class/trait_exists.md",
       "sourceHash": "sha256:43e27ebdf7735c2271a7e607065511738ec50bc314820c4e7e33e097f37650ad",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:04:08Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/class/trait_exists",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date.md",
       "targetPath": "content/docs/php/builtins/date.md",
       "sourceHash": "sha256:defe47d0ec6d234ff50131be4feac797b2899b61f7512dceca95301b3d89cdbf",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:13:58.268Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/checkdate.md",
       "targetPath": "content/docs/php/builtins/date/checkdate.md",
       "sourceHash": "sha256:29f4eab736a8b3b0c22c37d5affee3df3ccd02d05e495088a86d5484c50fa636",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:04:08Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/checkdate",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/date_default_timezone_get.md",
       "targetPath": "content/docs/php/builtins/date/date_default_timezone_get.md",
       "sourceHash": "sha256:d0b06377d3765c1e9e291fdf06e9c7668eca18ba667d27dc5f7022dc85d63988",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:04:08Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/date_default_timezone_get",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/date_default_timezone_set.md",
       "targetPath": "content/docs/php/builtins/date/date_default_timezone_set.md",
       "sourceHash": "sha256:4021793ede839f483f71aff99f9455a039a9b94af400c364f5a4a9008a95dbdb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T10:04:08Z",
       "translationMode": "quick",
       "workDir": ".translation/work/docs/php/builtins/date/date_default_timezone_set",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/php/builtins/date/date.md",

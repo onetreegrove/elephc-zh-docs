@@ -1,0 +1,29 @@
+## Callable 例程
+
+**来源：** `src/codegen/runtime/callables/`（包含 `mod.rs` 在内共 3 个文件）
+
+当参数不是编译期字面量，也不是静态已知的 callable 值时，这些例程会实现 `is_callable()` 的运行时回退路径。它们会查询生成的元数据，覆盖 builtin、用户函数、public 方法、public static 方法以及 `__invoke` 对象。
+
+动态调用 builtin 使用生成的 callable descriptor，而不是这些布尔辅助例程。descriptor 是一条八字记录：callable kind、原生入口指针、PHP 可见名称指针、名称长度、签名记录指针、环境记录指针、调用记录指针，以及可选的 uniform invoker 指针。间接调用通过从 descriptor 加载原生入口，保持一字 callable ABI；descriptor-invoker 路径则调用生成的 `(descriptor, boxed argument container) -> mixed` 适配器。
+
+签名侧记录会保存可见参数数、必需参数数和常规参数数；variadic 索引；返回类型和返回寄存器数量；声明返回标志；参数名称和类型；默认值；by-reference 标志；以及声明参数标志。环境记录保存 capture 和隐藏 wrapper 参数绑定。调用记录保存 callable 形态（`string`、callable array、closure、first-class callable、object `__invoke`、static method、instance method、builtin、extern 或 user function），以及适用时的 receiver、method 和辅助名称。
+
+`call_user_func()`、`call_user_func_array()`、直接 string-variable 调用、直接 callable-array 变量和字面量调用、直接 invokable-object 调用、method first-class callable 变量调用，以及 `iterator_apply()`，都会把运行时字符串名称或 descriptor 选中的 callable 入口与生成的 case 比较。运行时字符串 callback 名称现在会物化匹配到的 descriptor，并调用它的 uniform invoker slot，覆盖 user function、extern wrapper、builtin 和 public static method；因此签名默认值、命名参数、by-reference 标志、variadic 和返回值装箱都隐藏在 descriptor 后面，而不是散落在每个字符串分发调用点中。`iterator_apply()` 也可以保留一个分支选中的 captured descriptor 或运行时选中的 callable-array descriptor，并在每次循环迭代时直接调用该 descriptor 的 invoker。`array_map()`、`array_filter()`、`array_reduce()`、`array_walk()`、`usort()`、`uksort()`、`uasort()` 和 `preg_replace_callback()` 会把 descriptor 值的 callable 变量和 `callable` 参数保留在 descriptor callback 环境中，因此 by-value closure capture、method receiver 和 late-static binding 状态会从 descriptor storage 读取，而不是从当前源码局部变量读取。这些 callback runtime 还会先把运行时 callable-array 变量（如 `[$object, $method]` 或 `[$class, $method]`）与 public method descriptor case 匹配，再调用共享的 descriptor callback wrapper。`usort()`、`uksort()` 和 `uasort()` 为分支选中的 captured descriptor 使用 descriptor comparator environment。`CallbackFilterIterator` 和 `RecursiveCallbackFilterIterator` 会把分支选中的 captured descriptor，以及运行时选中的 callable-array 变量或字面量 descriptor，存入持久 callback environment，然后在 `accept()` 中调用同一个 descriptor invoker。`call_user_func()` 和直接 callable-variable 调用会为 descriptor-backed 调用构建 boxed indexed argument container；命名直接调用会构建 associative hash。两种形态中的变量参数都可以编码成内部 reference-cell marker，包括 named hash entry 中的 boxed marker，因此生成的 invoker 在读取 descriptor signature 后，可以把原始 storage 传给 by-reference 参数，或为 by-value 参数解引用。`call_user_func_array()` 会克隆给定 indexed array 或 hash，把克隆拓宽为 boxed `Mixed`，并向 descriptor invoker 传入一个 boxed container。invoker 在运行时检查 boxed container tag，分发到 indexed-array 或 associative-hash 参数物化逻辑，为声明的 array 参数 unbox boxed array/hash payload，并按 callable signature 而不是 caller array shape 建立键。带有 `use (...)`、receiver 或 late-static-binding context 的 closure 和 first-class-callable descriptor，会分配运行时 descriptor copy，其固定 header 后跟 capture value slot；descriptor invoker 会把这些 slot 重新加载为隐藏参数，包括 by-reference capture。即使原始 receiver 变量仍有静态元数据，method first-class callable 变量也会使用这条 descriptor 路径，因此重新赋值源局部变量不会改变已存储的 receiver。早先由运行时表达式选出 descriptor 的 callable 变量和数组元素，在局部调用点不再有静态签名或 capture 元数据时，会使用 descriptor invoker。编译期 static-method callable array 现在会为直接变量和字面量调用、`call_user_func()` 调用以及 `call_user_func_array()` 调用物化 static-method descriptor，包括会把剩余字符串键转发到用户定义 variadic method tail 的 associative argument container。直接 instance-method callable-array 变量调用会从已存储 callable array 的 slot zero 读取 receiver；直接 instance-method callable-array 字面量调用会先求值 receiver，再求值可见调用参数；两者都会把 receiver 作为 descriptor argument zero 前置，然后让 descriptor signature 规范化可见的 named/default/variadic/by-reference 参数。直接 invokable-object 调用会把 object 作为 descriptor argument zero 前置，并使用 object-invoke descriptor shape 处理同样的 named/default/variadic/by-reference 逻辑，包括 `(new Runner())(...)` 这样的非局部 receiver 表达式。编译期 instance-method callable array 和 invokable object，会在直接 `call_user_func()` 调用以及 `call_user_func_array()` 调用中使用 instance/object descriptor shape；后者的 argument container 可以是 literal indexed、literal associative、dynamic indexed、dynamic associative 或 runtime-opaque mixed/union。receiver 会作为合成 descriptor argument 前置到可见 callback 参数之前。receiver-bound runtime-opaque container 会按 boxed payload tag 分支，克隆并拓宽 payload 为 Mixed entry，然后为 descriptor invoker 构建 receiver-prefixed indexed array 或 associative hash。
+
+Extern callback trampoline 从面向 C 的入口点使用同一个 descriptor invoker。每个 extern callable 调用点都有生成的 descriptor slot 和 trampoline symbol；trampoline 会重新加载当前 descriptor，把传入的 scalar/pointer C callback 参数装箱成临时 indexed `Mixed` array，调用 descriptor，把 boxed 结果 cast 成 `int`、`float`、`bool`、`ptr` 或 `void`，然后按目标 C ABI 返回。
+
+| 例程 | 作用 | 输入 | 输出 |
+|---|---|---|---|
+| `__rt_is_callable_string` | 把字符串解析为 builtin、active user function 或 `Class::method` static-method callable | `x1`/`x2` = string | `x0` = bool |
+| `__rt_is_callable_method_name` | 检查对象是否暴露给定名称的 public method | object pointer + method string | `x0` = bool |
+| `__rt_is_callable_static_method_name` | 检查 class string 是否暴露给定名称的 public static method | class string + method string | `x0` = bool |
+| `__rt_is_callable_object` | 通过 public `__invoke` 元数据检查对象是否 callable | object pointer | `x0` = bool |
+| `__rt_is_callable_array` | 校验 `[$obj, "method"]` 或 `[ClassName::class, "method"]` 这样的 indexed callable array | array pointer | `x0` = bool |
+| `__rt_is_callable_assoc` | 校验通过 boxed 或 dynamic data path 产生的 associative callable-array payload | hash pointer | `x0` = bool |
+| `__rt_is_callable_mixed` | Unbox 一个 Mixed 值，并分发到 string、array、hash 或 object callable 检查 | mixed pointer | `x0` = bool |
+| `__rt_is_callable_heap` | 通过检查 heap-kind tag，从 raw heap pointer 分发 callable 检查 | heap pointer | `x0` = bool |
+| `__rt_callable_descriptor_release` | 释放 heap-backed callable descriptor copy，以及追加在 static header 后面的 by-value capture slot；static `.data` descriptor 会被忽略 | `x0` = descriptor pointer | — |
+
+## 数组例程
+
+**来源：** `src/codegen/runtime/arrays/`（131 个文件）
