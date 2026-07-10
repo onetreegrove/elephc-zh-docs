@@ -51,17 +51,55 @@ if (!manifest) {
 }
 
 const markdownFiles = await walkFiles("site", (filePath) => filePath.endsWith(".md"));
+
+async function localLinkExists(fromFilePath, href) {
+  const withoutHash = href.split("#")[0].split("?")[0];
+  if (!withoutHash) {
+    return true;
+  }
+
+  const rawTarget = withoutHash.startsWith("/")
+    ? path.join("site", withoutHash)
+    : path.resolve(path.dirname(fromFilePath), withoutHash);
+  const normalizedTarget = path.normalize(rawTarget);
+  const siteRoot = path.resolve("site");
+
+  if (!normalizedTarget.startsWith(siteRoot)) {
+    return false;
+  }
+
+  const candidates = [];
+  const extension = path.extname(normalizedTarget);
+  if (extension) {
+    candidates.push(normalizedTarget);
+  } else {
+    candidates.push(`${normalizedTarget}.md`);
+    candidates.push(path.join(normalizedTarget, "index.md"));
+  }
+
+  for (const candidate of candidates) {
+    if (await pathExists(candidate)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 for (const filePath of markdownFiles) {
   const markdown = await readText(filePath);
   const relative = path.relative(process.cwd(), filePath);
-  const localLinks = [...markdown.matchAll(/\[[^\]]+\]\((?!https?:\/\/|#)([^)]+)\)/g)];
+  const localLinks = [...markdown.matchAll(/\[[^\]]+\]\((?!https?:\/\/|mailto:|#)([^)]+)\)/g)];
   for (const match of localLinks) {
-    const href = match[1].split("#")[0];
-    if (!href || href.startsWith("/")) {
+    const href = match[1].trim();
+    if (!href || href.startsWith("#")) {
       continue;
     }
-    if (href.includes("..")) {
-      errors.push(`${relative} contains upward relative link: ${href}`);
+    if (/\s/.test(href)) {
+      continue;
+    }
+    if (!(await localLinkExists(filePath, href))) {
+      errors.push(`${relative} contains unresolved local link: ${href}`);
     }
   }
 }

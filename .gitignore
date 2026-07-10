@@ -102,6 +102,18 @@ dist
 site/.vitepress/cache/
 site/.vitepress/dist/
 
+# Generated from content/ by scripts/sync-site-content.mjs.
+site/docs/**
+!site/docs/
+!site/docs/index.md
+!site/docs/overview.md
+site/examples/**
+!site/examples/
+!site/examples/index.md
+site/showcases/**
+!site/showcases/
+!site/showcases/index.md
+
 # macOS
 .DS_Store
 
