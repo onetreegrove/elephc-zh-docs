@@ -3315,181 +3315,181 @@
       "sourcePath": "docs/internals/builtins/streams/pfsockopen.md",
       "targetPath": "content/docs/internals/builtins/streams/pfsockopen.md",
       "sourceHash": "sha256:928498a91ef76ef38c00c5d75e2e31eeee5f1868e08e632319fffc5ce4671026",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/streams/pfsockopen",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/streams/stream_bucket_append.md",
       "targetPath": "content/docs/internals/builtins/streams/stream_bucket_append.md",
       "sourceHash": "sha256:63e71a6d7b3a2c99a5a9ee525cb93a550842a152c146165bfd2aaedc882696db",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/streams/stream_bucket_append",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/streams/stream_bucket_prepend.md",
       "targetPath": "content/docs/internals/builtins/streams/stream_bucket_prepend.md",
       "sourceHash": "sha256:c1679eafa86ffbc42d4e2a1a4b7d052ae752959ac57308bfca3a0f53149fce24",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/streams/stream_bucket_prepend",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/streams/stream_filter_append.md",
       "targetPath": "content/docs/internals/builtins/streams/stream_filter_append.md",
       "sourceHash": "sha256:4afeeefb8f9805c433a798823fca851ee4aa8f7e5506188fb2009c85ac2359bc",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/streams/stream_filter_append",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/streams/stream_filter_prepend.md",
       "targetPath": "content/docs/internals/builtins/streams/stream_filter_prepend.md",
       "sourceHash": "sha256:a9a6f66c2428d7ae4433d765df1e2c79298cacaa7a3d2b387b9813acbd7d9555",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/streams/stream_filter_prepend",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/addslashes.md",
       "targetPath": "content/docs/internals/builtins/string/addslashes.md",
       "sourceHash": "sha256:76c59f44d64179a305de156004c601612e41940fd10016d6890bdb88ddd39cfb",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/addslashes",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/base64_decode.md",
       "targetPath": "content/docs/internals/builtins/string/base64_decode.md",
       "sourceHash": "sha256:b373fff9dd11d89c892a72bdc33e9de2fa2602187bf288483fd55299cba12540",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/base64_decode",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/base64_encode.md",
       "targetPath": "content/docs/internals/builtins/string/base64_encode.md",
       "sourceHash": "sha256:30e4bd47e89bad1b2cd84892d657aa7f8519729c4c22e625f62c4e4ae41cc5c5",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/base64_encode",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/bin2hex.md",
       "targetPath": "content/docs/internals/builtins/string/bin2hex.md",
       "sourceHash": "sha256:0692a9cf9b4ecaab21873593ae46560ddd2fc589067fdb1cfc6bee40c751ad38",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/bin2hex",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/chop.md",
       "targetPath": "content/docs/internals/builtins/string/chop.md",
       "sourceHash": "sha256:0be8d8a02d5c2ce553f650c707464a3e8994db2037ba037821e0264fabc467ba",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/chop",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/chr.md",
       "targetPath": "content/docs/internals/builtins/string/chr.md",
       "sourceHash": "sha256:0999526aceef9a37de6ca3240d0304b19e252049de5ee0cb003f883fbe9a705d",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/chr",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/crc32.md",
       "targetPath": "content/docs/internals/builtins/string/crc32.md",
       "sourceHash": "sha256:eb050b789046a348173bf681b2a4685c2bb57ea4c89d0d8f7e9e6b282ffa4fcf",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/crc32",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/explode.md",
       "targetPath": "content/docs/internals/builtins/string/explode.md",
       "sourceHash": "sha256:63e159e0c841a3e1053dd0465197ded0fbe774fc421413adef60cdded05ba4d9",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/explode",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/grapheme_strrev.md",
       "targetPath": "content/docs/internals/builtins/string/grapheme_strrev.md",
       "sourceHash": "sha256:7d87ab885b06b7ad44966849fd64d32ba724b8bb0d2970d538c2d90ce7a6d240",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/grapheme_strrev",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/gzcompress.md",
       "targetPath": "content/docs/internals/builtins/string/gzcompress.md",
       "sourceHash": "sha256:d038f3001726dba9fc67fb4356a2bca1c3501e4c1a54c4706b4690febaa63c08",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/gzcompress",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/gzdeflate.md",
       "targetPath": "content/docs/internals/builtins/string/gzdeflate.md",
       "sourceHash": "sha256:ef543c61bde956719ddc5b8d7d71ceedecbcd35c32c64ef70cacbe175e7ffe5e",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/gzdeflate",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/gzinflate.md",
       "targetPath": "content/docs/internals/builtins/string/gzinflate.md",
       "sourceHash": "sha256:b58dfd0cd3a8ec3a43da7fc0a9f74e09be67e4b4a3b2a35ff6a44a81505c7033",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/gzinflate",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/gzuncompress.md",
       "targetPath": "content/docs/internals/builtins/string/gzuncompress.md",
       "sourceHash": "sha256:42668be06ba4f7415241e74c95428c342d79d8954ca7728a20c8a52a22d78a67",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/gzuncompress",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/hash_algos.md",
       "targetPath": "content/docs/internals/builtins/string/hash_algos.md",
       "sourceHash": "sha256:d3bc1559fac925eca060bdaa6c6e046d35a780b956c30fe93099d284694ad14c",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/hash_algos",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/hash_copy.md",
       "targetPath": "content/docs/internals/builtins/string/hash_copy.md",
       "sourceHash": "sha256:efc3a924206bebadecd0070cb5dd9f0a623eaed5b2503f46e06d84b29fa64d06",
-      "translatedAt": "",
+      "translatedAt": "2026-07-06T07:20:50.506Z",
       "translationMode": "normal",
       "workDir": ".translation/work/docs/internals/builtins/string/hash_copy",
-      "status": "pending"
+      "status": "translated"
     },
     {
       "sourcePath": "docs/internals/builtins/string/hash_equals.md",
